@@ -4,7 +4,7 @@ using UnityEditor;
 using UnityEngine;
 
 [CustomEditor(typeof(DungeonGenerator))]
-public class MyScriptEditor : Editor
+public class GenerateDungeonEditor : Editor
 {
     public override void OnInspectorGUI()
     {
