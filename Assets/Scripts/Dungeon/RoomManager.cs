@@ -9,11 +9,11 @@ public class RoomManager
     private readonly int minRoomCount = 8;
     private readonly int maxRoomCount = 15;
     private readonly List<Room> rooms;
-    private readonly RoomVisualizer roomVisualizer;
+    private readonly DungeonVisualizer dungeonVisualizer;
 
-    public RoomManager(RoomVisualizer roomVisualizer, Vector2Int startPosition, Vector2Int roomSize, int offset)
+    public RoomManager(DungeonVisualizer dungeonVisualizer, Vector2Int startPosition, Vector2Int roomSize, int offset)
     {
-        this.roomVisualizer = roomVisualizer;
+        this.dungeonVisualizer = dungeonVisualizer;
         rooms = GenerateRooms(startPosition, roomSize, offset);
         AssignRoomTypes();
     }
@@ -55,7 +55,7 @@ public class RoomManager
         if (direction == Direction.Right)
             currentPosition += new Vector2Int(roomSize.x + offset, 0);
 
-        return new Room(roomVisualizer, new RectInt(currentPosition, roomSize));
+        return new Room(dungeonVisualizer, new RectInt(currentPosition, roomSize));
     }
 
     private static Direction GetRandomDirection()

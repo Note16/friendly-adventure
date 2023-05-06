@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class DungeonGenerator : MonoBehaviour
 {
-    protected RoomVisualizer roomVisualizer;
+    protected DungeonVisualizer roomVisualizer;
 
     [SerializeField]
     protected Vector2Int startPosition = Vector2Int.zero;
@@ -18,7 +18,7 @@ public class DungeonGenerator : MonoBehaviour
 
     public void GenerateDungeon()
     {
-        roomVisualizer = GetComponent<RoomVisualizer>();
+        roomVisualizer = GetComponent<DungeonVisualizer>();
         roomVisualizer.Clear();
         CreateRooms();
     }

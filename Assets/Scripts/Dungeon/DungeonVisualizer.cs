@@ -11,7 +11,7 @@ public class NamedTileBase
     public TileBase TileBase;
 }
 
-public class RoomVisualizer : TilemapVisualizer
+public class DungeonVisualizer : TilemapVisualizer
 {
     [SerializeField]
     private TileBase floorTile;

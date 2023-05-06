@@ -3,16 +3,16 @@ using UnityEngine;
 
 public class Room
 {
-    private readonly RoomVisualizer roomVisualizer;
+    private readonly DungeonVisualizer dungeonVisualizer;
     private RoomType roomType { get; set; }
     private Color roomColor { get; set; }
     private RectInt roomFloor { get; }
     public Vector2Int Position => roomFloor.position;
     public Vector2Int RoomCenter => Vector2Int.FloorToInt(roomFloor.center);
 
-    public Room(RoomVisualizer roomVisualizer, RectInt roomFloor)
+    public Room(DungeonVisualizer dungeonVisualizer, RectInt roomFloor)
     {
-        this.roomVisualizer = roomVisualizer;
+        this.dungeonVisualizer = dungeonVisualizer;
         this.roomFloor = roomFloor;
         SetRoomType(RoomType.Default);
         SetWalls();
@@ -44,14 +44,14 @@ public class Room
             roomFloor.Add(tile);
         }
 
-        roomVisualizer.PaintFloorTiles(roomFloor, roomColor);
+        dungeonVisualizer.PaintFloorTiles(roomFloor, roomColor);
     }
 
     private void SetWalls()
     {
-        roomVisualizer.PaintTopWall(new RectInt(roomFloor.xMin, roomFloor.yMax - 4, roomFloor.width, 1));
-        roomVisualizer.PaintBottomWall(new RectInt(roomFloor.xMin, roomFloor.yMin, roomFloor.width, 1));
-        roomVisualizer.PaintLeftWall(new RectInt(roomFloor.xMax - 1, roomFloor.yMin, 1, roomFloor.height));
-        roomVisualizer.PaintRightWall(new RectInt(roomFloor.xMin, roomFloor.yMin, 1, roomFloor.height));
+        dungeonVisualizer.PaintTopWall(new RectInt(roomFloor.xMin, roomFloor.yMax - 4, roomFloor.width, 1));
+        dungeonVisualizer.PaintBottomWall(new RectInt(roomFloor.xMin, roomFloor.yMin, roomFloor.width, 1));
+        dungeonVisualizer.PaintLeftWall(new RectInt(roomFloor.xMax - 1, roomFloor.yMin, 1, roomFloor.height));
+        dungeonVisualizer.PaintRightWall(new RectInt(roomFloor.xMin, roomFloor.yMin, 1, roomFloor.height));
     }
 }
