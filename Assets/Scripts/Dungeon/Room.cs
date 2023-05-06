@@ -6,23 +6,32 @@ public class Room
     private readonly DungeonVisualizer dungeonVisualizer;
     private RoomType roomType { get; set; }
     private Color roomColor { get; set; }
-    private RectInt roomFloor { get; }
-    public Vector2Int Position => roomFloor.position;
-    public Vector2Int RoomCenter => Vector2Int.FloorToInt(roomFloor.center);
+    public RectInt RoomRect { get; }
+    public RectInt WallTopRect { get; }
+    public RectInt WallBottomRect { get; }
+    public RectInt WallLeftRect { get; }
+    public RectInt WallRightRect { get; }
+    public Vector2Int Position => RoomRect.position;
+    public Vector2Int RoomCenter => Vector2Int.FloorToInt(RoomRect.center);
 
-    public Room(DungeonVisualizer dungeonVisualizer, RectInt roomFloor)
+    public Room(DungeonVisualizer dungeonVisualizer, RectInt roomRect)
     {
         this.dungeonVisualizer = dungeonVisualizer;
-        this.roomFloor = roomFloor;
+        RoomRect = roomRect;
+        WallTopRect = new RectInt(RoomRect.xMin, RoomRect.yMax - 4, RoomRect.width, 4);
+        WallBottomRect = new RectInt(RoomRect.xMin, RoomRect.yMin, RoomRect.width, 1);
+        WallLeftRect = new RectInt(RoomRect.xMin, RoomRect.yMin, 2, RoomRect.height);
+        WallRightRect = new RectInt(RoomRect.xMax - 2, RoomRect.yMin, 2, RoomRect.height);
+
         SetRoomType(RoomType.Default);
-        SetWalls();
+        RenderWalls();
     }
 
     public void SetRoomType(RoomType roomType)
     {
         this.roomType = roomType;
         SetRoomColor();
-        SetFloor();
+        RenderFloor();
     }
 
     private void SetRoomColor()
@@ -36,22 +45,22 @@ public class Room
         };
     }
 
-    private void SetFloor()
+    private void RenderFloor()
     {
         var roomFloor = new HashSet<Vector2Int>();
-        foreach (var tile in this.roomFloor.allPositionsWithin)
+        foreach (var tile in RoomRect.allPositionsWithin)
         {
             roomFloor.Add(tile);
         }
 
-        dungeonVisualizer.PaintFloorTiles(roomFloor, roomColor);
+        dungeonVisualizer.SetFloorTiles(roomFloor, roomColor);
     }
 
-    private void SetWalls()
+    private void RenderWalls()
     {
-        dungeonVisualizer.PaintTopWall(new RectInt(roomFloor.xMin, roomFloor.yMax - 4, roomFloor.width, 1));
-        dungeonVisualizer.PaintBottomWall(new RectInt(roomFloor.xMin, roomFloor.yMin, roomFloor.width, 1));
-        dungeonVisualizer.PaintLeftWall(new RectInt(roomFloor.xMax - 1, roomFloor.yMin, 1, roomFloor.height));
-        dungeonVisualizer.PaintRightWall(new RectInt(roomFloor.xMin, roomFloor.yMin, 1, roomFloor.height));
+        dungeonVisualizer.SetRoomNorthWall(WallTopRect);
+        dungeonVisualizer.SetRoomSouthWall(WallBottomRect);
+        dungeonVisualizer.SetRoomWestWall(WallLeftRect, WallTopRect, WallBottomRect);
+        dungeonVisualizer.SetRoomEastWall(WallRightRect, WallTopRect, WallBottomRect);
     }
 }

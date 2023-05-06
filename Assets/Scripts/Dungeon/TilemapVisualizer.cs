@@ -21,6 +21,14 @@ public class TilemapVisualizer : MonoBehaviour
         SetSingleTile(floorTilemap, tile, position, color);
     }
 
+    public void SetFloorTiles(TileBase tile, IEnumerable<Vector2Int> floorPositions, Color? color)
+    {
+        foreach (var position in floorPositions)
+        {
+            SetFloorTile(tile, position, color);
+        }
+    }
+
     private void SetSingleTile(Tilemap tilemap, TileBase tile, Vector2Int position, Color? color = null)
     {
         var tilePosition = tilemap.WorldToCell((Vector3Int)position);
@@ -31,6 +39,11 @@ public class TilemapVisualizer : MonoBehaviour
             tilemap.SetTileFlags(tilePosition, TileFlags.None);
             tilemap.SetColor(tilePosition, (Color)color);
         }
+    }
+
+    public void ClearWallTile(Vector2Int position)
+    {
+        wallTilemap.SetTile((Vector3Int)position, null);
     }
 
     public void Clear()

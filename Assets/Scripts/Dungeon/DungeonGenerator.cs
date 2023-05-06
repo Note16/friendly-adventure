@@ -5,12 +5,12 @@ using UnityEngine;
 
 public class DungeonGenerator : MonoBehaviour
 {
-    protected DungeonVisualizer roomVisualizer;
+    protected DungeonVisualizer dungeonVisualizer;
 
     [SerializeField]
     protected Vector2Int startPosition = Vector2Int.zero;
     [SerializeField]
-    private int roomWidth = 30, roomHeight = 20;
+    private int roomWidth = 30, roomHeight = 20, minRoomCount = 8, maxRoomCount = 15;
 
     [SerializeField]
     [Range(0, 10)]
@@ -18,23 +18,24 @@ public class DungeonGenerator : MonoBehaviour
 
     public void GenerateDungeon()
     {
-        roomVisualizer = GetComponent<DungeonVisualizer>();
-        roomVisualizer.Clear();
+        dungeonVisualizer = GetComponent<DungeonVisualizer>();
+        dungeonVisualizer.Clear();
         CreateRooms();
     }
 
     private void CreateRooms()
     {
-        // Generate list of Rooms
-        var roomManager = new RoomManager(
-            roomVisualizer,
-            startPosition,
-            new Vector2Int(roomWidth, roomHeight),
-            offset
+        var roomManager = new RoomManager(dungeonVisualizer);
+        roomManager.SetOffset(offset);
+        roomManager.GenerateRooms(
+            new RectInt(startPosition, new Vector2Int(roomWidth, roomHeight)),
+            minRoomCount,
+            maxRoomCount
         );
-
-        //var corridorManger = new CorridorManager(rooms);
+        var corridorManger = new CorridorManager(roomManager, dungeonVisualizer);
+        
         //var corridors = corridorManger.GetCorridors();
+        corridorManger.GenerateCorridors();
 
         //var room = rooms.First();
         //tilemapVisualizer.PaintFloorTiles(new List<Vector2Int> { room.RoomCenter }, Color.white);
@@ -42,7 +43,7 @@ public class DungeonGenerator : MonoBehaviour
         //tilemapVisualizer.PaintFloorTiles(new List<Vector2Int> { closestRoom.RoomCenter }, Color.white);
 
         // Create floor
-       // tilemapVisualizer.PaintFloorTiles(corridors, Color.white);
+        //dungeonVisualizer.PaintFloorTiles(corridors, Color.white);
 
         // Create walls
         //WallGenerator.CreateWalls(floor, tilemapVisualizer);
