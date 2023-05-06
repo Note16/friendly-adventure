@@ -1,80 +1,62 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using UnityEditor.Experimental.GraphView;
+using UnityEditor.VersionControl;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
 public static class ProceduralGenerationAlgorithms
 {
-    /// <summary>
-    /// Split big floor (Bounding box) into smaller sections
-    /// </summary>
-    /// <param name="spaceToSplit">Floor to split</param>
-    /// <param name="minWidth">Minimum with of smaller sections</param>
-    /// <param name="minHeight">Maximum with of smaller sections</param>
-    /// <returns></returns>
-    public static List<BoundsInt> BinarySpacePartitioning(BoundsInt spaceToSplit, int minWidth, int minHeight)
+    enum Direction
+    { 
+        Up,
+        Down,
+        Left,
+        Right
+    }
+
+    public static HashSet<RectInt> RoomSpacePartitioning(Vector2Int startPostion, int roomWidth, int roomHeight, int offset)
     {
-        Queue<BoundsInt> roomsQueue = new();
-        List<BoundsInt> roomsList = new();
-        roomsQueue.Enqueue(spaceToSplit);
-        while (roomsQueue.Count > 0)
+        var roomsList = new HashSet<RectInt>();
+        var roomSize = new Vector2Int(roomWidth, roomHeight);
+        var currentPosition = startPostion;
+
+        // Generate start room;
+        roomsList.Add(GenerateRoom(currentPosition, roomSize, offset, null));
+
+        var minRoomCount = 8;
+        var maxRoomCount = 15;
+
+        while ((Random.value > 0.1f || roomsList.Count < minRoomCount) && roomsList.Count != maxRoomCount)
         {
-            var room = roomsQueue.Dequeue();
-            if (room.size.y >= minHeight && room.size.x >= minWidth)
-            {
-                if (Random.value < 0.5f)
-                {
-                    if (room.size.y >= minHeight * 2)
-                    {
-                        SplitHorizontally(roomsQueue, room);
-                    }
-                    else if (room.size.x >= minWidth * 2)
-                    {
-                        SplitVertically(roomsQueue, room);
-                    }
-                    else if (room.size.x >= minWidth && room.size.y >= minHeight)
-                    {
-                        roomsList.Add(room);
-                    }
-                }
-                else
-                {
-                    if (room.size.x >= minWidth * 2)
-                    {
-                        SplitVertically(roomsQueue, room);
-                    }
-                    else if (room.size.y >= minHeight * 2)
-                    {
-                        SplitHorizontally(roomsQueue, room);
-                    }
-                    else if (room.size.x >= minWidth && room.size.y >= minHeight)
-                    {
-                        roomsList.Add(room);
-                    }
-                }
-            }
+            var room = GenerateRoom(currentPosition, roomSize, offset, GetRandomDirection());
+            currentPosition = room.position;
+            roomsList.Add(room);
         }
+
         return roomsList;
     }
 
-    private static void SplitVertically(Queue<BoundsInt> roomsQueue, BoundsInt room)
+    private static Direction GetRandomDirection()
     {
-        var xSplit = Random.Range(1, room.size.x);
-        BoundsInt room1 = new(room.min, new Vector3Int(xSplit, room.size.y, room.size.z));
-        BoundsInt room2 = new(new Vector3Int(room.min.x + xSplit, room.min.y, room.min.z),
-            new Vector3Int(room.size.x - xSplit, room.size.y, room.size.z));
-        roomsQueue.Enqueue(room1);
-        roomsQueue.Enqueue(room2);
+        var values = Enum.GetValues(typeof(Direction));
+        var random = new System.Random();
+        return (Direction)values.GetValue(random.Next(values.Length));
     }
 
-    private static void SplitHorizontally(Queue<BoundsInt> roomsQueue, BoundsInt room)
+    private static RectInt GenerateRoom(Vector2Int currentPosition, Vector2Int roomSize, int offset, Direction? direction)
     {
-        var ySplit = Random.Range(1, room.size.y);
-        BoundsInt room1 = new(room.min, new Vector3Int(room.size.x, ySplit, room.size.z));
-        BoundsInt room2 = new(new Vector3Int(room.min.x, room.min.y + ySplit, room.min.z),
-            new Vector3Int(room.size.x, room.size.y - ySplit, room.size.z));
-        roomsQueue.Enqueue(room1);
-        roomsQueue.Enqueue(room2);
+        if (direction == Direction.Up)
+            currentPosition += new Vector2Int(0, roomSize.y + offset);
+        if (direction == Direction.Down)
+            currentPosition += new Vector2Int(0, -(roomSize.y + offset));
+        if (direction == Direction.Left)
+            currentPosition += new Vector2Int(-(roomSize.x + offset), 0);
+        if (direction == Direction.Right)
+            currentPosition += new Vector2Int(roomSize.x + offset, 0);
+
+        return new RectInt(currentPosition, roomSize);
     }
 }
