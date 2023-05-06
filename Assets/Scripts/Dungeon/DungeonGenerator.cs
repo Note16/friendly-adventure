@@ -5,8 +5,8 @@ using UnityEngine;
 
 public class DungeonGenerator : MonoBehaviour
 {
-    [SerializeField]
-    protected TilemapVisualizer tilemapVisualizer = null;
+    protected RoomVisualizer roomVisualizer;
+
     [SerializeField]
     protected Vector2Int startPosition = Vector2Int.zero;
     [SerializeField]
@@ -18,7 +18,8 @@ public class DungeonGenerator : MonoBehaviour
 
     public void GenerateDungeon()
     {
-        tilemapVisualizer.Clear();
+        roomVisualizer = GetComponent<RoomVisualizer>();
+        roomVisualizer.Clear();
         CreateRooms();
     }
 
@@ -26,22 +27,11 @@ public class DungeonGenerator : MonoBehaviour
     {
         // Generate list of Rooms
         var roomManager = new RoomManager(
+            roomVisualizer,
             startPosition,
-            roomWidth,
-            roomHeight,
+            new Vector2Int(roomWidth, roomHeight),
             offset
         );
-
-        var rooms = roomManager.GetRooms();
-        rooms.ForEach(room =>
-        {
-            tilemapVisualizer.PaintFloorTiles(room.GetFloor(), room.RoomColor);
-
-            tilemapVisualizer.PaintTopWall(room.GetWalls().Top);
-            tilemapVisualizer.PaintBottomWall(room.GetWalls().Bottom);
-            tilemapVisualizer.PaintLeftWall(room.GetWalls().Left);
-            tilemapVisualizer.PaintRightWall(room.GetWalls().Right);
-        });
 
         //var corridorManger = new CorridorManager(rooms);
         //var corridors = corridorManger.GetCorridors();

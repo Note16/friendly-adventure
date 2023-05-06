@@ -1,51 +1,33 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum RoomType
-{
-    Default,
-    Entrance,
-    Shop,
-    BossRoom
-}
-
-public class RoomWalls
-{
-    public RoomWalls(RectInt Top, RectInt Bottom, RectInt Left, RectInt Right)
-    {
-        this.Top = Top;
-        this.Bottom = Bottom;
-        this.Left = Left;
-        this.Right = Right;
-    }
-    public RectInt Top { get; }
-    public RectInt Bottom { get; }
-    public RectInt Left { get; }
-    public RectInt Right { get; }
-}
-
 public class Room
 {
-    public RoomType RoomType { get; private set; }
-    public RectInt RoomFloor { get; }
-    public Vector2Int RoomCenter => Vector2Int.FloorToInt(RoomFloor.center);
-    public Color RoomColor { get; private set; }
+    private readonly RoomVisualizer roomVisualizer;
+    private RoomType roomType { get; set; }
+    private Color roomColor { get; set; }
+    private RectInt roomFloor { get; }
+    public Vector2Int Position => roomFloor.position;
+    public Vector2Int RoomCenter => Vector2Int.FloorToInt(roomFloor.center);
 
-    public Room(RectInt roomFloor)
+    public Room(RoomVisualizer roomVisualizer, RectInt roomFloor)
     {
-        RoomFloor = roomFloor;
+        this.roomVisualizer = roomVisualizer;
+        this.roomFloor = roomFloor;
         SetRoomType(RoomType.Default);
+        SetWalls();
     }
 
     public void SetRoomType(RoomType roomType)
     {
-        RoomType = roomType;
+        this.roomType = roomType;
         SetRoomColor();
+        SetFloor();
     }
 
     private void SetRoomColor()
     {
-        RoomColor = RoomType switch
+        roomColor = roomType switch
         {
             RoomType.Entrance => Color.cyan,
             RoomType.Shop => Color.yellow,
@@ -54,23 +36,22 @@ public class Room
         };
     }
 
-    public HashSet<Vector2Int> GetFloor()
+    private void SetFloor()
     {
         var roomFloor = new HashSet<Vector2Int>();
-        foreach (var tile in RoomFloor.allPositionsWithin)
+        foreach (var tile in this.roomFloor.allPositionsWithin)
         {
             roomFloor.Add(tile);
         }
-        return roomFloor;
+
+        roomVisualizer.PaintFloorTiles(roomFloor, roomColor);
     }
 
-    public RoomWalls GetWalls()
+    private void SetWalls()
     {
-        return new RoomWalls(
-            new RectInt(RoomFloor.xMin, RoomFloor.yMax - 4, RoomFloor.width, 1),
-            new RectInt(RoomFloor.xMin, RoomFloor.yMin, RoomFloor.width, 1),
-            new RectInt(RoomFloor.xMax - 1, RoomFloor.yMin, 1, RoomFloor.height),
-            new RectInt(RoomFloor.xMin, RoomFloor.yMin, 1, RoomFloor.height)
-        );
+        roomVisualizer.PaintTopWall(new RectInt(roomFloor.xMin, roomFloor.yMax - 4, roomFloor.width, 1));
+        roomVisualizer.PaintBottomWall(new RectInt(roomFloor.xMin, roomFloor.yMin, roomFloor.width, 1));
+        roomVisualizer.PaintLeftWall(new RectInt(roomFloor.xMax - 1, roomFloor.yMin, 1, roomFloor.height));
+        roomVisualizer.PaintRightWall(new RectInt(roomFloor.xMin, roomFloor.yMin, 1, roomFloor.height));
     }
 }
