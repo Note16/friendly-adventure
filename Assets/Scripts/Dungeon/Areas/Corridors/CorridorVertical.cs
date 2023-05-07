@@ -15,8 +15,8 @@ namespace Assets.Scripts.Dungeon.Areas.Corridors
             this.corridorVisualizer = corridorVisualizer;
             this.Rect = corridorRect;
             this.overlapRoomSouth = overlapRoomSouth;
-            wallLeftRect = new RectInt(this.Rect.xMin, this.Rect.yMin, 2, this.Rect.height);
-            wallRightRect = new RectInt(this.Rect.xMax - 2, this.Rect.yMin, 2, this.Rect.height);
+            wallLeftRect = new RectInt(Rect.xMin, Rect.yMin, 2, Rect.height);
+            wallRightRect = new RectInt(Rect.xMax - 2, Rect.yMin, 2, Rect.height);
 
             ClearWalls();
             RenderFloor();

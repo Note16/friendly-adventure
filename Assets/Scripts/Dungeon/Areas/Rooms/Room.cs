@@ -12,16 +12,16 @@ namespace Assets.Scripts.Dungeon.Areas.Rooms
         public RectInt WallBottomRect { get; }
         public RectInt WallLeftRect { get; }
         public RectInt WallRightRect { get; }
-        public Vector2Int Position => Rect.position;
         public Vector2Int RoomCenter => Vector2Int.FloorToInt(Rect.center);
+        private int pillarDistance { get; set; } = 4;
+        private int wallHeight { get; set; } = 4;
 
         public Room(RoomVisualizer roomVisualizer, RectInt roomRect)
         {
             this.roomVisualizer = roomVisualizer;
             Rect = roomRect;
 
-            var topWallHeight = 4;
-            WallTopRect = new RectInt(Rect.xMin, Rect.yMax - topWallHeight, Rect.width, topWallHeight);
+            WallTopRect = new RectInt(Rect.xMin, Rect.yMax - wallHeight, Rect.width, wallHeight);
             WallBottomRect = new RectInt(Rect.xMin, Rect.yMin, Rect.width, 1);
             WallLeftRect = new RectInt(Rect.xMin, Rect.yMin, 2, Rect.height);
             WallRightRect = new RectInt(Rect.xMax - 2, Rect.yMin, 2, Rect.height);
@@ -56,7 +56,7 @@ namespace Assets.Scripts.Dungeon.Areas.Rooms
 
         private void RenderWalls()
         {
-            roomVisualizer.SetNorthWall(WallTopRect);
+            roomVisualizer.SetNorthWall(WallTopRect, pillarDistance);
             roomVisualizer.SetSouthWall(WallBottomRect);
             roomVisualizer.SetWestWall(WallLeftRect, WallTopRect, WallBottomRect);
             roomVisualizer.SetEastWall(WallRightRect, WallTopRect, WallBottomRect);

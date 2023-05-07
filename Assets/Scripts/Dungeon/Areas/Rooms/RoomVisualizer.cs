@@ -18,7 +18,7 @@ namespace Assets.Scripts.Dungeon.Areas.Rooms
             dungeonVisualizer.SetFloorTiles(tiles, color);
         }
 
-        public void SetNorthWall(RectInt wallRect)
+        public void SetNorthWall(RectInt wallRect, int pillarDistance)
         {
             var wallVectors = wallRect.allPositionsWithin.ToVector2Int();
 
@@ -29,12 +29,12 @@ namespace Assets.Scripts.Dungeon.Areas.Rooms
                     Location = GetNorthWallTileLocation(wallRect, position),
                     Position = position
                 })
-                .GroupBy(topWall => topWall.Position)
+                .GroupBy(topWall => topWall.Position.x)
                 .Select((group, i) =>
                 {
                     return new
                     {
-                        Type = (i % 4 == 0) ? "Pillar" : "Wall",
+                        Type = (i % pillarDistance == 0) ? "Pillar" : "Wall",
                         TopWall = group
                     };
                 });

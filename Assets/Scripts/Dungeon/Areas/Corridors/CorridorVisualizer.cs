@@ -39,7 +39,7 @@ namespace Assets.Scripts.Dungeon.Areas.Corridors
             var area = rect.allPositionsWithin.ToVector2Int();
             foreach (var item in area)
             {
-                if (item.x > rect.x && item.y > rect.y && item.x < rect.xMax - 1 && item.y < rect.yMax - 1)
+                if (item.x > rect.x && item.y > rect.y && item.x < rect.xMax - 1 && item.y < rect.yMax)
                     dungeonVisualizer.SetFloorTile(item, color);
 
             }
@@ -90,7 +90,10 @@ namespace Assets.Scripts.Dungeon.Areas.Corridors
                     Location.BottomLedge => "1_ledge_north_middle",
                     _ => null
                 };
-                dungeonVisualizer.SetWallLedgeTile(tileLedgeName, wall.Position);
+                if (tileLedgeName != null)
+                {
+                    dungeonVisualizer.SetWallLedgeTile(tileLedgeName, wall.Position);
+                }
             }
         }
 
@@ -128,7 +131,10 @@ namespace Assets.Scripts.Dungeon.Areas.Corridors
                     Location.LeftCornerLedge => "1_ledge_south_left_corner",
                     _ => null
                 };
-                dungeonVisualizer.SetWallLedgeTile(tileLedgeName, wall.Position);
+                if (tileLedgeName != null)
+                {
+                    dungeonVisualizer.SetWallLedgeTile(tileLedgeName, wall.Position);
+                }
             }
         }
 
@@ -169,7 +175,10 @@ namespace Assets.Scripts.Dungeon.Areas.Corridors
                     Location.CornerLedgeBottom => "1_ledge_north_left_corner",
                     _ => null
                 };
-                dungeonVisualizer.SetWallLedgeTile(tileLedgeName, wall.Position);
+                if (tileLedgeName != null)
+                {
+                    dungeonVisualizer.SetWallLedgeTile(tileLedgeName, wall.Position);
+                }
             }
         }
 
@@ -210,19 +219,33 @@ namespace Assets.Scripts.Dungeon.Areas.Corridors
                     Location.CornerLedgeBottom => "1_ledge_north_right_corner",
                     _ => null
                 };
-                dungeonVisualizer.SetWallLedgeTile(tileLedgeName, wall.Position);
+                if (tileLedgeName != null)
+                {
+                    dungeonVisualizer.SetWallLedgeTile(tileLedgeName, wall.Position);
+                }
             }
         }
 
-        private Location GetNorthWallTileLocation(RectInt rectInt, Vector2Int vector2Int)
+        private Location? GetNorthWallTileLocation(RectInt rectInt, Vector2Int vector2Int)
         {
             if (rectInt.y < vector2Int.y)
             {
                 if (rectInt.x == vector2Int.x)
-                    return Location.RightLedge;
+                {
+                    //if (rectInt.y + 1 == vector2Int.y)
+                    //   return Location.RightLedge;
+
+                    return null;
+                }
+
 
                 if (rectInt.xMax - 1 == vector2Int.x)
-                    return Location.LeftLedge;
+                {
+                    //if (rectInt.y + 1 == vector2Int.y)
+                    //    return Location.LeftLedge;
+
+                    return null;
+                }
             }
 
             if (rectInt.x == vector2Int.x)

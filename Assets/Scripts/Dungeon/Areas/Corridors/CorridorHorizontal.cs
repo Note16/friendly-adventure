@@ -15,7 +15,7 @@ namespace Assets.Scripts.Dungeon.Areas.Corridors
             Rect = corridorRect;
 
             var topWallHeight = 4;
-            wallTopRect = new RectInt(Rect.xMin, Rect.yMax - topWallHeight / 2, Rect.width, topWallHeight);
+            wallTopRect = new RectInt(Rect.xMin, Rect.yMax - topWallHeight / 2 + 1, Rect.width, topWallHeight);
             wallBottomRect = new RectInt(Rect.xMin, Rect.yMin, Rect.width, 1);
 
 

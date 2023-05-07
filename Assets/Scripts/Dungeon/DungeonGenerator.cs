@@ -10,11 +10,19 @@ namespace Assets.Scripts.Dungeon
         protected DungeonVisualizer dungeonVisualizer;
 
         [SerializeField]
-        private int roomWidth = 30, roomHeight = 20, minRoomCount = 8, maxRoomCount = 15;
+        private int minRoomCount = 8, maxRoomCount = 15;
+
+        [SerializeField]
+        [Range(9, 100)]
+        private int roomWidth = 30, roomHeight = 20;
 
         [SerializeField]
         [Range(0, 10)]
         private int offset = 4;
+
+        [SerializeField]
+        [Range(4, 10)]
+        private int corridorSize = 4;
 
         public void GenerateDungeon()
         {
@@ -35,7 +43,7 @@ namespace Assets.Scripts.Dungeon
             );
             var corridorVisualiser = new CorridorVisualizer(dungeonVisualizer);
             var corridorManger = new CorridorManager(roomManager, corridorVisualiser);
-            corridorManger.GenerateCorridors();
+            corridorManger.GenerateCorridors(corridorSize);
         }
     }
 }
