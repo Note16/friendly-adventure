@@ -230,22 +230,8 @@ namespace Assets.Scripts.Dungeon.Areas.Corridors
         {
             if (rectInt.y < vector2Int.y)
             {
-                if (rectInt.x == vector2Int.x)
-                {
-                    //if (rectInt.y + 1 == vector2Int.y)
-                    //   return Location.RightLedge;
-
+                if (rectInt.x == vector2Int.x || rectInt.xMax - 1 == vector2Int.x)
                     return null;
-                }
-
-
-                if (rectInt.xMax - 1 == vector2Int.x)
-                {
-                    //if (rectInt.y + 1 == vector2Int.y)
-                    //    return Location.LeftLedge;
-
-                    return null;
-                }
             }
 
             if (rectInt.x == vector2Int.x)
