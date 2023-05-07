@@ -1,7 +1,10 @@
-public enum Direction
+namespace Assets.Scripts.Dungeon.Enums
 {
-    Up,
-    Down,
-    Left,
-    Right
+    public enum Direction
+    {
+        Up,
+        Down,
+        Left,
+        Right
+    }
 }
