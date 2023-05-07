@@ -18,7 +18,6 @@ namespace Assets.Scripts.Dungeon.Areas.Corridors
             wallTopRect = new RectInt(Rect.xMin, Rect.yMax - topWallHeight / 2 + 1, Rect.width, topWallHeight);
             wallBottomRect = new RectInt(Rect.xMin, Rect.yMin, Rect.width, 1);
 
-
             ClearWalls();
             RenderFloor();
             RenderWalls();
