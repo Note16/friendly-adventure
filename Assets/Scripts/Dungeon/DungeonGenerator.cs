@@ -1,5 +1,6 @@
 using Assets.Scripts.Dungeon.Areas;
-using Assets.Scripts.Dungeon.Visualizers;
+using Assets.Scripts.Dungeon.Areas.Corridors;
+using Assets.Scripts.Dungeon.Areas.Rooms;
 using UnityEngine;
 
 namespace Assets.Scripts.Dungeon
@@ -8,8 +9,6 @@ namespace Assets.Scripts.Dungeon
     {
         protected DungeonVisualizer dungeonVisualizer;
 
-        [SerializeField]
-        protected Vector2Int startPosition = Vector2Int.zero;
         [SerializeField]
         private int roomWidth = 30, roomHeight = 20, minRoomCount = 8, maxRoomCount = 15;
 
@@ -26,28 +25,17 @@ namespace Assets.Scripts.Dungeon
 
         private void CreateRooms()
         {
-            var roomManager = new RoomManager(dungeonVisualizer);
+            var roomVisualiser = new RoomVisualizer(dungeonVisualizer);
+            var roomManager = new RoomManager(roomVisualiser);
             roomManager.SetOffset(offset);
             roomManager.GenerateRooms(
-                new RectInt(startPosition, new Vector2Int(roomWidth, roomHeight)),
+                new RectInt(Vector2Int.zero, new Vector2Int(roomWidth, roomHeight)),
                 minRoomCount,
                 maxRoomCount
             );
-            var corridorManger = new CorridorManager(roomManager, dungeonVisualizer);
-
-            //var corridors = corridorManger.GetCorridors();
+            var corridorVisualiser = new CorridorVisualizer(dungeonVisualizer);
+            var corridorManger = new CorridorManager(roomManager, corridorVisualiser);
             corridorManger.GenerateCorridors();
-
-            //var room = rooms.First();
-            //tilemapVisualizer.PaintFloorTiles(new List<Vector2Int> { room.RoomCenter }, Color.white);
-            //var closestRoom = corridorManger.GetClosestRoom(room);
-            //tilemapVisualizer.PaintFloorTiles(new List<Vector2Int> { closestRoom.RoomCenter }, Color.white);
-
-            // Create floor
-            //dungeonVisualizer.PaintFloorTiles(corridors, Color.white);
-
-            // Create walls
-            //WallGenerator.CreateWalls(floor, tilemapVisualizer);
         }
     }
 }

@@ -1,12 +1,10 @@
-using Assets.Scripts.Dungeon.Visualizers;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace Assets.Scripts.Dungeon.Areas.Rooms
 {
     public class Room
     {
-        private readonly DungeonVisualizer dungeonVisualizer;
+        private readonly RoomVisualizer roomVisualizer;
         private RoomType roomType { get; set; }
         private Color roomColor { get; set; }
         public RectInt RoomRect { get; }
@@ -17,9 +15,9 @@ namespace Assets.Scripts.Dungeon.Areas.Rooms
         public Vector2Int Position => RoomRect.position;
         public Vector2Int RoomCenter => Vector2Int.FloorToInt(RoomRect.center);
 
-        public Room(DungeonVisualizer dungeonVisualizer, RectInt roomRect)
+        public Room(RoomVisualizer roomVisualizer, RectInt roomRect)
         {
-            this.dungeonVisualizer = dungeonVisualizer;
+            this.roomVisualizer = roomVisualizer;
             RoomRect = roomRect;
             WallTopRect = new RectInt(RoomRect.xMin, RoomRect.yMax - 4, RoomRect.width, 4);
             WallBottomRect = new RectInt(RoomRect.xMin, RoomRect.yMin, RoomRect.width, 1);
@@ -50,21 +48,16 @@ namespace Assets.Scripts.Dungeon.Areas.Rooms
 
         private void RenderFloor()
         {
-            var roomFloor = new HashSet<Vector2Int>();
-            foreach (var tile in RoomRect.allPositionsWithin)
-            {
-                roomFloor.Add(tile);
-            }
-
-            dungeonVisualizer.SetFloorTiles(roomFloor, roomColor);
+            var area = RoomRect.allPositionsWithin.ToVector2Int();
+            roomVisualizer.SetFloor(area, roomColor);
         }
 
         private void RenderWalls()
         {
-            dungeonVisualizer.SetRoomNorthWall(WallTopRect);
-            dungeonVisualizer.SetRoomSouthWall(WallBottomRect);
-            dungeonVisualizer.SetRoomWestWall(WallLeftRect, WallTopRect, WallBottomRect);
-            dungeonVisualizer.SetRoomEastWall(WallRightRect, WallTopRect, WallBottomRect);
+            roomVisualizer.SetRoomNorthWall(WallTopRect);
+            roomVisualizer.SetRoomSouthWall(WallBottomRect);
+            roomVisualizer.SetRoomWestWall(WallLeftRect, WallTopRect, WallBottomRect);
+            roomVisualizer.SetRoomEastWall(WallRightRect, WallTopRect, WallBottomRect);
         }
     }
 }

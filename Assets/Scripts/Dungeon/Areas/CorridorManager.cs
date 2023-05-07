@@ -1,6 +1,5 @@
 using Assets.Scripts.Dungeon.Areas.Corridors;
 using Assets.Scripts.Dungeon.Enums;
-using Assets.Scripts.Dungeon.Visualizers;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,14 +7,13 @@ namespace Assets.Scripts.Dungeon.Areas
 {
     public class CorridorManager
     {
-        private List<CorridorVertical> corridors;
         private readonly RoomManager roomManager;
-        private readonly DungeonVisualizer dungeonVisualizer;
+        private readonly CorridorVisualizer corridorVisualizer;
 
-        public CorridorManager(RoomManager roomManager, DungeonVisualizer dungeonVisualizer)
+        public CorridorManager(RoomManager roomManager, CorridorVisualizer corridorVisualizer)
         {
             this.roomManager = roomManager;
-            this.dungeonVisualizer = dungeonVisualizer;
+            this.corridorVisualizer = corridorVisualizer;
         }
 
         internal void GenerateCorridors()
@@ -32,7 +30,7 @@ namespace Assets.Scripts.Dungeon.Areas
                     var position = new Vector2Int(room.RoomCenter.x - corridorSize / 2, room.RoomRect.yMax - room.WallTopRect.height);
                     var corridor = new Vector2Int(corridorSize, roomManager.GetOffset() + room.WallTopRect.height + room.WallBottomRect.height);
 
-                    corridors.Add(new CorridorVertical(dungeonVisualizer, new RectInt(position, corridor), room.WallTopRect));
+                    corridors.Add(new CorridorVertical(corridorVisualizer, new RectInt(position, corridor), room.WallTopRect));
                 }
 
                 var roomRight = roomManager.GetAdjacentRoom(room, Direction.Right);
@@ -44,7 +42,6 @@ namespace Assets.Scripts.Dungeon.Areas
                     //corridors.Add(new Corridor(dungeonVisualizer, new RectInt(position, corridor)));
                 }
             }
-            this.corridors = corridors;
         }
     }
 }

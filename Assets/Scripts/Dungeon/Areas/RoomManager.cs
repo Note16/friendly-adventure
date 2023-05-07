@@ -1,6 +1,5 @@
 using Assets.Scripts.Dungeon.Areas.Rooms;
 using Assets.Scripts.Dungeon.Enums;
-using Assets.Scripts.Dungeon.Visualizers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,31 +10,32 @@ namespace Assets.Scripts.Dungeon.Areas
 {
     public class RoomManager
     {
+        private readonly RoomVisualizer roomVisualizer;
         private List<Room> rooms;
         private int offset;
-        private readonly DungeonVisualizer dungeonVisualizer;
 
-        public RoomManager(DungeonVisualizer dungeonVisualizer)
+        public RoomManager(RoomVisualizer roomVisualizer)
         {
-            this.dungeonVisualizer = dungeonVisualizer;
+            this.roomVisualizer = roomVisualizer;
         }
 
         public void SetOffset(int offset)
         {
             this.offset = offset;
         }
+
         public int GetOffset()
         {
-            return this.offset;
+            return offset;
         }
 
         public void GenerateRooms(RectInt roomRect, int minRoomCount, int maxRoomCount)
         {
             var currentRoom = GenerateRoom(roomRect, null);
             var roomsList = new List<Room>
-        {
-            currentRoom
-        };
+            {
+                currentRoom
+            };
             while ((Random.value > 0.2f || roomsList.Count < minRoomCount) && roomsList.Count != maxRoomCount)
             {
                 var newRoom = GenerateRoom(currentRoom.RoomRect, GetRandomDirection());
@@ -71,8 +71,7 @@ namespace Assets.Scripts.Dungeon.Areas
         private Room GenerateRoom(RectInt roomRect, Direction? direction)
         {
             var targetPosition = GetRoomPosition(roomRect, direction);
-
-            return new Room(dungeonVisualizer, new RectInt(targetPosition, roomRect.size));
+            return new Room(roomVisualizer, new RectInt(targetPosition, roomRect.size));
         }
 
         private Vector2Int GetRoomPosition(RectInt roomRect, Direction? direction)

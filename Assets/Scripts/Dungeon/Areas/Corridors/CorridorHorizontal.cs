@@ -1,4 +1,3 @@
-using Assets.Scripts.Dungeon.Visualizers;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,19 +5,19 @@ namespace Assets.Scripts.Dungeon.Areas.Corridors
 {
     public class CorridorHorizontal
     {
-        private readonly DungeonVisualizer dungeonVisualizer;
+        private readonly CorridorVisualizer corridorVisualizer;
         public RectInt CorridorRect { get; }
-        public RectInt OverlapRoomSouth { get; }
-        public RectInt WallLeftRect { get; }
-        public RectInt WallRightRect { get; }
+        private RectInt overlapRoomSouth { get; }
+        private RectInt wallLeftRect { get; }
+        private RectInt wallRightRect { get; }
 
-        public CorridorHorizontal(DungeonVisualizer dungeonVisualizer, RectInt corridorRect, RectInt overlapRoomSouth)
+        public CorridorHorizontal(CorridorVisualizer corridorVisualizer, RectInt corridorRect, RectInt overlapRoomSouth)
         {
-            this.dungeonVisualizer = dungeonVisualizer;
+            this.corridorVisualizer = corridorVisualizer;
             CorridorRect = corridorRect;
-            OverlapRoomSouth = overlapRoomSouth;
-            WallLeftRect = new RectInt(CorridorRect.xMin, CorridorRect.yMin, 2, CorridorRect.height);
-            WallRightRect = new RectInt(CorridorRect.xMax - 2, CorridorRect.yMin, 2, CorridorRect.height);
+            this.overlapRoomSouth = overlapRoomSouth;
+            wallLeftRect = new RectInt(CorridorRect.xMin, CorridorRect.yMin, 2, CorridorRect.height);
+            wallRightRect = new RectInt(CorridorRect.xMax - 2, CorridorRect.yMin, 2, CorridorRect.height);
 
 
             ClearWalls();
@@ -29,7 +28,7 @@ namespace Assets.Scripts.Dungeon.Areas.Corridors
         private void ClearWalls()
         {
             var floor = CorridorRect.allPositionsWithin.ToVector2Int();
-            dungeonVisualizer.ClearWallTiles(floor);
+            //corridorVisualizer.ClearWallTiles(floor);
         }
 
         private void RenderFloor()
@@ -39,14 +38,13 @@ namespace Assets.Scripts.Dungeon.Areas.Corridors
             {
                 roomFloor.Add(tile);
             }
-
-            dungeonVisualizer.SetFloorTiles(roomFloor, Color.grey);
+            //corridorVisualizer.SetFloorTiles(roomFloor, Color.grey);
         }
 
         private void RenderWalls()
         {
-            dungeonVisualizer.SetCorridorWestWall(WallLeftRect, OverlapRoomSouth);
-            dungeonVisualizer.SetCorridorEastWall(WallRightRect, OverlapRoomSouth);
+            corridorVisualizer.SetCorridorWestWall(wallLeftRect, overlapRoomSouth);
+            corridorVisualizer.SetCorridorEastWall(wallRightRect, overlapRoomSouth);
         }
     }
 }
