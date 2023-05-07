@@ -18,7 +18,7 @@ namespace Assets.Scripts.Dungeon.Areas.Rooms
             dungeonVisualizer.SetFloorTiles(tiles, color);
         }
 
-        public void SetRoomNorthWall(RectInt wallRect)
+        public void SetNorthWall(RectInt wallRect)
         {
             var wallVectors = wallRect.allPositionsWithin.ToVector2Int();
 
@@ -26,7 +26,7 @@ namespace Assets.Scripts.Dungeon.Areas.Rooms
             var groupedWalls = wallVectors
                 .Select(position => new
                 {
-                    Location = GetTopWallTileLocation(wallRect, position),
+                    Location = GetNorthWallTileLocation(wallRect, position),
                     Position = position
                 })
                 .GroupBy(topWall => topWall.Position)
@@ -70,7 +70,7 @@ namespace Assets.Scripts.Dungeon.Areas.Rooms
             }
         }
 
-        public void SetRoomSouthWall(RectInt wallRect)
+        public void SetSouthWall(RectInt wallRect)
         {
             foreach (var tile in wallRect.allPositionsWithin)
             {
@@ -78,7 +78,7 @@ namespace Assets.Scripts.Dungeon.Areas.Rooms
             }
         }
 
-        public void SetRoomWestWall(RectInt leftWallRect, RectInt topWallRect, RectInt bottomWallRect)
+        public void SetWestWall(RectInt leftWallRect, RectInt topWallRect, RectInt bottomWallRect)
         {
             var wallVectors = leftWallRect.allPositionsWithin.ToVector2Int();
 
@@ -106,7 +106,7 @@ namespace Assets.Scripts.Dungeon.Areas.Rooms
             }
         }
 
-        public void SetRoomEastWall(RectInt rightWallRect, RectInt topWallRect, RectInt bottomWallRect)
+        public void SetEastWall(RectInt rightWallRect, RectInt topWallRect, RectInt bottomWallRect)
         {
             var wallVectors = rightWallRect.allPositionsWithin.ToVector2Int();
 
@@ -134,7 +134,7 @@ namespace Assets.Scripts.Dungeon.Areas.Rooms
             }
         }
 
-        private string GetTopWallTileLocation(RectInt rectInt, Vector2Int vector2Int)
+        private string GetNorthWallTileLocation(RectInt rectInt, Vector2Int vector2Int)
         {
             if (rectInt.y == vector2Int.y)
                 return "Bottom";

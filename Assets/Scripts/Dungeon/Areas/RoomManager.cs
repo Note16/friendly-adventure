@@ -38,7 +38,7 @@ namespace Assets.Scripts.Dungeon.Areas
             };
             while ((Random.value > 0.2f || roomsList.Count < minRoomCount) && roomsList.Count != maxRoomCount)
             {
-                var newRoom = GenerateRoom(currentRoom.RoomRect, GetRandomDirection());
+                var newRoom = GenerateRoom(currentRoom.Rect, GetRandomDirection());
                 if (!roomsList.Any(room => room.Position == newRoom.Position))
                 {
                     currentRoom = newRoom;
@@ -58,7 +58,7 @@ namespace Assets.Scripts.Dungeon.Areas
         {
             return rooms.FirstOrDefault(r =>
             {
-                return r.Position == GetRoomPosition(room.RoomRect, direction);
+                return r.Position == GetRoomPosition(room.Rect, direction);
             });
         }
 

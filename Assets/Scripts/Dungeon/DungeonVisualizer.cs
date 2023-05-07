@@ -63,7 +63,7 @@ namespace Assets.Scripts.Dungeon
 
         public void SetWallLedgeTile(string tileName, Vector2Int position, Color? color = null)
         {
-            var tileBase = ledgeTiles.FirstOrDefault(wallTile => wallTile.Name == tileName).TileBase;
+            var tileBase = ledgeTiles.FirstOrDefault(wallTile => wallTile.Name == tileName)?.TileBase;
             if (tileBase == null)
                 Debug.Log($"Tile with name '{tileName}' not found in ledgeTiles List");
 

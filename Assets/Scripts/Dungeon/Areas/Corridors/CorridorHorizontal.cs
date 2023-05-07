@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace Assets.Scripts.Dungeon.Areas.Corridors
@@ -6,18 +5,18 @@ namespace Assets.Scripts.Dungeon.Areas.Corridors
     public class CorridorHorizontal
     {
         private readonly CorridorVisualizer corridorVisualizer;
-        public RectInt CorridorRect { get; }
-        private RectInt overlapRoomSouth { get; }
-        private RectInt wallLeftRect { get; }
-        private RectInt wallRightRect { get; }
+        public RectInt Rect { get; }
+        private RectInt wallTopRect { get; }
+        private RectInt wallBottomRect { get; }
 
-        public CorridorHorizontal(CorridorVisualizer corridorVisualizer, RectInt corridorRect, RectInt overlapRoomSouth)
+        public CorridorHorizontal(CorridorVisualizer corridorVisualizer, RectInt corridorRect)
         {
             this.corridorVisualizer = corridorVisualizer;
-            CorridorRect = corridorRect;
-            this.overlapRoomSouth = overlapRoomSouth;
-            wallLeftRect = new RectInt(CorridorRect.xMin, CorridorRect.yMin, 2, CorridorRect.height);
-            wallRightRect = new RectInt(CorridorRect.xMax - 2, CorridorRect.yMin, 2, CorridorRect.height);
+            Rect = corridorRect;
+
+            var topWallHeight = 4;
+            wallTopRect = new RectInt(Rect.xMin, Rect.yMax - topWallHeight / 2, Rect.width, topWallHeight);
+            wallBottomRect = new RectInt(Rect.xMin, Rect.yMin, Rect.width, 1);
 
 
             ClearWalls();
@@ -27,24 +26,19 @@ namespace Assets.Scripts.Dungeon.Areas.Corridors
 
         private void ClearWalls()
         {
-            var floor = CorridorRect.allPositionsWithin.ToVector2Int();
-            //corridorVisualizer.ClearWallTiles(floor);
+            var area = Rect.allPositionsWithin.ToVector2Int();
+            corridorVisualizer.ClearWalls(area);
         }
 
         private void RenderFloor()
         {
-            var roomFloor = new HashSet<Vector2Int>();
-            foreach (var tile in CorridorRect.allPositionsWithin)
-            {
-                roomFloor.Add(tile);
-            }
-            //corridorVisualizer.SetFloorTiles(roomFloor, Color.grey);
+            corridorVisualizer.SetFloor(Rect, Color.grey);
         }
 
         private void RenderWalls()
         {
-            corridorVisualizer.SetCorridorWestWall(wallLeftRect, overlapRoomSouth);
-            corridorVisualizer.SetCorridorEastWall(wallRightRect, overlapRoomSouth);
+            corridorVisualizer.SetNorthWall(wallTopRect);
+            corridorVisualizer.SetSouthWall(wallBottomRect);
         }
     }
 }
