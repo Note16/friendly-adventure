@@ -13,10 +13,17 @@ namespace Assets.Scripts.Dungeon.Areas
         private readonly RoomVisualizer roomVisualizer;
         private List<Room> rooms;
         private int offset;
+        private int wallHeight = 4;
+        private int pillarDistance = 4;
 
         public RoomManager(RoomVisualizer roomVisualizer)
         {
             this.roomVisualizer = roomVisualizer;
+        }
+
+        public void SetWallHeight(int wallHeight)
+        {
+            this.wallHeight = wallHeight;
         }
 
         public void SetOffset(int offset)
@@ -71,7 +78,7 @@ namespace Assets.Scripts.Dungeon.Areas
         private Room GenerateRoom(RectInt roomRect, Direction? direction)
         {
             var targetPosition = GetRoomPosition(roomRect, direction);
-            return new Room(roomVisualizer, new RectInt(targetPosition, roomRect.size));
+            return new Room(roomVisualizer, new RectInt(targetPosition, roomRect.size), wallHeight, pillarDistance);
         }
 
         private Vector2Int GetRoomPosition(RectInt roomRect, Direction? direction)

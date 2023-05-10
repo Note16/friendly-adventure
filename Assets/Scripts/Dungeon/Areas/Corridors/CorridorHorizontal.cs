@@ -9,13 +9,12 @@ namespace Assets.Scripts.Dungeon.Areas.Corridors
         private RectInt wallTopRect { get; }
         private RectInt wallBottomRect { get; }
 
-        public CorridorHorizontal(CorridorVisualizer corridorVisualizer, RectInt corridorRect)
+        public CorridorHorizontal(CorridorVisualizer corridorVisualizer, RectInt corridorRect, int wallHeight)
         {
             this.corridorVisualizer = corridorVisualizer;
             Rect = corridorRect;
 
-            var topWallHeight = 4;
-            wallTopRect = new RectInt(Rect.xMin, Rect.yMax - topWallHeight / 2 + 1, Rect.width, topWallHeight);
+            wallTopRect = new RectInt(Rect.xMin, Rect.yMax - wallHeight / 2 + 1, Rect.width, wallHeight);
             wallBottomRect = new RectInt(Rect.xMin, Rect.yMin, Rect.width, 1);
 
             ClearWalls();

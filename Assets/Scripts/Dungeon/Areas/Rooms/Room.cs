@@ -13,12 +13,12 @@ namespace Assets.Scripts.Dungeon.Areas.Rooms
         public RectInt WallLeftRect { get; }
         public RectInt WallRightRect { get; }
         public Vector2Int RoomCenter => Vector2Int.FloorToInt(Rect.center);
-        private int pillarDistance { get; set; } = 4;
-        private int wallHeight { get; set; } = 4;
+        private int pillarDistance { get; }
 
-        public Room(RoomVisualizer roomVisualizer, RectInt roomRect)
+        public Room(RoomVisualizer roomVisualizer, RectInt roomRect, int wallHeight, int pillarDistance)
         {
             this.roomVisualizer = roomVisualizer;
+            this.pillarDistance = pillarDistance;
             Rect = roomRect;
 
             WallTopRect = new RectInt(Rect.xMin, Rect.yMax - wallHeight, Rect.width, wallHeight);

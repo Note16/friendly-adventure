@@ -8,11 +8,17 @@ namespace Assets.Scripts.Dungeon.Areas
     {
         private readonly RoomManager roomManager;
         private readonly CorridorVisualizer corridorVisualizer;
+        private int wallHeight = 4;
 
         public CorridorManager(RoomManager roomManager, CorridorVisualizer corridorVisualizer)
         {
             this.roomManager = roomManager;
             this.corridorVisualizer = corridorVisualizer;
+        }
+
+        public void SetWallHeight(int wallHeight)
+        {
+            this.wallHeight = wallHeight;
         }
 
         internal void GenerateCorridors(int size)
@@ -36,7 +42,7 @@ namespace Assets.Scripts.Dungeon.Areas
                     var position = new Vector2Int(room.Rect.xMax - room.WallRightRect.width, room.RoomCenter.y - (size - 2) / 2 - room.WallTopRect.height / 2);
                     var corridor = new Vector2Int(roomManager.GetOffset() + room.WallLeftRect.width + room.WallRightRect.width, size - 2);
 
-                    new CorridorHorizontal(corridorVisualizer, new RectInt(position, corridor));
+                    new CorridorHorizontal(corridorVisualizer, new RectInt(position, corridor), wallHeight);
                 }
             }
         }

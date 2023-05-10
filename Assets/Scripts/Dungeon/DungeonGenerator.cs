@@ -13,8 +13,12 @@ namespace Assets.Scripts.Dungeon
         private int minRoomCount = 8, maxRoomCount = 15;
 
         [SerializeField]
-        [Range(9, 100)]
+        [Range(9, 25)]
         private int roomWidth = 30, roomHeight = 20;
+
+        [SerializeField]
+        [Range(4, 6)]
+        private int wallHeight = 4;
 
         [SerializeField]
         [Range(0, 10)]
@@ -35,6 +39,7 @@ namespace Assets.Scripts.Dungeon
         {
             var roomVisualiser = new RoomVisualizer(dungeonVisualizer);
             var roomManager = new RoomManager(roomVisualiser);
+            roomManager.SetWallHeight(wallHeight);
             roomManager.SetOffset(offset);
             roomManager.GenerateRooms(
                 new RectInt(Vector2Int.zero, new Vector2Int(roomWidth, roomHeight)),
@@ -43,6 +48,7 @@ namespace Assets.Scripts.Dungeon
             );
             var corridorVisualiser = new CorridorVisualizer(dungeonVisualizer);
             var corridorManger = new CorridorManager(roomManager, corridorVisualiser);
+            corridorManger.SetWallHeight(wallHeight);
             corridorManger.GenerateCorridors(corridorSize);
         }
     }
