@@ -11,6 +11,7 @@ namespace Assets.Scripts.Dungeon.Areas.Corridors
         {
             Top,
             Middle,
+            MiddleShade,
             RightCornerTop,
             RightCorner,
             LeftCornerTop,
@@ -69,6 +70,7 @@ namespace Assets.Scripts.Dungeon.Areas.Corridors
                 {
                     Location.Top => "1_wall_north_top",
                     Location.Middle => "1_wall_north_middle",
+                    Location.MiddleShade => "1_wall_north_middle_shade",
                     Location.RightCornerTop => "1_wall_north_right_top_corner",
                     Location.RightCorner => "1_wall_north_right_middle_corner",
                     Location.LeftCornerTop => "1_wall_north_left_top_corner",
@@ -77,7 +79,7 @@ namespace Assets.Scripts.Dungeon.Areas.Corridors
                 };
                 if (tileWallName != null)
                 {
-                    dungeonVisualizer.SetWallTile(tileWallName, wall.Position);
+                    dungeonVisualizer.SetRandomWallTile(tileWallName, wall.Position);
                     continue;
                 }
 
@@ -92,7 +94,7 @@ namespace Assets.Scripts.Dungeon.Areas.Corridors
                 };
                 if (tileLedgeName != null)
                 {
-                    dungeonVisualizer.SetWallLedgeTile(tileLedgeName, wall.Position);
+                    dungeonVisualizer.SetRandomWallLedgeTile(tileLedgeName, wall.Position);
                 }
             }
         }
@@ -121,7 +123,7 @@ namespace Assets.Scripts.Dungeon.Areas.Corridors
                 };
                 if (tileWallName != null)
                 {
-                    dungeonVisualizer.SetWallTile(tileWallName, wall.Position);
+                    dungeonVisualizer.SetRandomWallTile(tileWallName, wall.Position);
                     continue;
                 }
 
@@ -133,7 +135,7 @@ namespace Assets.Scripts.Dungeon.Areas.Corridors
                 };
                 if (tileLedgeName != null)
                 {
-                    dungeonVisualizer.SetWallLedgeTile(tileLedgeName, wall.Position);
+                    dungeonVisualizer.SetRandomWallLedgeTile(tileLedgeName, wall.Position);
                 }
             }
         }
@@ -163,7 +165,7 @@ namespace Assets.Scripts.Dungeon.Areas.Corridors
                 };
                 if (tileWallName != null)
                 {
-                    dungeonVisualizer.SetWallTile(tileWallName, wall.Position);
+                    dungeonVisualizer.SetRandomWallTile(tileWallName, wall.Position);
                     continue;
                 }
 
@@ -177,7 +179,7 @@ namespace Assets.Scripts.Dungeon.Areas.Corridors
                 };
                 if (tileLedgeName != null)
                 {
-                    dungeonVisualizer.SetWallLedgeTile(tileLedgeName, wall.Position);
+                    dungeonVisualizer.SetRandomWallLedgeTile(tileLedgeName, wall.Position);
                 }
             }
         }
@@ -207,7 +209,7 @@ namespace Assets.Scripts.Dungeon.Areas.Corridors
                 };
                 if (tileWallName != null)
                 {
-                    dungeonVisualizer.SetWallTile(tileWallName, wall.Position);
+                    dungeonVisualizer.SetRandomWallTile(tileWallName, wall.Position);
                     continue;
                 }
 
@@ -221,7 +223,7 @@ namespace Assets.Scripts.Dungeon.Areas.Corridors
                 };
                 if (tileLedgeName != null)
                 {
-                    dungeonVisualizer.SetWallLedgeTile(tileLedgeName, wall.Position);
+                    dungeonVisualizer.SetRandomWallLedgeTile(tileLedgeName, wall.Position);
                 }
             }
         }
@@ -261,6 +263,9 @@ namespace Assets.Scripts.Dungeon.Areas.Corridors
 
             if (rectInt.y + rectInt.height - 1 == vector2Int.y)
                 return Location.Top;
+
+            if (rectInt.y + rectInt.height - 2 == vector2Int.y)
+                return Location.MiddleShade;
 
             return Location.Middle;
         }

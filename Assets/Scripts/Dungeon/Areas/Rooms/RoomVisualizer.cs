@@ -47,24 +47,30 @@ namespace Assets.Scripts.Dungeon.Areas.Rooms
                     if (group.Type == "Pillar")
                     {
                         if (wall.Location == "Top")
-                            dungeonVisualizer.SetWallTile("1_wall_north_pillar_top", wall.Position);
+                            dungeonVisualizer.SetRandomWallTile("1_wall_north_pillar_top", wall.Position);
+
+                        if (wall.Location == "MiddleShade")
+                            dungeonVisualizer.SetRandomWallTile("1_wall_north_pillar_middle", wall.Position);
 
                         if (wall.Location == "Middle")
-                            dungeonVisualizer.SetWallTile("1_wall_north_pillar_middle", wall.Position);
+                            dungeonVisualizer.SetRandomWallTile("1_wall_north_pillar_middle", wall.Position);
 
                         if (wall.Location == "Bottom")
-                            dungeonVisualizer.SetWallLedgeTile("1_ledge_north_middle", wall.Position);
+                            dungeonVisualizer.SetRandomWallLedgeTile("1_ledge_north_middle", wall.Position);
                     }
                     else
                     {
                         if (wall.Location == "Top")
-                            dungeonVisualizer.SetWallTile("1_wall_north_top", wall.Position);
+                            dungeonVisualizer.SetRandomWallTile("1_wall_north_top", wall.Position);
+
+                        if (wall.Location == "MiddleShade")
+                            dungeonVisualizer.SetRandomWallTile("1_wall_north_middle_shade", wall.Position);
 
                         if (wall.Location == "Middle")
-                            dungeonVisualizer.SetWallTile("1_wall_north_middle", wall.Position);
+                            dungeonVisualizer.SetRandomWallTile("1_wall_north_middle", wall.Position);
 
                         if (wall.Location == "Bottom")
-                            dungeonVisualizer.SetWallLedgeTile("1_ledge_north_middle", wall.Position);
+                            dungeonVisualizer.SetRandomWallLedgeTile("1_ledge_north_middle", wall.Position);
                     }
                 }
             }
@@ -74,7 +80,7 @@ namespace Assets.Scripts.Dungeon.Areas.Rooms
         {
             foreach (var tile in wallRect.allPositionsWithin)
             {
-                dungeonVisualizer.SetWallTile("1_wall_south_middle", tile);
+                dungeonVisualizer.SetRandomWallTile("1_wall_south_middle", tile);
             }
         }
 
@@ -94,15 +100,15 @@ namespace Assets.Scripts.Dungeon.Areas.Rooms
             foreach (var wall in groupedWalls)
             {
                 if (wall.Location == "Top")
-                    dungeonVisualizer.SetWallTile("1_wall_west_top", wall.Position);
+                    dungeonVisualizer.SetRandomWallTile("1_wall_west_top", wall.Position);
                 if (wall.Location == "Middle")
-                    dungeonVisualizer.SetWallTile("1_wall_west_middle", wall.Position);
+                    dungeonVisualizer.SetRandomWallTile("1_wall_west_middle", wall.Position);
                 if (wall.Location == "Bottom")
-                    dungeonVisualizer.SetWallTile("1_wall_west_bottom", wall.Position);
+                    dungeonVisualizer.SetRandomWallTile("1_wall_west_bottom", wall.Position);
                 if (wall.Location == "Ledge")
-                    dungeonVisualizer.SetWallLedgeTile("1_ledge_west_middle", wall.Position);
+                    dungeonVisualizer.SetRandomWallLedgeTile("1_ledge_west_middle", wall.Position);
                 if (wall.Location == "CornerLedge")
-                    dungeonVisualizer.SetWallLedgeTile("1_ledge_north_left", wall.Position);
+                    dungeonVisualizer.SetRandomWallLedgeTile("1_ledge_north_left", wall.Position);
             }
         }
 
@@ -122,15 +128,15 @@ namespace Assets.Scripts.Dungeon.Areas.Rooms
             foreach (var wall in groupedWalls)
             {
                 if (wall.Location == "Top")
-                    dungeonVisualizer.SetWallTile("1_wall_east_top", wall.Position);
+                    dungeonVisualizer.SetRandomWallTile("1_wall_east_top", wall.Position);
                 if (wall.Location == "Middle")
-                    dungeonVisualizer.SetWallTile("1_wall_east_middle", wall.Position);
+                    dungeonVisualizer.SetRandomWallTile("1_wall_east_middle", wall.Position);
                 if (wall.Location == "Bottom")
-                    dungeonVisualizer.SetWallTile("1_wall_east_bottom", wall.Position);
+                    dungeonVisualizer.SetRandomWallTile("1_wall_east_bottom", wall.Position);
                 if (wall.Location == "Ledge")
-                    dungeonVisualizer.SetWallLedgeTile("1_ledge_east_middle", wall.Position);
+                    dungeonVisualizer.SetRandomWallLedgeTile("1_ledge_east_middle", wall.Position);
                 if (wall.Location == "CornerLedge")
-                    dungeonVisualizer.SetWallLedgeTile("1_ledge_north_right", wall.Position);
+                    dungeonVisualizer.SetRandomWallLedgeTile("1_ledge_north_right", wall.Position);
             }
         }
 
@@ -141,6 +147,9 @@ namespace Assets.Scripts.Dungeon.Areas.Rooms
 
             if (rectInt.y + rectInt.height - 1 == vector2Int.y)
                 return "Top";
+
+            if (rectInt.y + rectInt.height - 2 == vector2Int.y)
+                return "MiddleShade";
 
             return "Middle";
         }

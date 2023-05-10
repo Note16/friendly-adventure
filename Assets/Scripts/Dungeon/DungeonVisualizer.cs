@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using Random = UnityEngine.Random;
 
 namespace Assets.Scripts.Dungeon
 {
@@ -10,7 +11,7 @@ namespace Assets.Scripts.Dungeon
     public class NamedTileBase
     {
         public string Name;
-        public TileBase TileBase;
+        public List<TileBase> Tiles;
     }
 
     public class DungeonVisualizer : MonoBehaviour
@@ -52,22 +53,14 @@ namespace Assets.Scripts.Dungeon
             }
         }
 
-        public void SetWallTile(string tileName, Vector2Int position, Color? color = null)
+        public void SetRandomWallTile(string tileName, Vector2Int position, Color? color = null)
         {
-            var tileBase = wallTiles.FirstOrDefault(wallTile => wallTile.Name == tileName)?.TileBase;
-            if (tileBase == null)
-                Debug.Log($"Tile with name '{tileName}' not found in wallTiles List");
-
-            SetSingleTile(wallTilemap, tileBase, position, color);
+            SetRandomTile(wallTilemap, wallTiles, tileName, position, color);
         }
 
-        public void SetWallLedgeTile(string tileName, Vector2Int position, Color? color = null)
+        public void SetRandomWallLedgeTile(string tileName, Vector2Int position, Color? color = null)
         {
-            var tileBase = ledgeTiles.FirstOrDefault(wallTile => wallTile.Name == tileName)?.TileBase;
-            if (tileBase == null)
-                Debug.Log($"Tile with name '{tileName}' not found in ledgeTiles List");
-
-            SetSingleTile(wallTilemap, tileBase, position, color);
+            SetRandomTile(wallTilemap, ledgeTiles, tileName, position, color);
         }
 
         public void ClearWallTile(Vector2Int position)
@@ -81,6 +74,18 @@ namespace Assets.Scripts.Dungeon
             {
                 ClearWallTile(position);
             }
+        }
+
+        private void SetRandomTile(Tilemap tilemap, List<NamedTileBase> tileList, string tileListName, Vector2Int position, Color? color = null)
+        {
+            var collection = tileList.FirstOrDefault(tileList => tileList.Name == tileListName);
+            if (collection == null)
+                Debug.Log($"Tile with name '{tileListName}' not found in {nameof(tileList)} List");
+
+            var random = Random.Range(0, collection.Tiles.Count);
+            var tileBase = collection.Tiles[random];
+
+            SetSingleTile(tilemap, tileBase, position, color);
         }
 
         public void Clear()
