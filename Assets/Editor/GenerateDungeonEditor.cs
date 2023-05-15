@@ -9,9 +9,17 @@ public class GenerateDungeonEditor : Editor
     {
         base.OnInspectorGUI();
 
+        GUILayout.BeginHorizontal("box");
+
         var generator = (DungeonGenerator)target;
+        var clickedClear = GUILayout.Button("Clear dungeon");
+        if (clickedClear)
+            generator.ClearDungeon();
+
         var clickedGenerate = GUILayout.Button("Generate dungeon");
         if (clickedGenerate)
             generator.GenerateDungeon();
+
+        GUILayout.EndHorizontal();
     }
 }

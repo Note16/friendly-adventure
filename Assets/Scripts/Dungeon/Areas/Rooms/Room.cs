@@ -12,6 +12,7 @@ namespace Assets.Scripts.Dungeon.Areas.Rooms
         public RectInt WallBottomRect { get; }
         public RectInt WallLeftRect { get; }
         public RectInt WallRightRect { get; }
+        public RectInt InnerFloor { get; }
         public Vector2Int RoomCenter => Vector2Int.FloorToInt(Rect.center);
         private int pillarDistance { get; }
 
@@ -25,6 +26,11 @@ namespace Assets.Scripts.Dungeon.Areas.Rooms
             WallBottomRect = new RectInt(Rect.xMin, Rect.yMin, Rect.width, 1);
             WallLeftRect = new RectInt(Rect.xMin, Rect.yMin, 2, Rect.height);
             WallRightRect = new RectInt(Rect.xMax - 2, Rect.yMin, 2, Rect.height);
+            InnerFloor = new RectInt(
+                Rect.xMin + WallLeftRect.width,
+                Rect.yMin + WallBottomRect.height + 1,
+                Rect.width - WallLeftRect.width - WallRightRect.width,
+                Rect.height - WallBottomRect.height - WallTopRect.height - 1);
 
             SetRoomType(RoomType.Default);
             RenderWalls();
@@ -35,6 +41,11 @@ namespace Assets.Scripts.Dungeon.Areas.Rooms
             this.roomType = roomType;
             SetRoomColor();
             RenderFloor();
+        }
+
+        public RoomType GetRoomType()
+        {
+            return roomType;
         }
 
         private void SetRoomColor()

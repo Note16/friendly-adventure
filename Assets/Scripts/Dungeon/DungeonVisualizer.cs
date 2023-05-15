@@ -1,9 +1,9 @@
+using Assets.Scripts.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.Tilemaps;
-using Random = UnityEngine.Random;
 
 namespace Assets.Scripts.Dungeon
 {
@@ -82,8 +82,7 @@ namespace Assets.Scripts.Dungeon
             if (collection == null)
                 Debug.Log($"Tile with name '{tileListName}' not found in {nameof(tileList)} List");
 
-            var random = Random.Range(0, collection.Tiles.Count);
-            var tileBase = collection.Tiles[random];
+            var tileBase = RandomHelper.GetRandom(collection.Tiles);
 
             SetSingleTile(tilemap, tileBase, position, color);
         }
