@@ -8,6 +8,7 @@ namespace Assets.Scripts.Dungeon
     public class DungeonGenerator : MonoBehaviour
     {
         protected DungeonVisualizer dungeonVisualizer;
+        protected EnemyGenerator enemyGenerator;
 
         [SerializeField]
         private int minRoomCount = 8, maxRoomCount = 15;
@@ -28,17 +29,27 @@ namespace Assets.Scripts.Dungeon
         [Range(4, 10)]
         private int corridorSize = 4;
 
+        public void ClearDungeon()
+        {
+            // Cleanup objects
+            enemyGenerator.DestroyEnemies();
+
+            // Cleanup tilemap
+            dungeonVisualizer.Clear();
+        }
+
         public void GenerateDungeon()
         {
             dungeonVisualizer = GetComponent<DungeonVisualizer>();
-            dungeonVisualizer.Clear();
+            enemyGenerator = GetComponent<EnemyGenerator>();
+            ClearDungeon();
             CreateRooms();
         }
 
         private void CreateRooms()
         {
             var roomVisualiser = new RoomVisualizer(dungeonVisualizer);
-            var roomManager = new RoomManager(roomVisualiser);
+            var roomManager = new RoomManager(roomVisualiser, enemyGenerator);
             roomManager.SetWallHeight(wallHeight);
             roomManager.SetOffset(offset);
             roomManager.GenerateRooms(

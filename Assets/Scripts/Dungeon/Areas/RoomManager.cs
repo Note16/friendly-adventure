@@ -1,24 +1,36 @@
 using Assets.Scripts.Dungeon.Areas.Rooms;
 using Assets.Scripts.Dungeon.Enums;
-using System;
+using Assets.Scripts.Helpers;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using Random = UnityEngine.Random;
 
 namespace Assets.Scripts.Dungeon.Areas
 {
     public class RoomManager
     {
         private readonly RoomVisualizer roomVisualizer;
+        private readonly EnemyGenerator enemyGenerator;
         private List<Room> rooms;
         private int offset;
         private int wallHeight = 4;
         private int pillarDistance = 4;
 
-        public RoomManager(RoomVisualizer roomVisualizer)
+        public RoomManager(RoomVisualizer roomVisualizer, EnemyGenerator enemyGenerator)
         {
             this.roomVisualizer = roomVisualizer;
+            this.enemyGenerator = enemyGenerator;
+        }
+
+        public void GenerateEnemies()
+        {
+            foreach (var room in rooms.Where(room => room.GetRoomType() == RoomType.Default))
+            {
+                enemyGenerator.GenerateEnemies(room, 4);
+            }
+
+            var bossRoom = rooms.First(room => room.GetRoomType() == RoomType.BossRoom);
+            enemyGenerator.GenerateBossEnemy(bossRoom);
         }
 
         public void SetWallHeight(int wallHeight)
@@ -43,17 +55,19 @@ namespace Assets.Scripts.Dungeon.Areas
             {
                 currentRoom
             };
-            while ((Random.value > 0.2f || roomsList.Count < minRoomCount) && roomsList.Count != maxRoomCount)
+            while ((RandomHelper.GetRandom(70) || roomsList.Count < minRoomCount) && roomsList.Count != maxRoomCount)
             {
-                var newRoom = GenerateRoom(currentRoom.Rect, GetRandomDirection());
+                var newRoom = GenerateRoom(currentRoom.Rect, RandomHelper.GetRandom<Direction>());
                 if (!roomsList.Any(room => room.Rect.position == newRoom.Rect.position))
                 {
-                    currentRoom = newRoom;
                     roomsList.Add(newRoom);
                 }
+
+                currentRoom = newRoom;
             }
             rooms = roomsList;
             AssignRoomTypes();
+            GenerateEnemies();
         }
 
         public IEnumerable<Room> GetRooms()
@@ -94,13 +108,6 @@ namespace Assets.Scripts.Dungeon.Areas
                 targetPosition += new Vector2Int(roomRect.width + offset, 0);
 
             return targetPosition;
-        }
-
-        private static Direction GetRandomDirection()
-        {
-            var values = Enum.GetValues(typeof(Direction));
-            var random = new System.Random();
-            return (Direction)values.GetValue(random.Next(values.Length));
         }
     }
 }
