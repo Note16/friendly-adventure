@@ -19,7 +19,7 @@ namespace Assets.Scripts.Dungeon
 
         public void GenerateBossEnemy(Room room)
         {
-            Enemies.Add(Instantiate(BossEnemy, (Vector3Int)room.RoomCenter, Quaternion.identity));
+            Enemies.Add(Instantiate(BossEnemy, (Vector3Int)room.RoomCenter, Quaternion.identity, gameObject.transform));
         }
 
         public void GenerateEnemies(Room room, int count)
@@ -29,7 +29,7 @@ namespace Assets.Scripts.Dungeon
             for (int i = 0; i < count; i++)
             {
                 var randomPosition = (Vector3Int)RandomHelper.GetRandom(roomFloor);
-                Enemies.Add(Instantiate(DefaultEnemy, randomPosition, Quaternion.identity));
+                Enemies.Add(Instantiate(DefaultEnemy, randomPosition, Quaternion.identity, gameObject.transform));
             }
         }
 

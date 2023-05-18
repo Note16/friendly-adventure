@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -6,6 +5,8 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
+    [SerializeField]
+    public GameObject AoeAttack;
 
     [SerializeField]
     private InputActionReference Movement, Attack, pointerPosition;
@@ -19,29 +20,27 @@ public class PlayerController : MonoBehaviour
 
     Rigidbody2D rb;
     Animator animator;
-    //SpriteRenderer spriteRenderer;
+    SpriteRenderer spriteRenderer;
     List<RaycastHit2D> castCollisions = new List<RaycastHit2D>();
 
     bool canMove = true;
-
+    private GameObject isAttacking;
     Vector2 moveInput;
-    
+
 
     private void Start()
     {
-        
+
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
-        //spriteRenderer = GetComponent<SpriteRenderer>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
-
 
     private void FixedUpdate()
     {
         if (canMove)
         {
             moveInput = Movement.action.ReadValue<Vector2>();
-            //spriteRenderer.flipX = false;
 
             if (moveInput != Vector2.zero)
             {
@@ -57,42 +56,62 @@ public class PlayerController : MonoBehaviour
                     }
                 }
 
+                if (moveInput.x < 0)
+                    spriteRenderer.flipX = true;
+                else
+                    spriteRenderer.flipX = false;
+
+                animator.SetBool("isMovingHorizontal", moveInput.x != 0);
+                animator.SetBool("isMovingVertical", moveInput.y != 0);
                 animator.SetBool("isMoving", true);
+
+                animator.SetFloat("moveX", moveInput.x);
+                animator.SetFloat("moveY", moveInput.y);
             }
             else
             {
+                animator.SetBool("isMovingHorizontal", false);
+                animator.SetBool("isMovingVertical", false);
                 animator.SetBool("isMoving", false);
             }
-            UpdateAnimatorParameters();
         }
         //Look at cursor when not moving
-       // pointerInput = GetPointerInput();
-       // var lookDirection = pointerInput - (Vector2)transform.position;
-       // if (isMoving == false)
-       // {
-       //     if (lookDirection.x > 0.2)
-       //     {
-       //         spriteRenderer.flipX = false;
-       //     }
-       //     else if (lookDirection.x < 0.2)
-       //     {
-       //         spriteRenderer.flipX = true;
-       //     }
-       //     if (lookDirection.y > 3)
-       //     {
-       //         animator.Play("LookUp");
-       //     }
-       //     else if (lookDirection.y < 0.2)
-       //     {
-       //         animator.Play("LookDown");
-       //     }
-       // }
+        // pointerInput = GetPointerInput();
+        // var lookDirection = pointerInput - (Vector2)transform.position;
+        // if (isMoving == false)
+        // {
+        //     if (lookDirection.x > 0.2)
+        //     {
+        //         spriteRenderer.flipX = false;
+        //     }
+        //     else if (lookDirection.x < 0.2)
+        //     {
+        //         spriteRenderer.flipX = true;
+        //     }
+        //     if (lookDirection.y > 3)
+        //     {
+        //         animator.Play("LookUp");
+        //     }
+        //     else if (lookDirection.y < 0.2)
+        //     {
+        //         animator.Play("LookDown");
+        //     }
+        // }
 
     }
 
     void OnAttack()
     {
-        animator.SetTrigger("meleeAttack");
+        // If not attacking
+        if (isAttacking == null)
+        {
+            // Melee attack
+            animator.Play("Attack_1");
+
+            // AOE Attack!
+            isAttacking = Instantiate(AoeAttack, gameObject.transform.position, Quaternion.identity);
+        }
+
     }
 
     private bool TryMove(Vector2 direction)
@@ -115,12 +134,6 @@ public class PlayerController : MonoBehaviour
         return false;
     }
 
-    void UpdateAnimatorParameters()
-    {
-        animator.SetFloat("moveX", moveInput.x);
-        animator.SetFloat("moveY", moveInput.y);
-    }
-
     private Vector2 GetPointerInput()
     {
         Vector3 mousePos = pointerPosition.action.ReadValue<Vector2>();
@@ -132,7 +145,7 @@ public class PlayerController : MonoBehaviour
     {
         canMove = false;
     }
-    
+
     public void UnlockMovement()
     {
         canMove = true;
