@@ -5,6 +5,8 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
+    [SerializeField]
+    public GameObject AoeAttack;
 
     [SerializeField]
     private InputActionReference Movement, Attack, pointerPosition;
@@ -22,7 +24,7 @@ public class PlayerController : MonoBehaviour
     List<RaycastHit2D> castCollisions = new List<RaycastHit2D>();
 
     bool canMove = true;
-
+    private GameObject isAttacking;
     Vector2 moveInput;
 
 
@@ -100,7 +102,16 @@ public class PlayerController : MonoBehaviour
 
     void OnAttack()
     {
+        // Melee attack
         animator.Play("Attack_1");
+
+        // If not attacking
+        if (isAttacking == null)
+        {
+            // AOE Attack!
+            isAttacking = Instantiate(AoeAttack, gameObject.transform.position, Quaternion.identity);
+        }
+
     }
 
     private bool TryMove(Vector2 direction)
