@@ -29,6 +29,11 @@ namespace Assets.Scripts.Dungeon
         [Range(4, 10)]
         private int corridorSize = 4;
 
+        private void Start()
+        {
+            GenerateDungeon();
+        }
+
         public void ClearDungeon()
         {
             // Cleanup objects
