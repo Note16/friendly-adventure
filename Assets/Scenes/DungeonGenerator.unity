@@ -174,7 +174,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &34912774
 MonoBehaviour:
@@ -294,92 +294,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8cd0f13f2bb2624c8a0f38aa76d2fca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  DefaultEnemy: {fileID: 8742745944738636310, guid: e2684e1381f3fcd4d95d0147746a256e, type: 3}
-  BossEnemy: {fileID: 2058592313256666697, guid: 3b337f15eed9e87429527dadd744206a, type: 3}
---- !u!1 &989061856
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 989061859}
-  - component: {fileID: 989061858}
-  - component: {fileID: 989061857}
-  m_Layer: 0
-  m_Name: Main Camera
-  m_TagString: MainCamera
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!81 &989061857
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 989061856}
-  m_Enabled: 1
---- !u!20 &989061858
-Camera:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 989061856}
-  m_Enabled: 1
-  serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0, g: 0, b: 0, a: 0}
-  m_projectionMatrixMode: 1
-  m_GateFitMode: 2
-  m_FOVAxisMode: 0
-  m_SensorSize: {x: 36, y: 24}
-  m_LensShift: {x: 0, y: 0}
-  m_FocalLength: 50
-  m_NormalizedViewPortRect:
-    serializedVersion: 2
-    x: 0
-    y: 0
-    width: 1
-    height: 1
-  near clip plane: 0.3
-  far clip plane: 1000
-  field of view: 60
-  orthographic: 1
-  orthographic size: 32.02551
-  m_Depth: -1
-  m_CullingMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_RenderingPath: -1
-  m_TargetTexture: {fileID: 0}
-  m_TargetDisplay: 0
-  m_TargetEye: 3
-  m_HDR: 1
-  m_AllowMSAA: 1
-  m_AllowDynamicResolution: 0
-  m_ForceIntoRT: 0
-  m_OcclusionCulling: 1
-  m_StereoConvergence: 10
-  m_StereoSeparation: 0.022
---- !u!4 &989061859
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 989061856}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 9.7, y: 3.6, z: -10}
-  m_LocalScale: {x: 0, y: 0, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  PossibleEnemies:
+  - {fileID: 2575639233869638719, guid: ee4e3b2f9fce16b4aa564d7000944140, type: 3}
+  - {fileID: 6331114095509317402, guid: 2efd486d191edd348942bfbfab7f089e, type: 3}
+  - {fileID: 5822868078199210968, guid: dd1fbb910640257478629b0f2632a13f, type: 3}
+  - {fileID: 7450140168799887496, guid: 2c2e1452281978b438534469416ec03e, type: 3}
+  BossEnemy: {fileID: 9148402442353990093, guid: 21eecc696a865b442857040b69e68719, type: 3}
 --- !u!1 &1010219474
 GameObject:
   m_ObjectHideFlags: 0
@@ -681,7 +601,7 @@ Transform:
   - {fileID: 1010219475}
   - {fileID: 1255642078}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1874970795
 PrefabInstance:
@@ -708,7 +628,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8111309106597192695, guid: 102af8aa83f700d4f8b0e5d21612bb34, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8111309106597192695, guid: 102af8aa83f700d4f8b0e5d21612bb34, type: 3}
       propertyPath: m_LocalPosition.x

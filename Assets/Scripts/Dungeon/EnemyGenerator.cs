@@ -7,7 +7,7 @@ namespace Assets.Scripts.Dungeon
 {
     public class EnemyGenerator : MonoBehaviour
     {
-        public GameObject DefaultEnemy;
+        public List<GameObject> PossibleEnemies;
         public GameObject BossEnemy;
 
         private List<GameObject> Enemies;
@@ -29,7 +29,7 @@ namespace Assets.Scripts.Dungeon
             for (int i = 0; i < count; i++)
             {
                 var randomPosition = (Vector3Int)RandomHelper.GetRandom(roomFloor);
-                Enemies.Add(Instantiate(DefaultEnemy, randomPosition, Quaternion.identity, gameObject.transform));
+                Enemies.Add(Instantiate(RandomHelper.GetRandom(PossibleEnemies), randomPosition, Quaternion.identity, gameObject.transform));
             }
         }
 
