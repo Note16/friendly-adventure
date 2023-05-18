@@ -55,7 +55,7 @@ namespace Assets.Scripts.Dungeon.Areas
             {
                 currentRoom
             };
-            while ((RandomHelper.GetRandom(70) || roomsList.Count < minRoomCount) && roomsList.Count != maxRoomCount)
+            while ((RandomHelper.GetRandom(95) || roomsList.Count < minRoomCount) && roomsList.Count != maxRoomCount)
             {
                 var newRoom = GenerateRoom(currentRoom.Rect, RandomHelper.GetRandom<Direction>());
                 if (!roomsList.Any(room => room.Rect.position == newRoom.Rect.position))
