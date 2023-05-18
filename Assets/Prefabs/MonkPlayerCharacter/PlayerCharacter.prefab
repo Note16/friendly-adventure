@@ -483,6 +483,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 086aed35a3d8e7c49aa69b5197ca585c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AoeAttack: {fileID: 3804288888145762448, guid: 1edcbcedf99014440a1cb7c63bcf5f02, type: 3}
   Movement: {fileID: -440124971067648005, guid: 23bf02c5a505b7e469d359c6774e31c6, type: 3}
   Attack: {fileID: 6395207267600638243, guid: 23bf02c5a505b7e469d359c6774e31c6, type: 3}
   pointerPosition: {fileID: -8479917156398218944, guid: 23bf02c5a505b7e469d359c6774e31c6, type: 3}
