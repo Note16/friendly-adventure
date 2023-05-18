@@ -102,12 +102,12 @@ public class PlayerController : MonoBehaviour
 
     void OnAttack()
     {
-        // Melee attack
-        animator.Play("Attack_1");
-
         // If not attacking
         if (isAttacking == null)
         {
+            // Melee attack
+            animator.Play("Attack_1");
+
             // AOE Attack!
             isAttacking = Instantiate(AoeAttack, gameObject.transform.position, Quaternion.identity);
         }
