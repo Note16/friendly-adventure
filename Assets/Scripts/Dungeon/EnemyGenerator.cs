@@ -30,7 +30,12 @@ namespace Assets.Scripts.Dungeon
             for (int i = 0; i < count; i++)
             {
                 var randomPosition = (Vector3Int)RandomHelper.GetRandom(roomFloor);
-                Enemies.Add(Instantiate(RandomHelper.GetRandom(PossibleEnemies), randomPosition, Quaternion.identity, gameObject.transform));
+
+                var enemy = Instantiate(RandomHelper.GetRandom(PossibleEnemies), randomPosition, Quaternion.identity, gameObject.transform);
+                var spriteRenderer = enemy.GetComponent<SpriteRenderer>();
+                spriteRenderer.flipX = RandomHelper.GetRandom(50);
+
+                Enemies.Add(enemy);
             }
         }
 

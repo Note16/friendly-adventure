@@ -66,6 +66,8 @@ namespace Assets.Scripts.Dungeon
             var corridorManger = new CorridorManager(roomManager, corridorVisualiser);
             corridorManger.SetWallHeight(wallHeight);
             corridorManger.GenerateCorridors(corridorSize);
+
+            dungeonVisualizer.SetAllFloorTiles();
         }
     }
 }

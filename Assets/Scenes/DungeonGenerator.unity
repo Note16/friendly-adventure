@@ -156,8 +156,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minRoomCount: 8
   maxRoomCount: 12
-  roomWidth: 16
-  roomHeight: 16
+  roomWidth: 18
+  roomHeight: 22
   wallHeight: 4
   offset: 2
   corridorSize: 5
@@ -188,6 +188,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf331a27a6ac4ee4c81a8f50fb538e50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  darkTile: {fileID: 11400000, guid: 6a05f44cc166a124bb633816dfdcf7aa, type: 2}
   floorTile: {fileID: 11400000, guid: 66aec17914fcb344598d0fe2088e455e, type: 2}
   floorTilemap: {fileID: 1010219477}
   wallTilemap: {fileID: 1255642080}
@@ -622,22 +623,6 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 0.7600001
       objectReference: {fileID: 0}
-    - target: {fileID: 3993709810264871192, guid: 102af8aa83f700d4f8b0e5d21612bb34, type: 3}
-      propertyPath: Attack
-      value: 
-      objectReference: {fileID: 6395207267600638243, guid: 23bf02c5a505b7e469d359c6774e31c6, type: 3}
-    - target: {fileID: 3993709810264871192, guid: 102af8aa83f700d4f8b0e5d21612bb34, type: 3}
-      propertyPath: Movement
-      value: 
-      objectReference: {fileID: -440124971067648005, guid: 23bf02c5a505b7e469d359c6774e31c6, type: 3}
-    - target: {fileID: 3993709810264871192, guid: 102af8aa83f700d4f8b0e5d21612bb34, type: 3}
-      propertyPath: AoeAttack
-      value: 
-      objectReference: {fileID: 3804288888145762448, guid: 1edcbcedf99014440a1cb7c63bcf5f02, type: 3}
-    - target: {fileID: 3993709810264871192, guid: 102af8aa83f700d4f8b0e5d21612bb34, type: 3}
-      propertyPath: pointerPosition
-      value: 
-      objectReference: {fileID: -8479917156398218944, guid: 23bf02c5a505b7e469d359c6774e31c6, type: 3}
     - target: {fileID: 8111309106597192690, guid: 102af8aa83f700d4f8b0e5d21612bb34, type: 3}
       propertyPath: m_Name
       value: PlayerCharacter
