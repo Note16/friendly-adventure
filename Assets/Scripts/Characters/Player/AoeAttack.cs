@@ -1,4 +1,5 @@
 using Assets.Scripts.Characters.Enemies;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -8,10 +9,19 @@ namespace Assets.Scripts.Characters.Player
     {
         [SerializeField]
         public int damage = 4;
+        private Rigidbody2D rb;
 
         void Awake()
         {
-            var rb = GetComponent<Rigidbody2D>();
+            rb = GetComponent<Rigidbody2D>();
+
+            StartCoroutine(HitEnemyAfterDelay(0.3f));
+        }
+
+        IEnumerator HitEnemyAfterDelay(float delay)
+        {
+            yield return new WaitForSeconds(delay);
+
             var hits = new List<RaycastHit2D>();
             rb.Cast(Vector2.zero, hits);
 
@@ -22,12 +32,6 @@ namespace Assets.Scripts.Characters.Player
                     enemy.Damage(damage);
                 }
             }
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-
         }
     }
 }
