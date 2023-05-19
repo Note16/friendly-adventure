@@ -487,7 +487,7 @@ MonoBehaviour:
   Movement: {fileID: -440124971067648005, guid: 23bf02c5a505b7e469d359c6774e31c6, type: 3}
   Attack: {fileID: 6395207267600638243, guid: 23bf02c5a505b7e469d359c6774e31c6, type: 3}
   pointerPosition: {fileID: -8479917156398218944, guid: 23bf02c5a505b7e469d359c6774e31c6, type: 3}
-  moveSpeed: 5
+  moveSpeed: 7
   moveFilter:
     useTriggers: 0
     useLayerMask: 0
