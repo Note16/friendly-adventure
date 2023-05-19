@@ -1,3 +1,4 @@
+using Assets.Scripts.Extensions;
 using UnityEngine;
 
 namespace Assets.Scripts.Dungeon.Areas.Rooms
