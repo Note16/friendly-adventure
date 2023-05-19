@@ -1,3 +1,4 @@
+using Assets.Scripts.Extensions;
 using Assets.Scripts.Helpers;
 using System;
 using System.Collections.Generic;
@@ -16,6 +17,11 @@ namespace Assets.Scripts.Dungeon
 
     public class DungeonVisualizer : MonoBehaviour
     {
+        private HashSet<Vector2Int> allTiles = new();
+
+        [SerializeField]
+        private TileBase darkTile;
+
         [SerializeField]
         private TileBase floorTile;
 
@@ -28,6 +34,26 @@ namespace Assets.Scripts.Dungeon
         [SerializeField]
         private List<NamedTileBase> ledgeTiles;
 
+        public void SetAllFloorTiles()
+        {
+            var floorBounds = floorTilemap.cellBounds;
+            var padding = 50;
+
+            var xMin = floorBounds.position.x - padding / 2;
+            var yMin = floorBounds.position.y - padding / 2;
+            var width = floorBounds.size.x + padding;
+            var height = floorBounds.size.y + padding;
+
+            var rectInt = new RectInt(xMin, yMin, width, height);
+            foreach (var position in rectInt.allPositionsWithin.ToVector2Int())
+            {
+                if (!allTiles.Contains(position))
+                {
+                    SetSingleTile(wallTilemap, darkTile, position, null);
+                }
+            }
+        }
+
         private void SetSingleTile(Tilemap tilemap, TileBase tile, Vector2Int position, Color? color = null)
         {
             var tilePosition = tilemap.WorldToCell((Vector3Int)position);
@@ -38,6 +64,8 @@ namespace Assets.Scripts.Dungeon
                 tilemap.SetTileFlags(tilePosition, TileFlags.None);
                 tilemap.SetColor(tilePosition, (Color)color);
             }
+
+            allTiles.Add(position);
         }
 
         public void SetFloorTile(Vector2Int position, Color? color = null)
@@ -91,6 +119,7 @@ namespace Assets.Scripts.Dungeon
         {
             floorTilemap.ClearAllTiles();
             wallTilemap.ClearAllTiles();
+            allTiles.Clear();
         }
     }
 }
