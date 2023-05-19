@@ -615,13 +615,29 @@ PrefabInstance:
       value: 0.7600001
       objectReference: {fileID: 0}
     - target: {fileID: 3248238515497855730, guid: 102af8aa83f700d4f8b0e5d21612bb34, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3248238515497855730, guid: 102af8aa83f700d4f8b0e5d21612bb34, type: 3}
       propertyPath: m_LocalPosition.y
       value: 0.7600001
       objectReference: {fileID: 0}
     - target: {fileID: 3993709810264871192, guid: 102af8aa83f700d4f8b0e5d21612bb34, type: 3}
+      propertyPath: Attack
+      value: 
+      objectReference: {fileID: 6395207267600638243, guid: 23bf02c5a505b7e469d359c6774e31c6, type: 3}
+    - target: {fileID: 3993709810264871192, guid: 102af8aa83f700d4f8b0e5d21612bb34, type: 3}
+      propertyPath: Movement
+      value: 
+      objectReference: {fileID: -440124971067648005, guid: 23bf02c5a505b7e469d359c6774e31c6, type: 3}
+    - target: {fileID: 3993709810264871192, guid: 102af8aa83f700d4f8b0e5d21612bb34, type: 3}
       propertyPath: AoeAttack
       value: 
       objectReference: {fileID: 3804288888145762448, guid: 1edcbcedf99014440a1cb7c63bcf5f02, type: 3}
+    - target: {fileID: 3993709810264871192, guid: 102af8aa83f700d4f8b0e5d21612bb34, type: 3}
+      propertyPath: pointerPosition
+      value: 
+      objectReference: {fileID: -8479917156398218944, guid: 23bf02c5a505b7e469d359c6774e31c6, type: 3}
     - target: {fileID: 8111309106597192690, guid: 102af8aa83f700d4f8b0e5d21612bb34, type: 3}
       propertyPath: m_Name
       value: PlayerCharacter

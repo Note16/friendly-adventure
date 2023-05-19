@@ -1,4 +1,5 @@
 ﻿using Assets.Scripts.Dungeon.Areas.Rooms;
+using Assets.Scripts.Extensions;
 using Assets.Scripts.Helpers;
 using System.Collections.Generic;
 using UnityEngine;

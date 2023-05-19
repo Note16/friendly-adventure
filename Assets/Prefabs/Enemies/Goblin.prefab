@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6344126554871414579}
   - component: {fileID: 4032893302410894568}
   - component: {fileID: 7903541130271255657}
+  - component: {fileID: 7361626908319192798}
   m_Layer: 0
   m_Name: Goblin
   m_TagString: Untagged
@@ -155,3 +156,15 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &7361626908319192798
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6331114095509317402}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4baee0ea5421f9346b1277a500cdbc73, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
