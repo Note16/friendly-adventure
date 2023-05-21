@@ -1,6 +1,7 @@
 using Assets.Scripts.Dungeon.Areas;
 using Assets.Scripts.Dungeon.Areas.Corridors;
 using Assets.Scripts.Dungeon.Areas.Rooms;
+using System.Linq;
 using UnityEngine;
 
 namespace Assets.Scripts.Dungeon
@@ -9,6 +10,9 @@ namespace Assets.Scripts.Dungeon
     {
         protected DungeonVisualizer dungeonVisualizer;
         protected EnemyGenerator enemyGenerator;
+
+        [SerializeField]
+        private GameObject playerCharacter;
 
         [SerializeField]
         private int minRoomCount = 8, maxRoomCount = 15;
@@ -48,10 +52,10 @@ namespace Assets.Scripts.Dungeon
             dungeonVisualizer = GetComponent<DungeonVisualizer>();
             enemyGenerator = GetComponent<EnemyGenerator>();
             ClearDungeon();
-            CreateRooms();
+            CreateDungeon();
         }
 
-        private void CreateRooms()
+        private void CreateDungeon()
         {
             var roomVisualiser = new RoomVisualizer(dungeonVisualizer);
             var roomManager = new RoomManager(roomVisualiser, enemyGenerator);
@@ -68,6 +72,12 @@ namespace Assets.Scripts.Dungeon
             corridorManger.GenerateCorridors(corridorSize);
 
             dungeonVisualizer.SetAllFloorTiles();
+            PositionPlayerCharacter(roomManager.GetRooms().First().RoomCenter);
+        }
+
+        private void PositionPlayerCharacter(Vector2Int position)
+        {
+            playerCharacter.transform.position = (Vector3Int)position;
         }
     }
 }
