@@ -33,7 +33,6 @@ namespace Assets.Scripts.Characters.Enemies
         public void Move(Vector2 targetPosition)
         {
             var moveInput = (targetPosition - (Vector2)transform.position).normalized;
-            Debug.Log(moveInput);
             var moveSuccess = movement.SimpleMove(moveInput);
             animator.SetBool("isMoving", moveSuccess);
 
