@@ -52,12 +52,10 @@ namespace Assets.Scripts.Dungeon
             dungeonVisualizer = GetComponent<DungeonVisualizer>();
             enemyGenerator = GetComponent<EnemyGenerator>();
             ClearDungeon();
-            var rooms = CreateDungeon();
-
-            playerCharacter.transform.position = (Vector3Int)rooms.GetRooms().First().RoomCenter;
+            CreateDungeon();
         }
 
-        private RoomManager CreateDungeon()
+        private void CreateDungeon()
         {
             var roomVisualiser = new RoomVisualizer(dungeonVisualizer);
             var roomManager = new RoomManager(roomVisualiser, enemyGenerator);
@@ -74,8 +72,12 @@ namespace Assets.Scripts.Dungeon
             corridorManger.GenerateCorridors(corridorSize);
 
             dungeonVisualizer.SetAllFloorTiles();
+            PositionPlayerCharacter(roomManager.GetRooms().First().RoomCenter);
+        }
 
-            return roomManager;
+        private void PositionPlayerCharacter(Vector2Int position)
+        {
+            playerCharacter.transform.position = (Vector3Int)position;
         }
     }
 }

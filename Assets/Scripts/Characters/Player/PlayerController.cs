@@ -24,7 +24,6 @@ namespace Assets.Scripts.Characters.Player
             var rb = GetComponent<Rigidbody2D>();
             var animator = GetComponent<Animator>();
             var spriteRenderer = GetComponent<SpriteRenderer>();
-
             playerMovement = new PlayerMovement(animator, spriteRenderer, rb);
             playerMovement.SetMoveSpeed(moveSpeed);
             playerAttacks = new PlayerAttacks(animator);
@@ -60,19 +59,25 @@ namespace Assets.Scripts.Characters.Player
 
         public void AggroMobs()
         {
-            var distance = 10f;
-            var enemies = FindObjectsOfType<GameObject>()
-                .Where(obj =>
-                    obj.GetComponent<Enemy>() &&
-                    Vector3.Distance(obj.transform.position, transform.position) < distance
-                ).Select(obj => obj.GetComponent<Enemy>());
+            var aggroDistance = 10f;
 
-            if (!enemies.Any())
-                return;
+            var enemyObjects = FindObjectsOfType<GameObject>()
+                .Where(obj => obj.GetComponent<Enemy>());
 
-            foreach (var enemy in enemies)
+
+            foreach (var obj in enemyObjects)
             {
-                enemy.Move(transform.position);
+                var enemy = obj.GetComponent<Enemy>();
+
+                // Find enemies within 10f radius
+                if (Vector3.Distance(obj.transform.position, transform.position) < aggroDistance)
+                {
+                    enemy.Move(transform.position);
+                }
+                else
+                {
+                    enemy.StopMovement();
+                }
             }
         }
 

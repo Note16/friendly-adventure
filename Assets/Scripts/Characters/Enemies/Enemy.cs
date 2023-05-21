@@ -8,11 +8,14 @@ namespace Assets.Scripts.Characters.Enemies
         [SerializeField]
         private int healthPoints = 10;
 
-        Animator animator;
-        Movement movement;
+        private SpriteRenderer spriteRenderer;
+        private Animator animator;
+        private Movement movement;
+
 
         private void OnEnable()
         {
+            spriteRenderer = GetComponent<SpriteRenderer>();
             animator = GetComponent<Animator>();
             movement = new Movement(GetComponent<Rigidbody2D>());
         }
@@ -27,9 +30,20 @@ namespace Assets.Scripts.Characters.Enemies
                 animator.Play("TakeHit");
         }
 
-        public void Move(Vector3 targetPosition)
+        public void Move(Vector2 targetPosition)
         {
-            movement.Move((targetPosition - transform.position));
+            var moveInput = (targetPosition - (Vector2)transform.position).normalized;
+            Debug.Log(moveInput);
+            var moveSuccess = movement.SimpleMove(moveInput);
+            animator.SetBool("isMoving", moveSuccess);
+
+            // If we are moving left flip sprite!
+            spriteRenderer.flipX = moveInput.x < 0;
+        }
+
+        public void StopMovement()
+        {
+            animator.SetBool("isMoving", false);
         }
     }
 }

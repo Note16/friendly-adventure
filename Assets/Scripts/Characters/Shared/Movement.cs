@@ -5,13 +5,13 @@ namespace Assets.Scripts.Characters.Shared
 {
     public class Movement
     {
-        protected float moveSpeed = 0.5f;
+        protected float moveSpeed = 3f;
         protected bool stop = false;
 
         private readonly Rigidbody2D rigidbody2D;
         private ContactFilter2D moveFilter;
         private List<RaycastHit2D> collisions = new List<RaycastHit2D>();
-        private float collisionOffset = 0.05f;
+        private float collisionOffset = 0.5f;
 
         public Movement(Rigidbody2D rigidbody2D)
         {
@@ -23,10 +23,10 @@ namespace Assets.Scripts.Characters.Shared
             this.stop = stop;
         }
 
-        public void Move(Vector2 moveInput)
+        public bool Move(Vector2 moveInput)
         {
             if (stop)
-                return;
+                return false;
 
             // Lets try moving
             var moveSuccess = TryMove(moveInput);
@@ -41,10 +41,22 @@ namespace Assets.Scripts.Characters.Shared
                 if (!moveSuccess)
                 {
                     // Lets try moving vertical
-                    TryMove(new Vector2(0, moveInput.y));
+                    moveSuccess = TryMove(new Vector2(0, moveInput.y));
                 }
             }
+
+            return moveSuccess;
         }
+
+        public bool SimpleMove(Vector2 moveInput)
+        {
+            if (stop)
+                return false;
+
+            // Lets try moving
+            return TryMove(moveInput);
+        }
+
 
         private bool TryMove(Vector2 direction)
         {

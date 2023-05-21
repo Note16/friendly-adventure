@@ -36,17 +36,8 @@ namespace Assets.Scripts.Characters.Player
                 return;
             }
 
-            // Check if we are moving left
-            if (moveInput.x < 0)
-            {
-                // We are moving left flip sprite!
-                spriteRenderer.flipX = true;
-            }
-            else
-            {
-                // We are moving right unflip sprite!
-                spriteRenderer.flipX = false;
-            }
+            // If we are moving left flip sprite!
+            spriteRenderer.flipX = moveInput.x < 0;
 
             // Set is moving animation parameters
             animator.SetBool("isMovingHorizontal", moveInput.x != 0);
