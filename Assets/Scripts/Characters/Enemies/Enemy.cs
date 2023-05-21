@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Assets.Scripts.Characters.Shared;
+using UnityEngine;
 
 namespace Assets.Scripts.Characters.Enemies
 {
@@ -8,10 +9,12 @@ namespace Assets.Scripts.Characters.Enemies
         private int healthPoints = 10;
 
         Animator animator;
+        Movement movement;
 
-        private void Start()
+        private void OnEnable()
         {
             animator = GetComponent<Animator>();
+            movement = new Movement(GetComponent<Rigidbody2D>());
         }
 
         public void Damage(int damage)
@@ -24,5 +27,9 @@ namespace Assets.Scripts.Characters.Enemies
                 animator.Play("TakeHit");
         }
 
+        public void Move(Vector3 targetPosition)
+        {
+            movement.Move((targetPosition - transform.position));
+        }
     }
 }

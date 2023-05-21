@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Assets.Scripts.Characters.Player
+namespace Assets.Scripts.Characters.Player.Attacks
 {
     public class AoeAttack : MonoBehaviour
     {

@@ -1,4 +1,5 @@
-using System.Collections.Generic;
+using Assets.Scripts.Characters.Enemies;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -10,72 +11,83 @@ namespace Assets.Scripts.Characters.Player
         public GameObject AoeAttack;
 
         [SerializeField]
+        private float moveSpeed = 7f;
+
+        [SerializeField]
         private InputActionReference Movement, Attack, pointerPosition;
 
-        public Vector2 PointerPosition { get; set; }
-        private Vector2 pointerInput;
+        private PlayerMovement playerMovement;
+        private PlayerAttacks playerAttacks;
 
-        public float moveSpeed = 5f;
-        public ContactFilter2D moveFilter;
-        public float collisionOffset = 0.05f;
-
-        Rigidbody2D rb;
-        Animator animator;
-        SpriteRenderer spriteRenderer;
-        List<RaycastHit2D> castCollisions = new List<RaycastHit2D>();
-
-        bool canMove = true;
-        private GameObject isAttacking;
-        Vector2 moveInput;
-
-
-        private void Start()
+        private void OnEnable()
         {
+            var rb = GetComponent<Rigidbody2D>();
+            var animator = GetComponent<Animator>();
+            var spriteRenderer = GetComponent<SpriteRenderer>();
 
-            rb = GetComponent<Rigidbody2D>();
-            animator = GetComponent<Animator>();
-            spriteRenderer = GetComponent<SpriteRenderer>();
+            playerMovement = new PlayerMovement(animator, spriteRenderer, rb);
+            playerMovement.SetMoveSpeed(moveSpeed);
+            playerAttacks = new PlayerAttacks(animator);
         }
 
         private void FixedUpdate()
         {
-            if (canMove)
+            AggroMobs();
+            playerMovement.Move(Movement.action.ReadValue<Vector2>());
+        }
+
+        // Function gets executed by Player Input
+        void OnMovement(InputValue value)
+        {
+            var moveInput = value.Get<Vector2>();
+            playerMovement.Animate(moveInput);
+        }
+
+        // Function gets executed by Player Input
+        void OnAttack()
+        {
+            playerAttacks.AoeAttack(AoeAttack, transform.position);
+        }
+
+        // Function gets executed by Animations
+        public void AnimationEvent(string command)
+        {
+            if (command == "StopMovement")
+                playerMovement.Stop(true);
+            if (command == "ContinueMovement")
+                playerMovement.Stop(false);
+        }
+
+        public void AggroMobs()
+        {
+            var distance = 10f;
+            var enemies = FindObjectsOfType<GameObject>()
+                .Where(obj =>
+                    obj.GetComponent<Enemy>() &&
+                    Vector3.Distance(obj.transform.position, transform.position) < distance
+                ).Select(obj => obj.GetComponent<Enemy>());
+
+            if (!enemies.Any())
+                return;
+
+            foreach (var enemy in enemies)
             {
-                moveInput = Movement.action.ReadValue<Vector2>();
-
-                if (moveInput != Vector2.zero)
-                {
-                    bool success = TryMove(moveInput);
-
-                    if (!success)
-                    {
-                        success = TryMove(new Vector2(moveInput.x, 0));
-
-                        if (!success)
-                        {
-                            success = TryMove(new Vector2(0, moveInput.y));
-                        }
-                    }
-
-                    if (moveInput.x < 0)
-                        spriteRenderer.flipX = true;
-                    else
-                        spriteRenderer.flipX = false;
-
-                    animator.SetBool("isMovingHorizontal", moveInput.x != 0);
-                    animator.SetBool("isMovingVertical", moveInput.y != 0);
-                    animator.SetBool("isMoving", true);
-
-                    animator.SetFloat("moveX", moveInput.x);
-                    animator.SetFloat("moveY", moveInput.y);
-                }
-                else
-                {
-                    animator.SetBool("isMovingHorizontal", false);
-                    animator.SetBool("isMovingVertical", false);
-                    animator.SetBool("isMoving", false);
-                }
+                enemy.Move(transform.position);
             }
+        }
+
+        /* TODO: Player AIM controls
+         * 
+        public Vector2 PointerPosition { get; set; }
+        private Vector2 pointerInput;
+        private Vector2 GetPointerInput()
+        {
+            Vector3 mousePos = pointerPosition.action.ReadValue<Vector2>();
+            mousePos.z = Camera.main.nearClipPlane;
+            return Camera.main.ScreenToWorldPoint(mousePos);
+        }
+        public void PlayerAim()
+        {
             //Look at cursor when not moving
             // pointerInput = GetPointerInput();
             // var lookDirection = pointerInput - (Vector2)transform.position;
@@ -89,67 +101,8 @@ namespace Assets.Scripts.Characters.Player
             //     {
             //         spriteRenderer.flipX = true;
             //     }
-            //     if (lookDirection.y > 3)
-            //     {
-            //         animator.Play("LookUp");
-            //     }
-            //     else if (lookDirection.y < 0.2)
-            //     {
-            //         animator.Play("LookDown");
-            //     }
             // }
-
         }
-
-        void OnAttack()
-        {
-            // If not attacking
-            if (isAttacking == null)
-            {
-                // Melee attack
-                animator.Play("Attack_1");
-
-                // AOE Attack!
-                isAttacking = Instantiate(AoeAttack, gameObject.transform.position, Quaternion.identity);
-            }
-
-        }
-
-        private bool TryMove(Vector2 direction)
-        {
-            if (direction != Vector2.zero)
-            {
-                // Check for collision
-                int count = rb.Cast(
-                    direction,
-                    moveFilter,
-                    castCollisions,
-                    moveSpeed * Time.fixedDeltaTime + collisionOffset);
-
-                if (count == 0)
-                {
-                    rb.MovePosition(rb.position + direction * moveSpeed * Time.fixedDeltaTime);
-                    return true;
-                }
-            }
-            return false;
-        }
-
-        private Vector2 GetPointerInput()
-        {
-            Vector3 mousePos = pointerPosition.action.ReadValue<Vector2>();
-            mousePos.z = Camera.main.nearClipPlane;
-            return Camera.main.ScreenToWorldPoint(mousePos);
-        }
-
-        public void LockMovement()
-        {
-            canMove = false;
-        }
-
-        public void UnlockMovement()
-        {
-            canMove = true;
-        }
+        */
     }
 }
