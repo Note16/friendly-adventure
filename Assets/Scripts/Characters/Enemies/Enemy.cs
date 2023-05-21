@@ -8,6 +8,9 @@ namespace Assets.Scripts.Characters.Enemies
         [SerializeField]
         private int healthPoints = 10;
 
+        [SerializeField]
+        private bool allowSpriteFlip = true;
+
         private SpriteRenderer spriteRenderer;
         private Animator animator;
         private Movement movement;
@@ -36,8 +39,11 @@ namespace Assets.Scripts.Characters.Enemies
             var moveSuccess = movement.SimpleMove(moveInput);
             animator.SetBool("isMoving", moveSuccess);
 
-            // If we are moving left flip sprite!
-            spriteRenderer.flipX = moveInput.x < 0;
+            if (allowSpriteFlip)
+            {
+                // If we are moving left flip sprite!
+                spriteRenderer.flipX = moveInput.x < 0;
+            }
         }
 
         public void StopMovement()
