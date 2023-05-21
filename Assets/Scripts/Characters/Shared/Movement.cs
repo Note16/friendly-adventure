@@ -57,7 +57,6 @@ namespace Assets.Scripts.Characters.Shared
             return TryMove(moveInput);
         }
 
-
         private bool TryMove(Vector2 direction)
         {
             if (direction != Vector2.zero)
