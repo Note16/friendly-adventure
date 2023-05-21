@@ -11,6 +11,9 @@ namespace Assets.Scripts.Characters.Player
         public GameObject AoeAttack;
 
         [SerializeField]
+        public GameObject HitMarker;
+
+        [SerializeField]
         private float moveSpeed = 7f;
 
         [SerializeField]
@@ -48,6 +51,15 @@ namespace Assets.Scripts.Characters.Player
             playerAttacks.AoeAttack(AoeAttack, transform.position);
         }
 
+        // Function get executed by Player Input
+        void OnPointerPosition(InputValue value)
+        {
+            var pointerInput = value.Get<Vector2>();
+            var pointerPosition = Camera.main.ScreenToWorldPoint(pointerInput);
+
+            RotateHitMarker(pointerPosition);
+        }
+
         // Function gets executed by Animations
         public void AnimationEvent(string command)
         {
@@ -55,6 +67,14 @@ namespace Assets.Scripts.Characters.Player
                 playerMovement.Stop(true);
             if (command == "ContinueMovement")
                 playerMovement.Stop(false);
+        }
+
+        private void RotateHitMarker(Vector2 position)
+        {
+            var relativePos = position - (Vector2)transform.position;
+            var angle = Mathf.Atan2(relativePos.y, relativePos.x) * Mathf.Rad2Deg;
+            var rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+            HitMarker.transform.rotation = rotation;
         }
 
         public void AggroMobs()
@@ -80,34 +100,5 @@ namespace Assets.Scripts.Characters.Player
                 }
             }
         }
-
-        /* TODO: Player AIM controls
-         * 
-        public Vector2 PointerPosition { get; set; }
-        private Vector2 pointerInput;
-        private Vector2 GetPointerInput()
-        {
-            Vector3 mousePos = pointerPosition.action.ReadValue<Vector2>();
-            mousePos.z = Camera.main.nearClipPlane;
-            return Camera.main.ScreenToWorldPoint(mousePos);
-        }
-        public void PlayerAim()
-        {
-            //Look at cursor when not moving
-            // pointerInput = GetPointerInput();
-            // var lookDirection = pointerInput - (Vector2)transform.position;
-            // if (isMoving == false)
-            // {
-            //     if (lookDirection.x > 0.2)
-            //     {
-            //         spriteRenderer.flipX = false;
-            //     }
-            //     else if (lookDirection.x < 0.2)
-            //     {
-            //         spriteRenderer.flipX = true;
-            //     }
-            // }
-        }
-        */
     }
 }
