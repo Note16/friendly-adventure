@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Assets.Scripts.Characters.Player.Attacks
 {
-    public class AoeAttack : MonoBehaviour
+    public class PentagramAttack : MonoBehaviour
     {
         [SerializeField]
         public int damage = 4;
