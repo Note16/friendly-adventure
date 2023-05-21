@@ -73,7 +73,7 @@ SpriteRenderer:
   m_SortingLayerID: 549468577
   m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: de52d41a428d0d2479de9b9566e7dd5e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d6e495134ff11904a8a64a5f52273951, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -574,6 +574,7 @@ MonoBehaviour:
   Movement: {fileID: -440124971067648005, guid: 23bf02c5a505b7e469d359c6774e31c6, type: 3}
   Attack: {fileID: 6395207267600638243, guid: 23bf02c5a505b7e469d359c6774e31c6, type: 3}
   pointerPosition: {fileID: -8479917156398218944, guid: 23bf02c5a505b7e469d359c6774e31c6, type: 3}
+  healthPoints: 100
 --- !u!114 &511697649317852147
 MonoBehaviour:
   m_ObjectHideFlags: 0

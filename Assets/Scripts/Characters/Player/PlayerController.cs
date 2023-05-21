@@ -19,13 +19,18 @@ namespace Assets.Scripts.Characters.Player
         [SerializeField]
         private InputActionReference Movement, Attack, pointerPosition;
 
+        [SerializeField]
+        private int healthPoints = 100;
+
         private PlayerMovement playerMovement;
         private PlayerAttacks playerAttacks;
+
+        private Animator animator;
 
         private void OnEnable()
         {
             var rb = GetComponent<Rigidbody2D>();
-            var animator = GetComponent<Animator>();
+            animator = GetComponent<Animator>();
             var spriteRenderer = GetComponent<SpriteRenderer>();
             playerMovement = new PlayerMovement(animator, spriteRenderer, rb);
             playerMovement.SetMoveSpeed(moveSpeed);
@@ -75,6 +80,16 @@ namespace Assets.Scripts.Characters.Player
             var angle = Mathf.Atan2(relativePos.y, relativePos.x) * Mathf.Rad2Deg;
             var rotation = Quaternion.AngleAxis(angle, Vector3.forward);
             HitMarker.transform.rotation = rotation;
+        }
+
+        public void Damage(int damage)
+        {
+            healthPoints -= damage;
+
+            if (healthPoints <= 0)
+                Debug.Log("death");
+            else
+                animator.Play("TakeHit");
         }
 
         public void AggroMobs()

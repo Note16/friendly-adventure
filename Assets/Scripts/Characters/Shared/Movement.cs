@@ -23,6 +23,11 @@ namespace Assets.Scripts.Characters.Shared
             this.stop = stop;
         }
 
+        public List<RaycastHit2D> GetCollisions()
+        {
+            return collisions;
+        }
+
         public bool Move(Vector2 moveInput)
         {
             if (stop)
