@@ -31,10 +31,6 @@ namespace Assets.Scripts.Characters.Enemies
             playerController = FindObjectOfType<PlayerController>();
         }
 
-        public void Update()
-        {
-        }
-
         public void FixedUpdate()
         {
             var relativePos = (Vector2)playerController.transform.position - (Vector2)transform.position;
