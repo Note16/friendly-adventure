@@ -96,7 +96,7 @@ AnimationClip:
     messageOptions: 0
   - time: 0.5
     functionName: AnimationEvent
-    data: 
+    data: Attack1
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
