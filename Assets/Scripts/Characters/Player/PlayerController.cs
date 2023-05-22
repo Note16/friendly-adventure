@@ -1,5 +1,4 @@
 using Assets.Scripts.Characters.Enemies;
-using System.Linq;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -96,16 +95,11 @@ namespace Assets.Scripts.Characters.Player
         {
             var aggroDistance = 10f;
 
-            var enemyObjects = FindObjectsOfType<GameObject>()
-                .Where(obj => obj.GetComponent<Enemy>());
-
-
-            foreach (var obj in enemyObjects)
+            var enemyObjects = FindObjectsOfType<Enemy>();
+            foreach (var enemy in enemyObjects)
             {
-                var enemy = obj.GetComponent<Enemy>();
-
                 // Find enemies within 10f radius
-                if (Vector3.Distance(obj.transform.position, transform.position) < aggroDistance)
+                if (Vector3.Distance(enemy.transform.position, transform.position) < aggroDistance)
                 {
                     enemy.Move(transform.position);
                 }
