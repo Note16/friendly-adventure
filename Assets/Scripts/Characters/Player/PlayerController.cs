@@ -86,7 +86,7 @@ namespace Assets.Scripts.Characters.Player
             healthPoints -= damage;
 
             if (healthPoints <= 0)
-                Debug.Log("death");
+                animator.Play("Death");
             else
                 animator.Play("TakeHit");
         }

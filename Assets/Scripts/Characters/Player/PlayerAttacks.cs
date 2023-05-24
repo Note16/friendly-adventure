@@ -18,7 +18,7 @@ namespace Assets.Scripts.Characters.Player
             if (activeAoeAttack == null)
             {
                 // Melee attack
-                animator.Play("Attack_1");
+                animator.Play("Cast");
 
 
                 // AOE Attack!
