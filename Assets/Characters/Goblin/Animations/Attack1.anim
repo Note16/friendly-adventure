@@ -45,29 +45,14 @@ AnimationClip:
     m_Center: {x: 0, y: 0, z: 0}
     m_Extent: {x: 0, y: 0, z: 0}
   m_ClipBindingConstant:
-    genericBindings:
-    - serializedVersion: 2
-      path: 0
-      attribute: 0
-      script: {fileID: 0}
-      typeID: 212
-      customType: 23
-      isPPtrCurve: 1
-    pptrCurveMapping:
-    - {fileID: -7008412969330441016, guid: f84c06efa9991bd49b5553f54f400348, type: 3}
-    - {fileID: -7763475090823894447, guid: f84c06efa9991bd49b5553f54f400348, type: 3}
-    - {fileID: 302641331129538988, guid: f84c06efa9991bd49b5553f54f400348, type: 3}
-    - {fileID: -6329420634031446844, guid: f84c06efa9991bd49b5553f54f400348, type: 3}
-    - {fileID: -910092549403018386, guid: f84c06efa9991bd49b5553f54f400348, type: 3}
-    - {fileID: 221524225039350300, guid: f84c06efa9991bd49b5553f54f400348, type: 3}
-    - {fileID: 1290532464073988732, guid: f84c06efa9991bd49b5553f54f400348, type: 3}
-    - {fileID: 4780903288873104255, guid: f84c06efa9991bd49b5553f54f400348, type: 3}
+    genericBindings: []
+    pptrCurveMapping: []
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.6666667
+    m_StopTime: 0.6666666
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -96,12 +81,12 @@ AnimationClip:
     messageOptions: 0
   - time: 0.5
     functionName: AnimationEvent
-    data: 
+    data: Attack1
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 0.6666667
+  - time: 0.5833333
     functionName: AnimationEvent
     data: ContinueMovement
     objectReferenceParameter: {fileID: 0}
