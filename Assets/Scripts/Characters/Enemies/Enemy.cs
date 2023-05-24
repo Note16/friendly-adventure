@@ -33,6 +33,8 @@ namespace Assets.Scripts.Characters.Enemies
 
         public void FixedUpdate()
         {
+            // Update sorting order so enemy shows on top of player
+            // When player is positioned above the enemy
             var relativePos = (Vector2)playerController.transform.position - (Vector2)transform.position;
             spriteRenderer.sortingOrder = relativePos.y < -1 ? 0 : 2;
 
@@ -41,7 +43,10 @@ namespace Assets.Scripts.Characters.Enemies
 
         public void TryMeleeAttack()
         {
-            if (Vector3.Distance(playerController.transform.position, transform.position) < meleeAttackRange)
+            // When player is above the enemy half the melee radius
+            var attackRange = (spriteRenderer.sortingOrder > 0) ? meleeAttackRange - 2 : meleeAttackRange;
+
+            if (Vector3.Distance(playerController.transform.position, transform.position) < attackRange)
             {
                 var currentAnimation = animator.GetCurrentAnimatorStateInfo(0);
                 if (!currentAnimation.IsName("TakeHit") && !currentAnimation.IsName("Death"))
@@ -67,7 +72,7 @@ namespace Assets.Scripts.Characters.Enemies
                 return;
 
             var moveInput = (targetPosition - (Vector2)transform.position).normalized;
-            var moveSuccess = movement.SimpleMove(moveInput);
+            var moveSuccess = movement.Move(moveInput);
             animator.SetBool("isMoving", moveSuccess);
 
             if (allowSpriteFlip)

@@ -161,7 +161,7 @@ MonoBehaviour:
   roomHeight: 22
   wallHeight: 4
   offset: 2
-  corridorSize: 5
+  corridorSize: 6
 --- !u!4 &34912772
 Transform:
   m_ObjectHideFlags: 0

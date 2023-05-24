@@ -170,5 +170,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthPoints: 10
   damage: 2
-  meleeAttackRange: 2
+  meleeAttackRange: 3
   allowSpriteFlip: 1
