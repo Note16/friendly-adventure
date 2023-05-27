@@ -19,6 +19,11 @@ namespace Assets.Scripts.Dungeon.Areas.Rooms
             dungeonVisualizer.SetFloorTiles(tiles);
         }
 
+        public void RemoveWall(IEnumerable<Vector2Int> tiles)
+        {
+            dungeonVisualizer.ClearWallTiles(tiles);
+        }
+
         public void SetNorthWall(RectInt wallRect, int pillarDistance)
         {
             var wallVectors = wallRect.allPositionsWithin.ToVector2Int();

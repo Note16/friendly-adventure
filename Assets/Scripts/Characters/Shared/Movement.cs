@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace Assets.Scripts.Characters.Shared
@@ -66,7 +67,7 @@ namespace Assets.Scripts.Characters.Shared
                     collisions,
                     moveSpeed * Time.fixedDeltaTime + collisionOffset);
 
-                if (count == 0)
+                if (count == 0 || collisions.Any(x => x.collider.isTrigger))
                 {
                     rigidbody2D.MovePosition(rigidbody2D.position + direction * moveSpeed * Time.fixedDeltaTime);
                     return true;

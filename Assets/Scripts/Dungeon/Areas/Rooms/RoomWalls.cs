@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Assets.Scripts.Extensions;
+using UnityEngine;
 
 namespace Assets.Scripts.Dungeon.Areas.Rooms
 {
@@ -26,6 +27,12 @@ namespace Assets.Scripts.Dungeon.Areas.Rooms
             roomVisualizer.SetEastWall(Right, Top, Bottom);
             roomVisualizer.SetSouthWall(Bottom);
             roomVisualizer.SetWestWall(Left, Top, Bottom);
+        }
+
+        public void CreateExit(RoomVisualizer roomVisualizer)
+        {
+            var exitRect = new RectInt(Top.xMax - 5, Top.yMin, 2, 2);
+            roomVisualizer.RemoveWall(exitRect.allPositionsWithin.ToVector2Int());
         }
     }
 }
