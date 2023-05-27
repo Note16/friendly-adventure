@@ -9,7 +9,6 @@ namespace Assets.Scripts.Characters.Shared
         protected bool stop = false;
 
         private readonly Rigidbody2D rigidbody2D;
-        private ContactFilter2D moveFilter;
         private List<RaycastHit2D> collisions = new List<RaycastHit2D>();
         private float collisionOffset = 0.5f;
 
@@ -64,7 +63,6 @@ namespace Assets.Scripts.Characters.Shared
                 // Check for collision
                 int count = rigidbody2D.Cast(
                     direction,
-                    moveFilter,
                     collisions,
                     moveSpeed * Time.fixedDeltaTime + collisionOffset);
 
