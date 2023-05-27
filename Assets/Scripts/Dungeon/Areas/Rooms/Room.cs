@@ -7,7 +7,6 @@ namespace Assets.Scripts.Dungeon.Areas.Rooms
     {
         private readonly RoomVisualizer roomVisualizer;
         private RoomType roomType { get; set; }
-        private Color roomColor { get; set; }
         public RectInt Rect { get; }
         public RectInt WallTopRect { get; }
         public RectInt WallBottomRect { get; }
@@ -40,24 +39,12 @@ namespace Assets.Scripts.Dungeon.Areas.Rooms
         public void SetRoomType(RoomType roomType)
         {
             this.roomType = roomType;
-            SetRoomColor();
             RenderFloor();
         }
 
         public RoomType GetRoomType()
         {
             return roomType;
-        }
-
-        private void SetRoomColor()
-        {
-            roomColor = roomType switch
-            {
-                RoomType.Entrance => Color.cyan,
-                RoomType.Shop => Color.yellow,
-                RoomType.BossRoom => Color.red,
-                _ => Color.gray,
-            };
         }
 
         private void RenderFloor()
