@@ -24,12 +24,19 @@ namespace Assets.Scripts.Helpers
 
         public static void DestroyChildren(Transform transform)
         {
-            for (int i = transform.childCount; i > 0; --i)
+            if (Application.IsPlaying(transform.gameObject))
             {
-                if (Application.IsPlaying(transform.GetChild(0).gameObject))
-                    Object.Destroy(transform.GetChild(0).gameObject);
-                else
+                foreach (Transform child in transform)
+                {
+                    Object.Destroy(child.gameObject);
+                }
+            }
+            else
+            {
+                for (int i = transform.childCount; i > 0; --i)
+                {
                     Object.DestroyImmediate(transform.GetChild(0).gameObject);
+                }
             }
         }
     }
