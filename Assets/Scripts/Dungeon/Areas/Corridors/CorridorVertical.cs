@@ -32,7 +32,7 @@ namespace Assets.Scripts.Dungeon.Areas.Corridors
 
         private void RenderFloor()
         {
-            corridorVisualizer.SetFloor(Rect, Color.grey);
+            corridorVisualizer.SetFloor(Rect);
         }
 
         private void RenderWalls()

@@ -63,7 +63,7 @@ namespace Assets.Scripts.Dungeon.Areas.Rooms
         private void RenderFloor()
         {
             var area = Rect.allPositionsWithin.ToVector2Int();
-            roomVisualizer.SetFloor(area, roomColor);
+            roomVisualizer.SetFloor(area);
         }
 
         private void RenderWalls()

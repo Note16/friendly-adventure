@@ -14,9 +14,9 @@ namespace Assets.Scripts.Dungeon.Areas.Rooms
             this.dungeonVisualizer = dungeonVisualizer;
         }
 
-        public void SetFloor(IEnumerable<Vector2Int> tiles, Color? color)
+        public void SetFloor(IEnumerable<Vector2Int> tiles)
         {
-            dungeonVisualizer.SetFloorTiles(tiles, color);
+            dungeonVisualizer.SetFloorTiles(tiles);
         }
 
         public void SetNorthWall(RectInt wallRect, int pillarDistance)
