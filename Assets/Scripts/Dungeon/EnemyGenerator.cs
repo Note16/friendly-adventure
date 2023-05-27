@@ -24,12 +24,12 @@ namespace Assets.Scripts.Dungeon
 
         public void GenerateBossEnemy(Room room)
         {
-            enemies.Add(Instantiate(bossEnemy, (Vector3Int)room.RoomCenter, Quaternion.identity, gameObject.transform));
+            enemies.Add(Instantiate(bossEnemy, (Vector3Int)room.Floor.Center, Quaternion.identity, gameObject.transform));
         }
 
         public void GenerateEnemies(Room room, int count)
         {
-            var roomFloor = room.InnerFloor.allPositionsWithin.ToVector2Int();
+            var roomFloor = room.Floor.Inner.allPositionsWithin.ToVector2Int();
 
             for (int i = 0; i < count; i++)
             {

@@ -29,7 +29,7 @@ namespace Assets.Scripts.Dungeon
         public void GenerateExit(Room room)
         {
             var exitObj = dungeonObjects.FirstOrDefault(obj => obj.Name == "Exits")?.GameObjects.FirstOrDefault();
-            var position = new Vector2Int(room.Rect.xMax - 4, room.WallTopRect.yMin + 3);
+            var position = new Vector2Int(room.Rect.xMax - 4, room.Walls.Top.yMin + 3);
             activeObjects.Add(GameObject.Instantiate(exitObj, (Vector3Int)position, Quaternion.identity, transform));
         }
 

@@ -1,64 +1,26 @@
-using Assets.Scripts.Extensions;
 using UnityEngine;
 
 namespace Assets.Scripts.Dungeon.Areas.Rooms
 {
     public class Room
     {
-        private readonly RoomVisualizer roomVisualizer;
         private RoomType roomType { get; set; }
+        public RoomWalls Walls { get; }
+        public RoomFloor Floor { get; }
         public RectInt Rect { get; }
-        public RectInt WallTopRect { get; }
-        public RectInt WallBottomRect { get; }
-        public RectInt WallLeftRect { get; }
-        public RectInt WallRightRect { get; }
-        public RectInt InnerFloor { get; }
-        public Vector2Int RoomCenter => Vector2Int.FloorToInt(Rect.center);
-        private int pillarDistance { get; }
+        public Vector2Int RectCenter => Vector2Int.FloorToInt(Rect.center);
 
         public Room(RoomVisualizer roomVisualizer, RectInt roomRect, int wallHeight, int pillarDistance)
         {
-            this.roomVisualizer = roomVisualizer;
-            this.pillarDistance = pillarDistance;
             Rect = roomRect;
+            Walls = new RoomWalls(Rect, wallHeight, pillarDistance);
+            Floor = new RoomFloor(Rect, Walls);
 
-            WallTopRect = new RectInt(Rect.xMin, Rect.yMax - wallHeight, Rect.width, wallHeight);
-            WallBottomRect = new RectInt(Rect.xMin, Rect.yMin, Rect.width, 1);
-            WallLeftRect = new RectInt(Rect.xMin, Rect.yMin, 2, Rect.height);
-            WallRightRect = new RectInt(Rect.xMax - 2, Rect.yMin, 2, Rect.height);
-            InnerFloor = new RectInt(
-                Rect.xMin + WallLeftRect.width,
-                Rect.yMin + WallBottomRect.height + 1,
-                Rect.width - WallLeftRect.width - WallRightRect.width,
-                Rect.height - WallBottomRect.height - WallTopRect.height - 1);
-
-            SetRoomType(RoomType.Default);
-            RenderWalls();
+            Floor.Render(roomVisualizer);
+            Walls.Render(roomVisualizer);
         }
 
-        public void SetRoomType(RoomType roomType)
-        {
-            this.roomType = roomType;
-            RenderFloor();
-        }
-
-        public RoomType GetRoomType()
-        {
-            return roomType;
-        }
-
-        private void RenderFloor()
-        {
-            var area = Rect.allPositionsWithin.ToVector2Int();
-            roomVisualizer.SetFloor(area);
-        }
-
-        private void RenderWalls()
-        {
-            roomVisualizer.SetNorthWall(WallTopRect, pillarDistance);
-            roomVisualizer.SetSouthWall(WallBottomRect);
-            roomVisualizer.SetWestWall(WallLeftRect, WallTopRect, WallBottomRect);
-            roomVisualizer.SetEastWall(WallRightRect, WallTopRect, WallBottomRect);
-        }
+        public void SetRoomType(RoomType type) => roomType = type;
+        public RoomType GetRoomType() => roomType;
     }
 }

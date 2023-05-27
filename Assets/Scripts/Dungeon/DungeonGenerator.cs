@@ -101,7 +101,7 @@ namespace Assets.Scripts.Dungeon
 
 
             var rooms = roomManager.GetRooms();
-            PositionPlayerCharacter(rooms.First().RoomCenter);
+            PositionPlayerCharacter(rooms.First().Floor.Center);
 
             GenerateObjects(rooms);
             GenerateEnemies(rooms);

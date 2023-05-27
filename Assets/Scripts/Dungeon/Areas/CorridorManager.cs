@@ -30,17 +30,17 @@ namespace Assets.Scripts.Dungeon.Areas
                 var roomUp = roomManager.GetAdjacentRoom(room, Direction.Up);
                 if (roomUp != null)
                 {
-                    var position = new Vector2Int(room.RoomCenter.x - size / 2, room.Rect.yMax - room.WallTopRect.height);
-                    var corridor = new Vector2Int(size, roomManager.GetOffset() + room.WallTopRect.height + room.WallBottomRect.height);
+                    var position = new Vector2Int(room.RectCenter.x - size / 2, room.Rect.yMax - room.Walls.Top.height);
+                    var corridor = new Vector2Int(size, roomManager.GetOffset() + room.Walls.Top.height + room.Walls.Bottom.height);
 
-                    new CorridorVertical(corridorVisualizer, new RectInt(position, corridor), room.WallTopRect);
+                    new CorridorVertical(corridorVisualizer, new RectInt(position, corridor), room.Walls.Top);
                 }
 
                 var roomRight = roomManager.GetAdjacentRoom(room, Direction.Right);
                 if (roomRight != null)
                 {
-                    var position = new Vector2Int(room.Rect.xMax - room.WallRightRect.width, room.RoomCenter.y - (size - 2) / 2 - room.WallTopRect.height / 2);
-                    var corridor = new Vector2Int(roomManager.GetOffset() + room.WallLeftRect.width + room.WallRightRect.width, size - 2);
+                    var position = new Vector2Int(room.Rect.xMax - room.Walls.Right.width, room.RectCenter.y - (size - 2) / 2 - room.Walls.Top.height / 2);
+                    var corridor = new Vector2Int(roomManager.GetOffset() + room.Walls.Left.width + room.Walls.Right.width, size - 2);
 
                     new CorridorHorizontal(corridorVisualizer, new RectInt(position, corridor), wallHeight);
                 }
