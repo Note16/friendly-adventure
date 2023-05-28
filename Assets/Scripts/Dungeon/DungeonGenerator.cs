@@ -1,6 +1,8 @@
 using Assets.Scripts.Dungeon.Areas;
 using Assets.Scripts.Dungeon.Areas.Corridors;
 using Assets.Scripts.Dungeon.Areas.Rooms;
+using Assets.Scripts.Helpers;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
@@ -10,6 +12,7 @@ namespace Assets.Scripts.Dungeon
     {
         protected DungeonVisualizer dungeonVisualizer;
         protected EnemyGenerator enemyGenerator;
+        protected ObjectsGenerator objectsGenerator;
 
         [SerializeField]
         private GameObject playerCharacter;
@@ -18,8 +21,8 @@ namespace Assets.Scripts.Dungeon
         private int minRoomCount = 8, maxRoomCount = 15;
 
         [SerializeField]
-        [Range(9, 25)]
-        private int roomWidth = 30, roomHeight = 20;
+        [Range(18, 25)]
+        private int roomWidth = 18, roomHeight = 18;
 
         [SerializeField]
         [Range(4, 6)]
@@ -30,35 +33,58 @@ namespace Assets.Scripts.Dungeon
         private int offset = 4;
 
         [SerializeField]
-        [Range(4, 10)]
+        [Range(6, 10)]
         private int corridorSize = 4;
+
+        [SerializeField]
+        private bool disableGenerateOnStart = false;
 
         private void Start()
         {
-            GenerateDungeon();
+            if (!disableGenerateOnStart)
+                GenerateDungeon();
+        }
+
+        private void InitComponents()
+        {
+            if (dungeonVisualizer == null) dungeonVisualizer = GetComponent<DungeonVisualizer>();
+            if (enemyGenerator == null) enemyGenerator = GetComponent<EnemyGenerator>();
+            if (objectsGenerator == null) objectsGenerator = GetComponent<ObjectsGenerator>();
         }
 
         public void ClearDungeon()
         {
+            InitComponents();
+
+            // cleanup any active objects
+            objectsGenerator?.DestroyObjects();
+
             // Cleanup objects
-            enemyGenerator.DestroyEnemies();
+            enemyGenerator?.DestroyEnemies();
 
             // Cleanup tilemap
-            dungeonVisualizer.Clear();
+            dungeonVisualizer?.Clear();
+
+            // Cleanup any remaining child gameobject
+            GameObjectHelper.DestroyChildren(transform);
+
+            disableGenerateOnStart = false;
         }
 
         public void GenerateDungeon()
         {
-            dungeonVisualizer = GetComponent<DungeonVisualizer>();
-            enemyGenerator = GetComponent<EnemyGenerator>();
+            InitComponents();
+
             ClearDungeon();
             CreateDungeon();
+
+            disableGenerateOnStart = true;
         }
 
         private void CreateDungeon()
         {
             var roomVisualiser = new RoomVisualizer(dungeonVisualizer);
-            var roomManager = new RoomManager(roomVisualiser, enemyGenerator);
+            var roomManager = new RoomManager(roomVisualiser);
             roomManager.SetWallHeight(wallHeight);
             roomManager.SetOffset(offset);
             roomManager.GenerateRooms(
@@ -72,12 +98,46 @@ namespace Assets.Scripts.Dungeon
             corridorManger.GenerateCorridors(corridorSize);
 
             dungeonVisualizer.SetAllFloorTiles();
-            PositionPlayerCharacter(roomManager.GetRooms().First().RoomCenter);
+
+
+            var rooms = roomManager.GetRooms();
+            PositionPlayerCharacter(rooms.First().Floor.Center);
+
+            GenerateObjects(rooms);
+            GenerateEnemies(rooms);
+
         }
 
         private void PositionPlayerCharacter(Vector2Int position)
         {
             playerCharacter.transform.position = (Vector3Int)position;
         }
+
+        public void GenerateEnemies(IEnumerable<Room> rooms)
+        {
+            foreach (var room in rooms)
+            {
+                if (room.GetRoomType() == RoomType.Default)
+                {
+                    enemyGenerator.GenerateEnemies(room, 4);
+                }
+                if (room.GetRoomType() == RoomType.BossRoom)
+                {
+                    enemyGenerator.GenerateBossEnemy(room);
+                }
+            }
+        }
+
+        public void GenerateObjects(IEnumerable<Room> rooms)
+        {
+            foreach (var room in rooms)
+            {
+                if (room.GetRoomType() == RoomType.BossRoom)
+                {
+                    objectsGenerator.GenerateExit(room);
+                }
+            }
+        }
+
     }
 }

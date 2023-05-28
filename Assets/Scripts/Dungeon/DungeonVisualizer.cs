@@ -49,46 +49,39 @@ namespace Assets.Scripts.Dungeon
             {
                 if (!allTiles.Contains(position))
                 {
-                    SetSingleTile(wallTilemap, darkTile, position, null);
+                    SetSingleTile(wallTilemap, darkTile, position);
                 }
             }
         }
 
-        private void SetSingleTile(Tilemap tilemap, TileBase tile, Vector2Int position, Color? color = null)
+        private void SetSingleTile(Tilemap tilemap, TileBase tile, Vector2Int position)
         {
             var tilePosition = tilemap.WorldToCell((Vector3Int)position);
             tilemap.SetTile(tilePosition, tile);
-
-            if (color.HasValue)
-            {
-                tilemap.SetTileFlags(tilePosition, TileFlags.None);
-                tilemap.SetColor(tilePosition, (Color)color);
-            }
-
             allTiles.Add(position);
         }
 
-        public void SetFloorTile(Vector2Int position, Color? color = null)
+        public void SetFloorTile(Vector2Int position)
         {
-            SetSingleTile(floorTilemap, floorTile, position, color);
+            SetSingleTile(floorTilemap, floorTile, position);
         }
 
-        public void SetFloorTiles(IEnumerable<Vector2Int> floorPositions, Color? color)
+        public void SetFloorTiles(IEnumerable<Vector2Int> floorPositions)
         {
             foreach (var position in floorPositions)
             {
-                SetFloorTile(position, color);
+                SetFloorTile(position);
             }
         }
 
-        public void SetRandomWallTile(string tileName, Vector2Int position, Color? color = null)
+        public void SetRandomWallTile(string tileName, Vector2Int position)
         {
-            SetRandomTile(wallTilemap, wallTiles, tileName, position, color);
+            SetRandomTile(wallTilemap, wallTiles, tileName, position);
         }
 
-        public void SetRandomWallLedgeTile(string tileName, Vector2Int position, Color? color = null)
+        public void SetRandomWallLedgeTile(string tileName, Vector2Int position)
         {
-            SetRandomTile(wallTilemap, ledgeTiles, tileName, position, color);
+            SetRandomTile(wallTilemap, ledgeTiles, tileName, position);
         }
 
         public void ClearWallTile(Vector2Int position)
@@ -112,7 +105,7 @@ namespace Assets.Scripts.Dungeon
 
             var tileBase = RandomHelper.GetRandom(collection.Tiles);
 
-            SetSingleTile(tilemap, tileBase, position, color);
+            SetSingleTile(tilemap, tileBase, position);
         }
 
         public void Clear()

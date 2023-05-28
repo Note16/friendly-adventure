@@ -16,7 +16,7 @@ namespace Assets.Scripts.Characters.Enemies
         private float meleeAttackRange = 4f;
 
         [SerializeField]
-        private bool allowSpriteFlip = true;
+        private bool spriteIsFacingRight = true;
 
         private PlayerController playerController;
         private SpriteRenderer spriteRenderer;
@@ -75,10 +75,16 @@ namespace Assets.Scripts.Characters.Enemies
             var moveSuccess = movement.Move(moveInput);
             animator.SetBool("isMoving", moveSuccess);
 
-            if (allowSpriteFlip)
+
+            if (spriteIsFacingRight)
             {
                 // If we are moving left flip sprite!
                 spriteRenderer.flipX = moveInput.x < 0;
+            }
+            else
+            {
+                // If we are moving right flip sprite!
+                spriteRenderer.flipX = moveInput.x > 0;
             }
         }
 

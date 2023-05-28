@@ -10,27 +10,14 @@ namespace Assets.Scripts.Dungeon.Areas
     public class RoomManager
     {
         private readonly RoomVisualizer roomVisualizer;
-        private readonly EnemyGenerator enemyGenerator;
         private List<Room> rooms;
         private int offset;
         private int wallHeight = 4;
         private int pillarDistance = 4;
 
-        public RoomManager(RoomVisualizer roomVisualizer, EnemyGenerator enemyGenerator)
+        public RoomManager(RoomVisualizer roomVisualizer)
         {
             this.roomVisualizer = roomVisualizer;
-            this.enemyGenerator = enemyGenerator;
-        }
-
-        public void GenerateEnemies()
-        {
-            foreach (var room in rooms.Where(room => room.GetRoomType() == RoomType.Default))
-            {
-                enemyGenerator.GenerateEnemies(room, 4);
-            }
-
-            var bossRoom = rooms.First(room => room.GetRoomType() == RoomType.BossRoom);
-            enemyGenerator.GenerateBossEnemy(bossRoom);
         }
 
         public void SetWallHeight(int wallHeight)
@@ -67,7 +54,6 @@ namespace Assets.Scripts.Dungeon.Areas
             }
             rooms = roomsList;
             AssignRoomTypes();
-            GenerateEnemies();
         }
 
         public IEnumerable<Room> GetRooms()

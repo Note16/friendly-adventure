@@ -36,13 +36,13 @@ namespace Assets.Scripts.Dungeon.Areas.Corridors
             this.dungeonVisualizer = dungeonVisualizer;
         }
 
-        public void SetFloor(RectInt rect, Color? color)
+        public void SetFloor(RectInt rect)
         {
             var area = rect.allPositionsWithin.ToVector2Int();
             foreach (var item in area)
             {
                 if (item.x > rect.x && item.y > rect.y && item.x < rect.xMax - 1 && item.y < rect.yMax)
-                    dungeonVisualizer.SetFloorTile(item, color);
+                    dungeonVisualizer.SetFloorTile(item);
 
             }
         }
