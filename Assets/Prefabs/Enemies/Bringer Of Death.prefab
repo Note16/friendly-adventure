@@ -171,4 +171,4 @@ MonoBehaviour:
   healthPoints: 10
   damage: 2
   meleeAttackRange: 5
-  spriteFacingRight: 0
+  spriteIsFacingRight: 0
