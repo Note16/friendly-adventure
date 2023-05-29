@@ -170,6 +170,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CombatTextYAxis: 0.8
   healthPoints: 10
-  damage: 2
+  Attack1Damage: 2
+  Attack2Damage: 4
   meleeAttackRange: 3
   spriteIsFacingRight: 1

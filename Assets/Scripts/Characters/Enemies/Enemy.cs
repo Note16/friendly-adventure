@@ -2,6 +2,7 @@
 using Assets.Scripts.Characters.Shared;
 using Assets.Scripts.Helpers;
 using Assets.Scripts.UI;
+using System.Linq;
 using UnityEngine;
 
 namespace Assets.Scripts.Characters.Enemies
@@ -15,13 +16,22 @@ namespace Assets.Scripts.Characters.Enemies
         private int healthPoints = 10;
 
         [SerializeField]
-        private int damage = 2;
+        private int Attack1Damage = 2;
+
+        [SerializeField]
+        private int Attack2Damage = 4;
 
         [SerializeField]
         private float meleeAttackRange = 4f;
 
         [SerializeField]
+        private float castingAttackRange = 8f;
+
+        [SerializeField]
         private bool spriteIsFacingRight = true;
+
+        [SerializeField]
+        private GameObject Spell1;
 
         private PlayerController playerController;
         private SpriteRenderer spriteRenderer;
@@ -43,20 +53,25 @@ namespace Assets.Scripts.Characters.Enemies
             var relativePos = (Vector2)playerController.transform.position - (Vector2)transform.position;
             spriteRenderer.sortingOrder = relativePos.y < -1 ? 0 : 2;
 
-            TryMeleeAttack();
+            TryAttack();
         }
 
-        public void TryMeleeAttack()
+        public void TryAttack()
         {
-            // When player is above the enemy half the melee radius
-            var attackRange = (spriteRenderer.sortingOrder > 0) ? meleeAttackRange - 2 : meleeAttackRange;
 
-            if (Vector3.Distance(playerController.transform.position, transform.position) < attackRange)
+            if (!AnimationIsPlaying(new string[] { "TakeHit", "Death", "Attack1", "Attack2", "Cast" }))
             {
-                var currentAnimation = animator.GetCurrentAnimatorStateInfo(0);
-                if (!currentAnimation.IsName("TakeHit") && !currentAnimation.IsName("Death"))
+                if (Spell1 != null && Vector3.Distance(playerController.transform.position, transform.position) < castingAttackRange)
                 {
-                    animator.Play("Attack1");
+                    if (RandomHelper.GetRandom(2))
+                    {
+                        animator.Play("Cast");
+                    }
+                }
+                if (Vector3.Distance(playerController.transform.position, transform.position) < meleeAttackRange)
+                {
+                    var attack = RandomHelper.GetRandom(40) ? "Attack2" : "Attack1";
+                    animator.Play(attack);
                 }
             }
         }
@@ -106,8 +121,20 @@ namespace Assets.Scripts.Characters.Enemies
                 // Check if still in melee range
                 if (Vector3.Distance(playerController.transform.position, transform.position) < meleeAttackRange)
                 {
-                    playerController.Damage(damage);
+                    playerController.Damage(Attack1Damage);
                 }
+            }
+            if (command == "Attack2")
+            {
+                // Check if still in melee range
+                if (Vector3.Distance(playerController.transform.position, transform.position) < meleeAttackRange)
+                {
+                    playerController.Damage(Attack2Damage);
+                }
+            }
+            if (command == "Cast")
+            {
+                Instantiate(Spell1, playerController.transform.position, Quaternion.identity);
             }
             if (command == "StopMovement")
                 movement.Stop(true);
@@ -118,6 +145,12 @@ namespace Assets.Scripts.Characters.Enemies
         public void StopMovement()
         {
             animator.SetBool("isMoving", false);
+        }
+
+        public bool AnimationIsPlaying(string[] name)
+        {
+            var currentAnimation = animator.GetCurrentAnimatorStateInfo(0);
+            return name.Any(name => currentAnimation.IsName(name));
         }
     }
 }

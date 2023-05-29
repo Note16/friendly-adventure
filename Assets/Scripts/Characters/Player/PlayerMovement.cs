@@ -14,18 +14,13 @@ namespace Assets.Scripts.Characters.Player
             this.spriteRenderer = spriteRenderer;
         }
 
-        public void SetMoveSpeed(float speed)
-        {
-            moveSpeed = speed;
-        }
-
-        public void Animate(Vector2 moveInput)
+        public void Animate(Vector2 direction)
         {
             if (stop)
                 return;
 
             // We are standing still
-            if (moveInput == Vector2.zero)
+            if (direction == Vector2.zero)
             {
                 // Set is moving animation parameters
                 animator.SetBool("isMovingHorizontal", false);
@@ -37,14 +32,14 @@ namespace Assets.Scripts.Characters.Player
             }
 
             // If we are moving left flip sprite!
-            spriteRenderer.flipX = moveInput.x < 0;
+            spriteRenderer.flipX = direction.x < 0;
 
             // Set is moving animation parameters
-            animator.SetBool("isMovingHorizontal", moveInput.x != 0);
-            animator.SetBool("isMovingVertical", moveInput.y != 0);
+            animator.SetBool("isMovingHorizontal", direction.x != 0);
+            animator.SetBool("isMovingVertical", direction.y != 0);
             animator.SetBool("isMoving", true);
-            animator.SetFloat("moveX", moveInput.x);
-            animator.SetFloat("moveY", moveInput.y);
+            animator.SetFloat("moveX", direction.x);
+            animator.SetFloat("moveY", direction.y);
         }
     }
 }
