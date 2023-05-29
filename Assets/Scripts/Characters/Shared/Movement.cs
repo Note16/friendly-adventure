@@ -18,43 +18,53 @@ namespace Assets.Scripts.Characters.Shared
             this.rigidbody2D = rigidbody2D;
         }
 
+        public void SetMoveSpeed(float speed)
+        {
+            moveSpeed = speed;
+        }
+
         public void Stop(bool stop)
         {
             this.stop = stop;
         }
 
-        public bool Move(Vector2 moveInput)
+        public bool Move(Vector2 direction)
         {
             if (stop)
                 return false;
 
             // Lets try moving
-            var moveSuccess = TryMove(moveInput);
+            var moveSuccess = TryMove(direction);
 
             // We couldn't move..
             if (!moveSuccess)
             {
                 // Lets try moving horizontal
-                moveSuccess = TryMove(new Vector2(moveInput.x, 0));
+                moveSuccess = TryMove(new Vector2(direction.x, 0));
 
                 // We still couldn't move..
                 if (!moveSuccess)
                 {
                     // Lets try moving vertical
-                    moveSuccess = TryMove(new Vector2(0, moveInput.y));
+                    moveSuccess = TryMove(new Vector2(0, direction.y));
                 }
             }
 
             return moveSuccess;
         }
 
-        public bool SimpleMove(Vector2 moveInput)
+        public bool SimpleMove(Vector2 direction)
         {
             if (stop)
                 return false;
 
             // Lets try moving
-            return TryMove(moveInput);
+            return TryMove(direction);
+        }
+
+        public void MoveIgnoreCollision(Vector2 direction)
+        {
+            rigidbody2D.MovePosition(rigidbody2D.position + direction * moveSpeed * Time.fixedDeltaTime);
         }
 
         private bool TryMove(Vector2 direction)
