@@ -143,10 +143,10 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.21}
+  m_Offset: {x: 0, y: 0.02}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
+    pivot: {x: 0.5, y: 0.35}
     oldSize: {x: 1.5, y: 1.5}
     newSize: {x: 1.5, y: 1.5}
     adaptiveTilingThreshold: 0.5
@@ -168,7 +168,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4baee0ea5421f9346b1277a500cdbc73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CombatTextYAxis: 0.6
   healthPoints: 10
   damage: 2
   meleeAttackRange: 3
-  allowSpriteFlip: 1
+  spriteIsFacingRight: 1

@@ -359,6 +359,10 @@ PrefabInstance:
       propertyPath: HitMarker
       value: 
       objectReference: {fileID: 2133464692}
+    - target: {fileID: 3993709810264871192, guid: 102af8aa83f700d4f8b0e5d21612bb34, type: 3}
+      propertyPath: CombatText
+      value: 
+      objectReference: {fileID: 3595126182423889330, guid: 02a7af8f0714ba54c9cb95f4c36ad4c0, type: 3}
     - target: {fileID: 8111309106597192690, guid: 102af8aa83f700d4f8b0e5d21612bb34, type: 3}
       propertyPath: m_Name
       value: PlayerCharacter
