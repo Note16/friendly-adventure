@@ -1,4 +1,6 @@
 using Assets.Scripts.Characters.Enemies;
+using Assets.Scripts.Helpers;
+using Assets.Scripts.UI;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -83,7 +85,13 @@ namespace Assets.Scripts.Characters.Player
 
         public void Damage(int damage)
         {
+            var isCrit = RandomHelper.GetRandom(50);
+            if (isCrit)
+                damage *= 2;
+
             healthPoints -= damage;
+
+            DamagePopup.Create(transform, 1.4f, damage, isCrit);
 
             if (healthPoints <= 0)
                 animator.Play("Death");

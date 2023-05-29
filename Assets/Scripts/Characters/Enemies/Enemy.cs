@@ -1,11 +1,16 @@
 ﻿using Assets.Scripts.Characters.Player;
 using Assets.Scripts.Characters.Shared;
+using Assets.Scripts.Helpers;
+using Assets.Scripts.UI;
 using UnityEngine;
 
 namespace Assets.Scripts.Characters.Enemies
 {
     public class Enemy : MonoBehaviour
     {
+        [SerializeField]
+        private float CombatTextYAxis = 1f;
+
         [SerializeField]
         private int healthPoints = 10;
 
@@ -58,7 +63,13 @@ namespace Assets.Scripts.Characters.Enemies
 
         public void Damage(int damage)
         {
+            var isCrit = RandomHelper.GetRandom(50);
+            if (isCrit)
+                damage *= 2;
+
             healthPoints -= damage;
+
+            DamagePopup.Create(transform, CombatTextYAxis, damage, isCrit);
 
             if (healthPoints <= 0)
                 animator.Play("Death");
