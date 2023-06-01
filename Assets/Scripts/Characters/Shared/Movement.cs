@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace Assets.Scripts.Characters.Shared
@@ -85,6 +86,20 @@ namespace Assets.Scripts.Characters.Shared
                 }
             }
             return false;
+        }
+        public void Pushed(Vector2 direction)
+        {
+            var newPosition = rigidbody2D.position + direction;
+
+            // Check for collisions
+            rigidbody2D.Cast(
+                direction,
+                collisions,
+                Vector2.Distance(rigidbody2D.position, newPosition));
+
+            // Check for wall collision
+            if (!collisions.Any(rayhit => rayhit.collider.name == "Walls"))
+                rigidbody2D.MovePosition(newPosition);
         }
     }
 }

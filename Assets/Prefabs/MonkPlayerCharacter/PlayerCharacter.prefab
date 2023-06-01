@@ -485,11 +485,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AoeAttack: {fileID: 3804288888145762448, guid: 1edcbcedf99014440a1cb7c63bcf5f02, type: 3}
-  HitMarker: {fileID: 5351969569328700735, guid: 7fe23571d22c5b844b74a00d3c9fb978, type: 3}
+  SwordSwingAttack: {fileID: 4649867204053538800, guid: 14975f636e3ba064bb5c21f12e368528, type: 3}
   moveSpeed: 7
   Movement: {fileID: -440124971067648005, guid: 23bf02c5a505b7e469d359c6774e31c6, type: 3}
-  Attack: {fileID: 6395207267600638243, guid: 23bf02c5a505b7e469d359c6774e31c6, type: 3}
-  pointerPosition: {fileID: -8479917156398218944, guid: 23bf02c5a505b7e469d359c6774e31c6, type: 3}
   healthPoints: 100
 --- !u!114 &511697649317852147
 MonoBehaviour:
@@ -545,22 +543,6 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3507897011613897354, guid: 7fe23571d22c5b844b74a00d3c9fb978, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 0.20725326
-      objectReference: {fileID: 0}
-    - target: {fileID: 3507897011613897354, guid: 7fe23571d22c5b844b74a00d3c9fb978, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3507897011613897354, guid: 7fe23571d22c5b844b74a00d3c9fb978, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3507897011613897354, guid: 7fe23571d22c5b844b74a00d3c9fb978, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0.97828734
-      objectReference: {fileID: 0}
-    - target: {fileID: 3507897011613897354, guid: 7fe23571d22c5b844b74a00d3c9fb978, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0
       objectReference: {fileID: 0}
@@ -575,6 +557,10 @@ PrefabInstance:
     - target: {fileID: 5351969569328700735, guid: 7fe23571d22c5b844b74a00d3c9fb978, type: 3}
       propertyPath: m_Name
       value: Hit Marker
+      objectReference: {fileID: 0}
+    - target: {fileID: 5351969569328700735, guid: 7fe23571d22c5b844b74a00d3c9fb978, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7fe23571d22c5b844b74a00d3c9fb978, type: 3}
