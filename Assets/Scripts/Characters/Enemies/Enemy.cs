@@ -92,6 +92,11 @@ namespace Assets.Scripts.Characters.Enemies
                 animator.Play("TakeHit");
         }
 
+        public void Push(Vector2 direction)
+        {
+            movement.Pushed(direction);
+        }
+
         public void Move(Vector2 targetPosition)
         {
             if (animator.GetCurrentAnimatorStateInfo(0).IsName("TakeHit"))

@@ -9,16 +9,13 @@ namespace Assets.Scripts.Characters.Player
     public class PlayerController : MonoBehaviour
     {
         [SerializeField]
-        public GameObject AoeAttack;
-
-        [SerializeField]
-        public GameObject HitMarker;
+        public GameObject AoeAttack, SwordSwingAttack;
 
         [SerializeField]
         private float moveSpeed = 7f;
 
         [SerializeField]
-        private InputActionReference Movement, Attack, pointerPosition;
+        private InputActionReference Movement;
 
         [SerializeField]
         private int healthPoints = 100;
@@ -52,7 +49,13 @@ namespace Assets.Scripts.Characters.Player
         }
 
         // Function gets executed by Player Input
-        void OnAttack()
+        void OnMainAttack()
+        {
+            playerAttacks.SwordSwing(SwordSwingAttack, transform);
+        }
+
+        // Function gets executed by Player Input
+        void OnSecondaryAttack()
         {
             playerAttacks.AoeAttack(AoeAttack, transform.position);
         }
@@ -80,7 +83,10 @@ namespace Assets.Scripts.Characters.Player
             var relativePos = position - (Vector2)transform.position;
             var angle = Mathf.Atan2(relativePos.y, relativePos.x) * Mathf.Rad2Deg;
             var rotation = Quaternion.AngleAxis(angle, Vector3.forward);
-            HitMarker.transform.rotation = rotation;
+
+            var hitMarker = transform.Find("Hit Marker");
+            if (hitMarker != null)
+                hitMarker.rotation = rotation;
         }
 
         public void Damage(int damage)
