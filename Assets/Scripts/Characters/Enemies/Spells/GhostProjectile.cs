@@ -1,11 +1,10 @@
 using Assets.Scripts.Characters.Shared;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 namespace Assets.Scripts.Characters.Player.Attacks
 {
-    public class GraspingHand : MonoBehaviour
+    public class GhostProjectile : MonoBehaviour
     {
         [SerializeField]
         public int damage = 4;
@@ -20,25 +19,29 @@ namespace Assets.Scripts.Characters.Player.Attacks
             movement.SetMoveSpeed(6f);
             playerController = FindObjectOfType<PlayerController>();
 
-            StartCoroutine(HitEnemyAfterDelay(0.5f));
-            StartCoroutine(HitEnemyAfterDelay(0.6f));
+            Destroy(gameObject, 1f);
         }
 
         private void FixedUpdate()
         {
-            Move(playerController.transform.position);
+            Move(playerController.transform.position - new Vector3(0, -0.6f, 0));
+            HitEnemy();
         }
 
-        public void Move(Vector2 targetPosition)
+        private void Update()
         {
-            var moveInput = (targetPosition - (Vector2)transform.position).normalized;
+            transform.rotation = Quaternion.FromToRotation(transform.position, playerController.transform.position - transform.position - new Vector3(0, -1, 0));
+        }
+
+
+        public void Move(Vector3 targetPosition)
+        {
+            var moveInput = ((Vector2)targetPosition - (Vector2)transform.position).normalized;
             movement.MoveIgnoreCollision(moveInput);
         }
 
-        IEnumerator HitEnemyAfterDelay(float delay)
+        void HitEnemy()
         {
-            yield return new WaitForSeconds(delay);
-
             var hits = new List<RaycastHit2D>();
             rb.Cast(Vector2.zero, hits);
 
@@ -47,6 +50,7 @@ namespace Assets.Scripts.Characters.Player.Attacks
                 if (hit.collider.gameObject.TryGetComponent<PlayerController>(out var player))
                 {
                     player.Damage(damage);
+                    Destroy(gameObject);
                 }
             }
         }

@@ -28,9 +28,9 @@ namespace Assets.Scripts.Characters.Player.Attacks
 
             foreach (var hit in hits)
             {
-                if (hit.collider.gameObject.TryGetComponent<Enemy>(out var enemy))
+                if (hit.collider.gameObject.TryGetComponent<BaseEnemy>(out var enemy))
                 {
-                    enemy.Damage(damage);
+                    enemy.TakeDamage(damage);
 
                     var direction = (enemy.transform.position - transform.position) / 2;
                     enemy.Push((Vector2)direction);
