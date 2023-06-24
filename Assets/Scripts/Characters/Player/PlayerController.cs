@@ -109,7 +109,7 @@ namespace Assets.Scripts.Characters.Player
         {
             var aggroDistance = 10f;
 
-            var enemyObjects = FindObjectsOfType<Enemy>();
+            var enemyObjects = FindObjectsOfType<BaseEnemy>();
             foreach (var enemy in enemyObjects)
             {
                 // Find enemies within 10f radius
