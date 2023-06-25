@@ -48,7 +48,7 @@ namespace Assets.Scripts.Characters.Enemies
                 // Check if still in melee range
                 if (Vector3.Distance(playerController.transform.position, transform.position) < meleeAttackRange)
                 {
-                    playerController.Damage(Attack1Damage);
+                    playerController.TakeDamage(Attack1Damage);
                 }
             }
             if (command == "Attack2")
@@ -56,7 +56,7 @@ namespace Assets.Scripts.Characters.Enemies
                 // Check if still in melee range
                 if (Vector3.Distance(playerController.transform.position, transform.position) < meleeAttackRange)
                 {
-                    playerController.Damage(Attack2Damage);
+                    playerController.TakeDamage(Attack2Damage);
                 }
             }
             if (command == "Cast")
