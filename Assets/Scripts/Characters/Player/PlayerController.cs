@@ -20,10 +20,13 @@ namespace Assets.Scripts.Characters.Player
         [SerializeField]
         private int healthPoints = 100;
 
+        private int currentHP;
+
         private PlayerMovement playerMovement;
         private PlayerAttacks playerAttacks;
 
         private Animator animator;
+        private HealthGlobe healthGlobe;
 
         private void OnEnable()
         {
@@ -33,6 +36,9 @@ namespace Assets.Scripts.Characters.Player
             playerMovement = new PlayerMovement(animator, spriteRenderer, rb);
             playerMovement.SetMoveSpeed(moveSpeed);
             playerAttacks = new PlayerAttacks(animator);
+
+            currentHP = healthPoints;
+            healthGlobe = FindObjectOfType<HealthGlobe>();
         }
 
         private void FixedUpdate()
@@ -89,20 +95,22 @@ namespace Assets.Scripts.Characters.Player
                 hitMarker.rotation = rotation;
         }
 
-        public void Damage(int damage)
+        public void TakeDamage(int damage)
         {
             var isCrit = RandomHelper.GetRandom(50);
             if (isCrit)
                 damage *= 2;
 
-            healthPoints -= damage;
+            currentHP -= damage;
 
             DamagePopup.Create(transform, 1.4f, damage, isCrit);
 
-            if (healthPoints <= 0)
+            if (currentHP <= 0)
                 animator.Play("Death");
             else
                 animator.Play("TakeHit");
+
+            healthGlobe.UpdateHealthGlobe((float)currentHP / healthPoints);
         }
 
         public void AggroMobs()

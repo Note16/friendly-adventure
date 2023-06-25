@@ -46,7 +46,7 @@ namespace Assets.Scripts.Characters.Player.Attacks
             {
                 if (hit.collider.gameObject.TryGetComponent<PlayerController>(out var player))
                 {
-                    player.Damage(damage);
+                    player.TakeDamage(damage);
                 }
             }
         }
