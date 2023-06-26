@@ -16,8 +16,8 @@ namespace Assets.Scripts.Dungeon.Objects
 
         private void FixedUpdate()
         {
-            // Update sorting order so enemy shows on top of player
-            // When player is positioned above the enemy
+            // Update sorting order so objects show on top of player
+            // When player is positioned above the object
             var relativePos = (Vector2)playerController.transform.position - (Vector2)transform.position;
 
             var pivitPoint = spriteRenderer.size.y - 1f;
