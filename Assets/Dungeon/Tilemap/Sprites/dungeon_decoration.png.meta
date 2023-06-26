@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 389be3483ef26ae4886e2b0a97fdaff1
+guid: 029030ab7555c8c4e95178103a2328f6
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -117,13 +117,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: mainlevbuild_0
+      name: dungeon_decoration_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 656
-        width: 16
-        height: 32
+        x: 16
+        y: 449
+        width: 48
+        height: 46
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -131,83 +131,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bc762c640bbadd247857afe298f5968e
-      internalID: -528582291
+      spriteID: e2674e6f61f62514c90f521651d5eda1
+      internalID: -47998151
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mainlevbuild_1
+      name: dungeon_decoration_1
       rect:
         serializedVersion: 2
-        x: 32
-        y: 551
-        width: 288
-        height: 185
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 6a27873855f65d54cac376737f59a4dc
-      internalID: 759475136
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: mainlevbuild_2
-      rect:
-        serializedVersion: 2
-        x: 336
-        y: 656
-        width: 16
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 8063144609848c3419ff8cb36a7abbe7
-      internalID: -2059826861
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: mainlevbuild_3
-      rect:
-        serializedVersion: 2
-        x: 368
-        y: 672
-        width: 128
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 0e1509ac87104424abe8c3121f172f86
-      internalID: 2038090859
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: mainlevbuild_4
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 560
+        x: 80
+        y: 454
         width: 32
-        height: 80
+        height: 41
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -215,20 +152,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fbbd849fb092f064f84a08c8031650e2
-      internalID: -27537445
+      spriteID: c313e203657c2d0489baedac11f0c901
+      internalID: 98401683
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mainlevbuild_5
+      name: dungeon_decoration_2
       rect:
         serializedVersion: 2
-        x: 48
-        y: 544
-        width: 16
-        height: 96
+        x: 116
+        y: 465
+        width: 25
+        height: 30
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -236,20 +173,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 491c91ca7970bc94aa443f46f85b4f1b
-      internalID: 1647275318
+      spriteID: 52dabd84f6c19c64e93ae103464c8c5f
+      internalID: -1659743636
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mainlevbuild_6
+      name: dungeon_decoration_3
       rect:
         serializedVersion: 2
-        x: 288
-        y: 544
-        width: 16
-        height: 96
+        x: 244
+        y: 485
+        width: 9
+        height: 6
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -257,20 +194,293 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: baf27c5a8bc4c684dac15013b7c42fb7
-      internalID: -2126208587
+      spriteID: 1663e02983a4c4f469436194e79e4d6d
+      internalID: 559607397
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mainlevbuild_7
+      name: dungeon_decoration_4
+      rect:
+        serializedVersion: 2
+        x: 274
+        y: 481
+        width: 11
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b5dd47874b821724fbb435da23b3e174
+      internalID: -2022598558
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dungeon_decoration_5
+      rect:
+        serializedVersion: 2
+        x: 307
+        y: 481
+        width: 11
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2cbe7ae849e071549984070975eef1ff
+      internalID: -271444108
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dungeon_decoration_6
+      rect:
+        serializedVersion: 2
+        x: 339
+        y: 485
+        width: 9
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 00411d9038bd81a40bcdee44349831c3
+      internalID: -768291480
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dungeon_decoration_7
+      rect:
+        serializedVersion: 2
+        x: 377
+        y: 472
+        width: 18
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 269ca421a16c99846bef70486333c377
+      internalID: -1723915800
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dungeon_decoration_8
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 480
+        width: 32
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bfe4b28dde3c89c44b14537f7b66029a
+      internalID: 1292581937
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dungeon_decoration_9
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 464
+        width: 18
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aa45b575ecbc26c4787e23227a90c008
+      internalID: -1781511016
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dungeon_decoration_10
+      rect:
+        serializedVersion: 2
+        x: 257
+        y: 457
+        width: 15
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 544cab8a4a9df65439d880404b9fc6eb
+      internalID: -2037642882
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dungeon_decoration_11
       rect:
         serializedVersion: 2
         x: 320
-        y: 560
+        y: 457
+        width: 15
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 483895c96da61604b92501dd28e4d6e2
+      internalID: 1952678639
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dungeon_decoration_12
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 449
+        width: 15
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9d003c551586fa84e80a5181dcaf6f42
+      internalID: -2071853041
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dungeon_decoration_13
+      rect:
+        serializedVersion: 2
+        x: 272
+        y: 448
+        width: 13
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ade8aba90bf29c445b111e1dcbc1c8da
+      internalID: -1604647809
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dungeon_decoration_14
+      rect:
+        serializedVersion: 2
+        x: 307
+        y: 448
+        width: 13
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 05054f67b522ce744a0f2b4471107ec7
+      internalID: -1128341640
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dungeon_decoration_15
+      rect:
+        serializedVersion: 2
+        x: 337
+        y: 449
+        width: 15
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5fc2d501694b6b5429c8b32f2cbcef56
+      internalID: -1582740905
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dungeon_decoration_16
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 401
+        width: 48
+        height: 46
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6746725fb05adb144aec1a1700cc0475
+      internalID: -1407885359
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dungeon_decoration_17
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 406
         width: 32
-        height: 80
+        height: 41
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -278,20 +488,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c714c910ecaeb1c47b70e31a5713327a
-      internalID: -1722524228
+      spriteID: d17ba2209dafa904aa7fed53edad58a0
+      internalID: -575896996
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mainlevbuild_8
+      name: dungeon_decoration_18
       rect:
         serializedVersion: 2
-        x: 368
-        y: 544
-        width: 32
-        height: 80
+        x: 116
+        y: 417
+        width: 25
+        height: 30
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -299,104 +509,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 76f7d12341aed0b45a1f8f997e70062f
-      internalID: 898569961
+      spriteID: 328ba908f949ab64998da48d49fbc365
+      internalID: -2020208135
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mainlevbuild_9
-      rect:
-        serializedVersion: 2
-        x: 416
-        y: 560
-        width: 96
-        height: 96
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 55eac8db181f99247b9dbdae02a882a2
-      internalID: 1046098395
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: mainlevbuild_10
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 416
-        width: 80
-        height: 112
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: bf7b86f693dd65b4ea2320a07ea4cdcf
-      internalID: -1069379193
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: mainlevbuild_11
-      rect:
-        serializedVersion: 2
-        x: 96
-        y: 423
-        width: 34
-        height: 105
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 0f2ab7cf6d9e0b3429f2da49052a2a54
-      internalID: -720253092
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: mainlevbuild_12
-      rect:
-        serializedVersion: 2
-        x: 147
-        y: 423
-        width: 29
-        height: 99
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 5e29516c0b568c4488fcc31064156ad1
-      internalID: -353751145
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: mainlevbuild_13
+      name: dungeon_decoration_19
       rect:
         serializedVersion: 2
         x: 192
-        y: 423
-        width: 29
-        height: 99
+        y: 420
+        width: 28
+        height: 25
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -404,41 +530,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d1871d5d79d68f948b6ea26525e52a68
-      internalID: -790130172
+      spriteID: 9f075a8ba686e8043bc3012bfa18ffc9
+      internalID: -929350689
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mainlevbuild_14
+      name: dungeon_decoration_20
       rect:
         serializedVersion: 2
-        x: 238
-        y: 423
-        width: 34
-        height: 105
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 2e9379ad626af084d8074543d83c2506
-      internalID: -2097592928
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: mainlevbuild_15
-      rect:
-        serializedVersion: 2
-        x: 336
-        y: 448
+        x: 240
+        y: 418
         width: 16
-        height: 80
+        height: 12
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -446,20 +551,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a9d51999bb436a94ebe4b69e3dd4bc9c
-      internalID: -6562500
+      spriteID: 6dd3c9f09676f324e8f7e050db23c39e
+      internalID: -264685892
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mainlevbuild_16
+      name: dungeon_decoration_21
       rect:
         serializedVersion: 2
-        x: 368
-        y: 448
-        width: 32
-        height: 80
+        x: 270
+        y: 420
+        width: 18
+        height: 19
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -467,62 +572,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fdf84b5603bee1b459ea389fa8f5a0bf
-      internalID: 1793998048
+      spriteID: fdf88f1ae9c55cc49a0b951459ef17d9
+      internalID: 1321335381
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mainlevbuild_17
-      rect:
-        serializedVersion: 2
-        x: 416
-        y: 432
-        width: 80
-        height: 96
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 34ef5cdb7b4ff29488b30b081af347cd
-      internalID: -788053479
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: mainlevbuild_18
-      rect:
-        serializedVersion: 2
-        x: 512
-        y: 432
-        width: 80
-        height: 96
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 7cac139a357caca4491c42c054731461
-      internalID: -15148343
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: mainlevbuild_19
+      name: dungeon_decoration_22
       rect:
         serializedVersion: 2
         x: 304
-        y: 384
-        width: 16
-        height: 32
+        y: 420
+        width: 18
+        height: 19
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -530,18 +593,60 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b956897794519d74db23cbaeb8f2a8b9
-      internalID: -785596596
+      spriteID: 7ffdef3ed98a005438ef0d2ecae5cf7a
+      internalID: 2018778709
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mainlevbuild_20
+      name: dungeon_decoration_23
       rect:
         serializedVersion: 2
         x: 336
-        y: 384
+        y: 418
+        width: 16
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3d64ea3cf68b4974c86a3c7464f656cc
+      internalID: 748988962
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dungeon_decoration_24
+      rect:
+        serializedVersion: 2
+        x: 372
+        y: 420
+        width: 28
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ce771a3afcf876b4f87af8b044ca7c5c
+      internalID: -1195153156
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dungeon_decoration_25
+      rect:
+        serializedVersion: 2
+        x: 432
+        y: 400
         width: 16
         height: 32
       alignment: 0
@@ -551,20 +656,83 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c65caaa7b7cb4ab4b8e65de1a4e9b507
-      internalID: 633356890
+      spriteID: 33f2bee91a5b3a24187f4bcaf9606501
+      internalID: -690109268
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mainlevbuild_21
+      name: dungeon_decoration_26
       rect:
         serializedVersion: 2
-        x: 480
+        x: 453
+        y: 400
+        width: 6
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: de3f3168210a5764eba010185119ea58
+      internalID: 1722839544
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dungeon_decoration_27
+      rect:
+        serializedVersion: 2
+        x: 464
+        y: 400
+        width: 6
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 514d17d8da7c7c24191e845c30a13c13
+      internalID: -23007622
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dungeon_decoration_28
+      rect:
+        serializedVersion: 2
+        x: 490
+        y: 400
+        width: 6
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 33069f79716125a418de4e133296a647
+      internalID: -290596562
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dungeon_decoration_29
+      rect:
+        serializedVersion: 2
+        x: 34
         y: 352
-        width: 48
-        height: 64
+        width: 12
+        height: 15
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -572,20 +740,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7252b2a6d3651754f82b874891fa4ad1
-      internalID: -909583980
+      spriteID: 08acc2cf9719b6747916151d4656e9e4
+      internalID: -471931026
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mainlevbuild_22
+      name: dungeon_decoration_30
       rect:
         serializedVersion: 2
-        x: 544
+        x: 50
         y: 352
-        width: 48
-        height: 64
+        width: 12
+        height: 21
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -593,41 +761,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0b9455a072612ce4bb6a17ba5f4ac715
-      internalID: 2023676005
+      spriteID: 0b384499372a3b9458fb8682544dc4ee
+      internalID: 1630819967
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mainlevbuild_23
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 320
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 1d3120737dd23e147b1f73f0afec80f8
-      internalID: 1869063947
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: mainlevbuild_24
+      name: dungeon_decoration_31
       rect:
         serializedVersion: 2
         x: 80
         y: 352
-        width: 32
-        height: 32
+        width: 16
+        height: 29
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -635,19 +782,292 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 72ba26a9cc81a7246b3390df7a979b1a
-      internalID: -1682180226
+      spriteID: 2c13c33aa3b3f1a49aa60428bf03405a
+      internalID: 1237133902
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mainlevbuild_25
+      name: dungeon_decoration_32
       rect:
         serializedVersion: 2
-        x: 128
+        x: 112
+        y: 357
+        width: 16
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ebe2bc7de76a7e9429b564efec3584b4
+      internalID: -1802145620
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dungeon_decoration_33
+      rect:
+        serializedVersion: 2
+        x: 164
+        y: 361
+        width: 26
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 959eb1af12867354bb0ead38d194a67a
+      internalID: 64646974
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dungeon_decoration_34
+      rect:
+        serializedVersion: 2
+        x: 211
+        y: 354
+        width: 37
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 969981208c5c2b448abc0ae7f5b2f1e5
+      internalID: 900099522
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dungeon_decoration_35
+      rect:
+        serializedVersion: 2
+        x: 280
+        y: 353
+        width: 37
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 96423f05a2308dc4ca0f7cb07fbb6420
+      internalID: 1518816804
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dungeon_decoration_36
+      rect:
+        serializedVersion: 2
+        x: 338
+        y: 360
+        width: 26
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: daa5cb15ab2ea1f499dabdde39bce53e
+      internalID: 670926437
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dungeon_decoration_37
+      rect:
+        serializedVersion: 2
+        x: 20
+        y: 352
+        width: 8
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 40a1d3c5fb8548a41a3afc8d9bb4f9db
+      internalID: 716529903
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dungeon_decoration_38
+      rect:
+        serializedVersion: 2
+        x: 20
         y: 320
-        width: 64
+        width: 8
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b9f8a680ac2f31b45994017c11195d46
+      internalID: 1492169893
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dungeon_decoration_39
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 320
+        width: 12
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a181db5394d7fdf458182e54efec9410
+      internalID: 1037868140
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dungeon_decoration_40
+      rect:
+        serializedVersion: 2
+        x: 50
+        y: 320
+        width: 12
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d8bde31a359c1c543a135b33fe4ce043
+      internalID: -4935502
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dungeon_decoration_41
+      rect:
+        serializedVersion: 2
+        x: 165
+        y: 324
+        width: 20
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eabb9a62d5a581a44973ffef43f07616
+      internalID: -823178005
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dungeon_decoration_42
+      rect:
+        serializedVersion: 2
+        x: 193
+        y: 325
+        width: 26
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 069387c11e495d4438034cf4781db2c9
+      internalID: -1233398223
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dungeon_decoration_43
+      rect:
+        serializedVersion: 2
+        x: 309
+        y: 324
+        width: 26
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 47c12b763f0b54a478a992a4bd914913
+      internalID: 289057255
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dungeon_decoration_44
+      rect:
+        serializedVersion: 2
+        x: 343
+        y: 323
+        width: 20
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 49479ccfb3ffe0249b5f81bb14a207db
+      internalID: -1984338109
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dungeon_decoration_45
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 208
+        width: 95
         height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -656,272 +1076,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6943e07f14b01ef48ab26082f8aa083f
-      internalID: -196740304
+      spriteID: 624d86af3b1cdb5419a848e794e78955
+      internalID: -1677473855
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mainlevbuild_26
-      rect:
-        serializedVersion: 2
-        x: 208
-        y: 352
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: aa5eec435cf94074297db76c0caa1460
-      internalID: -743706027
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: mainlevbuild_27
-      rect:
-        serializedVersion: 2
-        x: 266
-        y: 311
-        width: 124
-        height: 66
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 10b4d277931d08742b5a2082e00a2e7d
-      internalID: 483022224
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: mainlevbuild_28
-      rect:
-        serializedVersion: 2
-        x: 426
-        y: 315
-        width: 44
-        height: 60
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 99cb6e111939fd44693ca06bd475e170
-      internalID: -807238809
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: mainlevbuild_29
-      rect:
-        serializedVersion: 2
-        x: 512
-        y: 304
-        width: 16
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a9873a92abea49c4da2ede3b3b593d1b
-      internalID: -480139374
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: mainlevbuild_30
-      rect:
-        serializedVersion: 2
-        x: 528
-        y: 313
-        width: 31
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 0ac0942ad87b5b047ad2fb7931d7b395
-      internalID: 1889315333
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: mainlevbuild_31
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 176
-        width: 256
-        height: 128
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c8c9644f746fc994c88e5212b208329c
-      internalID: 106905564
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: mainlevbuild_32
-      rect:
-        serializedVersion: 2
-        x: 266
-        y: 199
-        width: 124
-        height: 98
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 247d1cfdccae97f4a8c4452ad2d93572
-      internalID: -1193389271
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: mainlevbuild_33
-      rect:
-        serializedVersion: 2
-        x: 410
-        y: 224
-        width: 29
-        height: 80
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: d3c53ec43efa28d4a8201b68352e2d56
-      internalID: -579409141
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: mainlevbuild_34
-      rect:
-        serializedVersion: 2
-        x: 459
-        y: 224
-        width: 44
-        height: 80
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 1f05e1dffeb9dd64fadb5d84a55797ad
-      internalID: 491213595
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: mainlevbuild_35
-      rect:
-        serializedVersion: 2
-        x: 304
-        y: 160
-        width: 32
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: e4ac3ef7bde48ea468a1efc201ac30f7
-      internalID: -656286829
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: mainlevbuild_36
-      rect:
-        serializedVersion: 2
-        x: 416
-        y: 176
-        width: 64
-        height: 32
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 362c425045ea72044a28bcc653995ae3
-      internalID: -1948851006
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: mainlevbuild_37
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 112
-        width: 80
-        height: 48
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 371407eaf51f75044b79db9d3f02726a
-      internalID: -721582369
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: mainlevbuild_38
+      name: dungeon_decoration_46
       rect:
         serializedVersion: 2
         x: 128
-        y: 112
-        width: 80
-        height: 48
+        y: 177
+        width: 64
+        height: 95
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -929,20 +1097,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e82385a3d7e640f44a634f187c7ef32e
-      internalID: -1419138648
+      spriteID: a5ed75c820a724d4396e440fd48c0bda
+      internalID: -298893782
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mainlevbuild_39
+      name: dungeon_decoration_47
       rect:
         serializedVersion: 2
-        x: 266
-        y: 39
-        width: 124
-        height: 98
+        x: 208
+        y: 208
+        width: 95
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -950,20 +1118,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3ea91a839cecaa145b0cebee29917cd0
-      internalID: 2089018613
+      spriteID: 2d5d233c27a1033438aba7b2763066b2
+      internalID: 540429784
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mainlevbuild_40
+      name: dungeon_decoration_48
       rect:
         serializedVersion: 2
-        x: 410
-        y: 64
-        width: 29
-        height: 80
+        x: 320
+        y: 177
+        width: 64
+        height: 95
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -971,20 +1139,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 42922e40e030d1f4d8a340ff9655dd4f
-      internalID: 181030138
+      spriteID: 264ffd50cbb15e742b846a8877a9c2a0
+      internalID: 769821563
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mainlevbuild_41
+      name: dungeon_decoration_49
       rect:
         serializedVersion: 2
-        x: 459
-        y: 64
-        width: 44
-        height: 80
+        x: 16
+        y: 79
+        width: 95
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -992,20 +1160,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 38675ffbc452c634aabb014c1484766a
-      internalID: -1550453440
+      spriteID: 136ff728fb829834daea78305b87e02f
+      internalID: 1279566014
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mainlevbuild_42
+      name: dungeon_decoration_50
       rect:
         serializedVersion: 2
-        x: 0
-        y: 16
-        width: 256
-        height: 80
+        x: 128
+        y: 48
+        width: 64
+        height: 95
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1013,20 +1181,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4bd3de976ead12249895333402c5bae0
-      internalID: -74860649
+      spriteID: e60894d03f06d0f49968ff076f5e8850
+      internalID: 148548398
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: mainlevbuild_43
+      name: dungeon_decoration_51
       rect:
         serializedVersion: 2
-        x: 304
-        y: 0
-        width: 32
-        height: 32
+        x: 208
+        y: 80
+        width: 95
+        height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -1034,8 +1202,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9c5410f39652d33408d147ea26f71e2b
-      internalID: 608091870
+      spriteID: 1ee55324b08b61b429d36ef47de22fd6
+      internalID: 1538212571
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dungeon_decoration_52
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 49
+        width: 64
+        height: 95
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d06e211962b84484ba0f4d8ea63f24ac
+      internalID: 819789986
       vertices: []
       indices: 
       edges: []
@@ -1043,7 +1232,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: f3642d2db3901bb468ec61b8b90c7630
+    spriteID: 1481bac9ef8ce6941a7691d40f206f4c
     internalID: 0
     vertices: []
     indices: 
@@ -1051,50 +1240,59 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      mainlevbuild_0: -528582291
-      mainlevbuild_1: 759475136
-      mainlevbuild_10: -1069379193
-      mainlevbuild_11: -720253092
-      mainlevbuild_12: -353751145
-      mainlevbuild_13: -790130172
-      mainlevbuild_14: -2097592928
-      mainlevbuild_15: -6562500
-      mainlevbuild_16: 1793998048
-      mainlevbuild_17: -788053479
-      mainlevbuild_18: -15148343
-      mainlevbuild_19: -785596596
-      mainlevbuild_2: -2059826861
-      mainlevbuild_20: 633356890
-      mainlevbuild_21: -909583980
-      mainlevbuild_22: 2023676005
-      mainlevbuild_23: 1869063947
-      mainlevbuild_24: -1682180226
-      mainlevbuild_25: -196740304
-      mainlevbuild_26: -743706027
-      mainlevbuild_27: 483022224
-      mainlevbuild_28: -807238809
-      mainlevbuild_29: -480139374
-      mainlevbuild_3: 2038090859
-      mainlevbuild_30: 1889315333
-      mainlevbuild_31: 106905564
-      mainlevbuild_32: -1193389271
-      mainlevbuild_33: -579409141
-      mainlevbuild_34: 491213595
-      mainlevbuild_35: -656286829
-      mainlevbuild_36: -1948851006
-      mainlevbuild_37: -721582369
-      mainlevbuild_38: -1419138648
-      mainlevbuild_39: 2089018613
-      mainlevbuild_4: -27537445
-      mainlevbuild_40: 181030138
-      mainlevbuild_41: -1550453440
-      mainlevbuild_42: -74860649
-      mainlevbuild_43: 608091870
-      mainlevbuild_5: 1647275318
-      mainlevbuild_6: -2126208587
-      mainlevbuild_7: -1722524228
-      mainlevbuild_8: 898569961
-      mainlevbuild_9: 1046098395
+      dungeon_decoration_0: -47998151
+      dungeon_decoration_1: 98401683
+      dungeon_decoration_10: -2037642882
+      dungeon_decoration_11: 1952678639
+      dungeon_decoration_12: -2071853041
+      dungeon_decoration_13: -1604647809
+      dungeon_decoration_14: -1128341640
+      dungeon_decoration_15: -1582740905
+      dungeon_decoration_16: -1407885359
+      dungeon_decoration_17: -575896996
+      dungeon_decoration_18: -2020208135
+      dungeon_decoration_19: -929350689
+      dungeon_decoration_2: -1659743636
+      dungeon_decoration_20: -264685892
+      dungeon_decoration_21: 1321335381
+      dungeon_decoration_22: 2018778709
+      dungeon_decoration_23: 748988962
+      dungeon_decoration_24: -1195153156
+      dungeon_decoration_25: -690109268
+      dungeon_decoration_26: 1722839544
+      dungeon_decoration_27: -23007622
+      dungeon_decoration_28: -290596562
+      dungeon_decoration_29: -471931026
+      dungeon_decoration_3: 559607397
+      dungeon_decoration_30: 1630819967
+      dungeon_decoration_31: 1237133902
+      dungeon_decoration_32: -1802145620
+      dungeon_decoration_33: 64646974
+      dungeon_decoration_34: 900099522
+      dungeon_decoration_35: 1518816804
+      dungeon_decoration_36: 670926437
+      dungeon_decoration_37: 716529903
+      dungeon_decoration_38: 1492169893
+      dungeon_decoration_39: 1037868140
+      dungeon_decoration_4: -2022598558
+      dungeon_decoration_40: -4935502
+      dungeon_decoration_41: -823178005
+      dungeon_decoration_42: -1233398223
+      dungeon_decoration_43: 289057255
+      dungeon_decoration_44: -1984338109
+      dungeon_decoration_45: -1677473855
+      dungeon_decoration_46: -298893782
+      dungeon_decoration_47: 540429784
+      dungeon_decoration_48: 769821563
+      dungeon_decoration_49: 1279566014
+      dungeon_decoration_5: -271444108
+      dungeon_decoration_50: 148548398
+      dungeon_decoration_51: 1538212571
+      dungeon_decoration_52: 819789986
+      dungeon_decoration_6: -768291480
+      dungeon_decoration_7: -1723915800
+      dungeon_decoration_8: 1292581937
+      dungeon_decoration_9: -1781511016
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

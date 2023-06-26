@@ -136,6 +136,11 @@ namespace Assets.Scripts.Dungeon
                 {
                     objectsGenerator.GenerateExit(room);
                 }
+                else
+                {
+                    objectsGenerator.GenerateWallObjects(room);
+                    objectsGenerator.GenerateFloorObjects(room);
+                }
             }
         }
 
