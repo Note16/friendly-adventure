@@ -158,7 +158,7 @@ MonoBehaviour:
   playerCharacter: {fileID: 1820970075}
   minRoomCount: 6
   maxRoomCount: 8
-  roomWidth: 19
+  roomWidth: 20
   roomHeight: 18
   wallHeight: 5
   offset: 2
@@ -321,6 +321,23 @@ MonoBehaviour:
   - Name: Exits
     GameObjects:
     - {fileID: 8886554027916545755, guid: 9b6a95fccabc00e43a7c1cd9da89bca9, type: 3}
+  - Name: Wall
+    GameObjects:
+    - {fileID: 197473032071686387, guid: 5ec43a80b7328f14db9cdce07997d0be, type: 3}
+    - {fileID: 197473032071686387, guid: 92835740e3d1c69469d95929193ef940, type: 3}
+    - {fileID: 197473032071686387, guid: 2a94386650fad3542ba1d92cdfe6bdf5, type: 3}
+    - {fileID: 197473032071686387, guid: 74d8e5629f095f74885dd941acbc958c, type: 3}
+    - {fileID: 197473032071686387, guid: c0dcafa1085acb04cb1c7b22727c1d07, type: 3}
+  - Name: Floor
+    GameObjects:
+    - {fileID: 197473032071686387, guid: 71c1ac6c58970604e9d48ad189f2852f, type: 3}
+    - {fileID: 197473032071686387, guid: b0818d277e6aed04ba80a155c77bf28c, type: 3}
+    - {fileID: 197473032071686387, guid: bf89c4aa9a8cb5c4f8b52b2e5a22791a, type: 3}
+    - {fileID: 197473032071686387, guid: 574f1b19637de0e4a8829eb88fcd8a2f, type: 3}
+    - {fileID: 197473032071686387, guid: 1ec9b4d2205659746a6c6db697636c06, type: 3}
+    - {fileID: 197473032071686387, guid: 138676b05e702be45ad5ecedd895c610, type: 3}
+    - {fileID: 197473032071686387, guid: 1758f68b5d0a2b04eaceec3d685b7289, type: 3}
+    - {fileID: 197473032071686387, guid: 2c52a6e76a8f23048b58d36966a45075, type: 3}
 --- !u!1001 &121548231
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -358,7 +375,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8111309106597192695, guid: 102af8aa83f700d4f8b0e5d21612bb34, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 9
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8111309106597192695, guid: 102af8aa83f700d4f8b0e5d21612bb34, type: 3}
       propertyPath: m_LocalPosition.y
