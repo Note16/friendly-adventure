@@ -20,7 +20,7 @@ namespace Assets.Scripts.Dungeon.Objects
             // When player is positioned above the enemy
             var relativePos = (Vector2)playerController.transform.position - (Vector2)transform.position;
 
-            var pivitPoint = spriteRenderer.size.y - 3f;
+            var pivitPoint = spriteRenderer.size.y - 1f;
             spriteRenderer.sortingOrder = relativePos.y < pivitPoint ? 0 : 2;
         }
 
