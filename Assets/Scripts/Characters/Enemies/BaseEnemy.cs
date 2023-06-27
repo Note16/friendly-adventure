@@ -2,6 +2,7 @@
 using Assets.Scripts.Characters.Shared;
 using Assets.Scripts.Helpers;
 using Assets.Scripts.UI;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
@@ -13,10 +14,13 @@ namespace Assets.Scripts.Characters.Enemies
         protected bool spriteIsFacingRight = true;
 
         [SerializeField]
-        protected float CombatTextYAxis = 1f;
+        protected float combatTextYAxis = 1f;
 
         [SerializeField]
         protected int healthPoints = 10;
+
+        [SerializeField]
+        protected List<GameObject> itemDrops = new List<GameObject>();
 
         protected PlayerController playerController;
         protected SpriteRenderer spriteRenderer;
@@ -56,10 +60,10 @@ namespace Assets.Scripts.Characters.Enemies
 
             healthPoints -= damage;
 
-            DamagePopup.Create(transform, CombatTextYAxis, damage, isCrit);
+            CombatTextPopup.Damage(transform, combatTextYAxis, damage, isCrit);
 
             if (healthPoints <= 0)
-                animator.Play("Death");
+                animator.Play("Death"); // Will call DestroyOnExit behavior script
             else
                 animator.Play("TakeHit");
         }
@@ -109,6 +113,15 @@ namespace Assets.Scripts.Characters.Enemies
         {
             var currentAnimation = animator.GetCurrentAnimatorStateInfo(0);
             return name.Any(name => currentAnimation.IsName(name));
+        }
+
+        private void OnDestroy()
+        {
+            if (!itemDrops.Any() || !gameObject.scene.isLoaded)
+                return;
+
+            if (RandomHelper.GetRandom(10))
+                Instantiate(RandomHelper.GetRandom(itemDrops), transform.position, Quaternion.identity);
         }
     }
 }
