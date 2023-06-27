@@ -4,8 +4,9 @@ using UnityEngine;
 
 namespace Assets.Scripts.UI
 {
-    public class DamagePopup : MonoBehaviour
+    public class CombatTextPopup : MonoBehaviour
     {
+        private static int sortingOrder;
         private const float disappearTimerMax = 0.6f;
 
         private TextMeshPro textMesh;
@@ -13,35 +14,38 @@ namespace Assets.Scripts.UI
         private Color textColor;
         private Vector3 moveVector;
 
-        public static void Create(Transform parent, float yAxis, int damage, bool isCritical)
+        public static void Damage(Transform parent, float yAxis, int damage, bool isCritical)
         {
-            var damagePopUpTransform = Instantiate(ResourceHelper.CombatText, parent.position + new Vector3(0, 1.7f), Quaternion.identity, parent);
-            var damagePopup = damagePopUpTransform.GetComponent<DamagePopup>();
-            damagePopup.Setup(yAxis, damage, isCritical);
+            var textPopUpTransform = Instantiate(ResourceHelper.CombatText, parent.position + new Vector3(0, 1.7f), Quaternion.identity, parent);
+            var textPopup = textPopUpTransform.GetComponent<CombatTextPopup>();
+            if (isCritical)
+            {
+                textPopup.Setup(yAxis, damage.ToString(), 8, Color.yellow);
+            }
+            else
+            {
+                textPopup.Setup(yAxis, damage.ToString(), 6, Color.white);
+            }
         }
 
-        private static int sortingOrder;
+        public static void Heal(Transform parent, float yAxis, int damage)
+        {
+            var textPopUpTransform = Instantiate(ResourceHelper.CombatText, parent.position + new Vector3(0, 1.7f), Quaternion.identity, parent);
+            var textPopup = textPopUpTransform.GetComponent<CombatTextPopup>();
+            textPopup.Setup(yAxis, damage.ToString(), 8, Color.green);
+        }
+
 
         void Awake()
         {
             textMesh = GetComponent<TextMeshPro>();
         }
 
-        public void Setup(float yAxis, int damageAmount, bool isCritical)
+        public void Setup(float yAxis, string text, int fontSize, Color color)
         {
-            textMesh.SetText(damageAmount.ToString());
-
-            if (isCritical)
-            {
-                textMesh.fontSize = 8;
-                textColor = Color.yellow;
-            }
-            else
-            {
-                textMesh.fontSize = 6;
-                textColor = Color.white;
-            }
-            textMesh.color = textColor;
+            textMesh.SetText(text);
+            textMesh.fontSize = fontSize;
+            textMesh.color = color;
             disappearTimer = disappearTimerMax;
 
             sortingOrder++;

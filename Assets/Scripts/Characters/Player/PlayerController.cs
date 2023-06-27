@@ -1,5 +1,6 @@
 using Assets.Scripts.Characters.Enemies;
 using Assets.Scripts.Helpers;
+using Assets.Scripts.Items;
 using Assets.Scripts.UI;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -44,6 +45,7 @@ namespace Assets.Scripts.Characters.Player
         private void FixedUpdate()
         {
             AggroMobs();
+            AggroItems();
             playerMovement.Move(Movement.action.ReadValue<Vector2>());
         }
 
@@ -103,7 +105,7 @@ namespace Assets.Scripts.Characters.Player
 
             currentHP -= damage;
 
-            DamagePopup.Create(transform, 1.4f, damage, isCrit);
+            CombatTextPopup.Damage(transform, 1.4f, damage, isCrit);
 
             if (currentHP <= 0)
                 animator.Play("Death");
@@ -128,6 +130,31 @@ namespace Assets.Scripts.Characters.Player
                 else
                 {
                     enemy.StopMovement();
+                }
+            }
+        }
+
+        public void AggroItems()
+        {
+            var consumeDistance = 0.5f;
+            var aggroDistance = 5f;
+
+            var potionObjects = FindObjectsOfType<HealthPotion>();
+            foreach (var potion in potionObjects)
+            {
+                var playerPosition = transform.position + new Vector3(0, 1f);
+                // Find items within 5f radius
+                if (Vector3.Distance(potion.transform.position, playerPosition) < consumeDistance)
+                {
+                    var heal = potion.Consume();
+                    CombatTextPopup.Heal(transform, 1.4f, heal);
+                    currentHP += heal;
+
+                    healthGlobe.UpdateHealthGlobe((float)currentHP / healthPoints);
+                }
+                else if (Vector3.Distance(potion.transform.position, playerPosition) < aggroDistance)
+                {
+                    potion.Move(playerPosition);
                 }
             }
         }
