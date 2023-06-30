@@ -40,9 +40,8 @@ namespace Assets.Scripts.Characters.Enemies
             // Update sorting order so enemy shows on top of player
             // When player is positioned above the enemy
             var relativePos = (Vector2)playerController.transform.position - (Vector2)transform.position;
-
-            var pivitPoint = spriteRenderer.size.y - 0.64f;
-            spriteRenderer.sortingOrder = relativePos.y < pivitPoint ? 0 : 2;
+            var layer = Mathf.CeilToInt(relativePos.y * 2);
+            spriteRenderer.sortingOrder = relativePos.y < 0f ? layer : layer + 1;
 
             TryAttack();
         }
@@ -63,7 +62,10 @@ namespace Assets.Scripts.Characters.Enemies
             CombatTextPopup.Damage(transform, combatTextYAxis, damage, isCrit);
 
             if (healthPoints <= 0)
+            {
+                DropItems();
                 animator.Play("Death"); // Will call DestroyOnExit behavior script
+            }
             else
                 animator.Play("TakeHit");
         }
@@ -115,13 +117,12 @@ namespace Assets.Scripts.Characters.Enemies
             return name.Any(name => currentAnimation.IsName(name));
         }
 
-        private void OnDestroy()
+        private void DropItems()
         {
-            if (!itemDrops.Any() || !gameObject.scene.isLoaded)
+            if (!itemDrops.Any())
                 return;
 
-            if (RandomHelper.GetRandom(10))
-                Instantiate(RandomHelper.GetRandom(itemDrops), transform.position, Quaternion.identity);
+            Instantiate(RandomHelper.GetRandom(itemDrops), transform.position, Quaternion.identity, transform.parent);
         }
     }
 }

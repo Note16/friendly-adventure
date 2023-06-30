@@ -172,6 +172,7 @@ MonoBehaviour:
   combatTextYAxis: 1
   healthPoints: 10
   itemDrops:
+  - {fileID: 7540835381764436503, guid: defae8cbc8f9e474e83b0c9d6e225d50, type: 3}
   - {fileID: 5696012774980241909, guid: c9b70128b14e8ab4fb61eae74f19e7fc, type: 3}
   Attack1Damage: 2
   Attack2Damage: 4
