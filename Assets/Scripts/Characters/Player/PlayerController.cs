@@ -62,7 +62,8 @@ namespace Assets.Scripts.Characters.Player
         // Function gets executed by Player Input
         void OnMainAttack()
         {
-            playerAttacks.SwordSwing(SwordSwingAttack, transform);
+            if (SwordSwingAttack != null)
+                playerAttacks.SwordSwing(SwordSwingAttack);
         }
 
         // Function gets executed by Player Input
@@ -77,7 +78,17 @@ namespace Assets.Scripts.Characters.Player
             var pointerInput = value.Get<Vector2>();
             var pointerPosition = Camera.main.ScreenToWorldPoint(pointerInput);
 
-            RotateHitMarker(pointerPosition);
+            var mouseRotation = GetMouseRotation(pointerPosition);
+
+            var hitMarker = transform.Find("Hit Marker");
+            if (hitMarker != null)
+                hitMarker.rotation = mouseRotation;
+
+            if (SwordSwingAttack != null)
+            {
+                SwordSwingAttack.transform.rotation = mouseRotation;
+                SwordSwingAttack.GetComponent<SpriteRenderer>().sortingOrder = (mouseRotation.z < 0) ? 3 : 0;
+            }
         }
 
         // Function gets executed by Animations
@@ -89,15 +100,11 @@ namespace Assets.Scripts.Characters.Player
                 playerMovement.Stop(false);
         }
 
-        private void RotateHitMarker(Vector2 position)
+        private Quaternion GetMouseRotation(Vector2 position)
         {
             var relativePos = position - (Vector2)transform.position;
             var angle = Mathf.Atan2(relativePos.y, relativePos.x) * Mathf.Rad2Deg;
-            var rotation = Quaternion.AngleAxis(angle, Vector3.forward);
-
-            var hitMarker = transform.Find("Hit Marker");
-            if (hitMarker != null)
-                hitMarker.rotation = rotation;
+            return Quaternion.AngleAxis(angle, Vector3.forward);
         }
 
         public void TakeDamage(int damage)
