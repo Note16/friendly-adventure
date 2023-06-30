@@ -14,9 +14,13 @@ namespace Assets.Scripts.Characters.Player.Attacks
         void Awake()
         {
             rb = GetComponent<Rigidbody2D>();
+        }
 
+        private void OnEnable()
+        {
             StartCoroutine(HitEnemyAfterDelay(0.3f));
             StartCoroutine(HitEnemyAfterDelay(0.5f));
+            StartCoroutine(DisableAfterDelay(0.8f));
         }
 
         IEnumerator HitEnemyAfterDelay(float delay)
@@ -36,6 +40,12 @@ namespace Assets.Scripts.Characters.Player.Attacks
                     enemy.Push((Vector2)direction);
                 }
             }
+        }
+
+        IEnumerator DisableAfterDelay(float delay)
+        {
+            yield return new WaitForSeconds(delay);
+            gameObject.SetActive(false);
         }
     }
 }
