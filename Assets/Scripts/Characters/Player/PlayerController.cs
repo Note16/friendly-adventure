@@ -13,6 +13,9 @@ namespace Assets.Scripts.Characters.Player
         public GameObject AoeAttack, SwordSwingAttack;
 
         [SerializeField]
+        public GameObject Score;
+
+        [SerializeField]
         private float moveSpeed = 7f;
 
         [SerializeField]
@@ -138,6 +141,22 @@ namespace Assets.Scripts.Characters.Player
         {
             var consumeDistance = 0.5f;
             var aggroDistance = 5f;
+
+
+            var gemObjects = FindObjectsOfType<Gem>();
+            foreach (var gem in gemObjects)
+            {
+                var playerPosition = transform.position + new Vector3(0, 1f);
+                // Find items within 5f radius
+                if (Vector3.Distance(gem.transform.position, playerPosition) < consumeDistance)
+                {
+                    Score.GetComponent<Score>().UpdateScore(gem.PickUp());
+                }
+                else if (Vector3.Distance(gem.transform.position, playerPosition) < aggroDistance)
+                {
+                    gem.Move(playerPosition);
+                }
+            }
 
             var potionObjects = FindObjectsOfType<HealthPotion>();
             foreach (var potion in potionObjects)

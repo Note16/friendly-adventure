@@ -21,7 +21,6 @@ namespace Assets.Scripts.Dungeon
             enemies = new List<GameObject>();
         }
 
-
         public void GenerateBossEnemy(Room room)
         {
             enemies.Add(Instantiate(bossEnemy, (Vector3Int)room.Floor.Center, Quaternion.identity, gameObject.transform));
