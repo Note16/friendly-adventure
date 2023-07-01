@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Assets.Scripts.Characters.Player.Attacks
 {
-    public class ProjectileSpell : BaseSpell
+    public class ProjectileSpell : SpellBase
     {
         private float hitRange = 1f;
 

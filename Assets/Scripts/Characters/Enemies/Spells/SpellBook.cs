@@ -38,7 +38,7 @@ namespace Assets.Scripts.Characters.Enemies
                         ? RandomHelper.GetRandom(new Bounds(playerController.transform.position, new Vector3(6f, 6f)))
                         : spriteRenderer.bounds.center, Quaternion.identity);
 
-                    if (spellObject.TryGetComponent<BaseSpell>(out var baseSpell))
+                    if (spellObject.TryGetComponent<SpellBase>(out var baseSpell))
                     {
                         baseSpell.transform.localScale *= spellSizeMultiplier;
                         baseSpell.damage *= spellDamageMultiplier;

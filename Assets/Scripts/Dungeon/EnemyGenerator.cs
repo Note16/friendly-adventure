@@ -1,4 +1,5 @@
 ﻿using Assets.Scripts.Characters.Enemies;
+using Assets.Scripts.Characters.Enemies.Versions;
 using Assets.Scripts.Dungeon.Areas.Rooms;
 using Assets.Scripts.Dungeon.Objects;
 using Assets.Scripts.Extensions;

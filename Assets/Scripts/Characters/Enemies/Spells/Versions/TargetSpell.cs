@@ -1,6 +1,6 @@
 namespace Assets.Scripts.Characters.Player.Attacks
 {
-    public class TargetSpell : BaseSpell
+    public class TargetSpell : SpellBase
     {
         private float hitRange = 2f;
 

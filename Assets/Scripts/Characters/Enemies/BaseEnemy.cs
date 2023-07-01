@@ -9,6 +9,8 @@ using UnityEngine;
 
 namespace Assets.Scripts.Characters.Enemies
 {
+    [RequireComponent(typeof(SpriteRenderer))]
+    [RequireComponent(typeof(Animator))]
     [RequireComponent(typeof(Movement))]
     public class BaseEnemy : MonoBehaviour
     {

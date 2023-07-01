@@ -1,7 +1,7 @@
 ﻿using Assets.Scripts.Helpers;
 using UnityEngine;
 
-namespace Assets.Scripts.Characters.Enemies
+namespace Assets.Scripts.Characters.Enemies.Versions
 {
     [RequireComponent(typeof(SpellBook))]
     public class CasterEnemy : BaseEnemy

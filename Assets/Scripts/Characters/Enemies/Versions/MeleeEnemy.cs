@@ -1,10 +1,9 @@
 ﻿using Assets.Scripts.Helpers;
 using UnityEngine;
 
-namespace Assets.Scripts.Characters.Enemies
+namespace Assets.Scripts.Characters.Enemies.Versions
 {
-    [RequireComponent(typeof(SpellBook))]
-    public class WarCasterEnemy : BaseEnemy
+    public class MeleeEnemy : BaseEnemy
     {
         [SerializeField]
         public int Attack1Damage = 2;
@@ -15,44 +14,11 @@ namespace Assets.Scripts.Characters.Enemies
         [SerializeField]
         public float meleeAttackRange = 4f;
 
-        [SerializeField]
-        private float castingAttackRange = 8f;
-
-        private SpellBook spellBook;
-
-        private void Awake()
-        {
-            spellBook = GetComponent<SpellBook>();
-        }
-
         public override void TryAttack()
         {
-            if (AnimationIsPlaying(new string[] { "TakeHit", "Death", "Attack1", "Attack2", "Cast" }))
+            if (AnimationIsPlaying(new string[] { "TakeHit", "Death", "Attack1", "Attack2" }))
                 return;
 
-            TryCasting();
-            TryMeleeAttack();
-        }
-
-        public void TryCasting()
-        {
-            if (Vector3.Distance(playerController.transform.position, transform.position) > castingAttackRange)
-                return;
-
-            if (RandomHelper.GetRandom(98))
-                return;
-
-            animator.Play("Cast");
-
-            var randomSpell = RandomHelper.GetRandom(spellBook.GetSpells());
-
-            // Execute random spell
-            animator.Play("Cast");
-            randomSpell();
-        }
-
-        public void TryMeleeAttack()
-        {
             if (Vector3.Distance(playerController.transform.position, transform.position) > meleeAttackRange)
                 return;
 

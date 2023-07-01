@@ -5,7 +5,7 @@ using UnityEngine;
 namespace Assets.Scripts.Characters.Player.Attacks
 {
     [RequireComponent(typeof(Movement))]
-    public class BaseSpell : MonoBehaviour
+    public class SpellBase : MonoBehaviour
     {
         [SerializeField]
         public int damage = 4;
