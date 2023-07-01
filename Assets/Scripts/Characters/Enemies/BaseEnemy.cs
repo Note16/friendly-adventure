@@ -2,6 +2,7 @@
 using Assets.Scripts.Characters.Shared;
 using Assets.Scripts.Helpers;
 using Assets.Scripts.UI;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -17,15 +18,19 @@ namespace Assets.Scripts.Characters.Enemies
         protected float combatTextYAxis = 1f;
 
         [SerializeField]
-        protected int healthPoints = 10;
+        public int healthPoints = 10;
 
         [SerializeField]
         protected List<GameObject> itemDrops = new List<GameObject>();
+
+        public int itemDropMultiplier = 1;
 
         protected PlayerController playerController;
         protected SpriteRenderer spriteRenderer;
         protected Animator animator;
         protected Movement movement;
+
+        public Action OnDeathAction;
 
         private void OnEnable()
         {
@@ -64,6 +69,7 @@ namespace Assets.Scripts.Characters.Enemies
             if (healthPoints <= 0)
             {
                 DropItems();
+                OnDeathAction?.Invoke();
                 animator.Play("Death"); // Will call DestroyOnExit behavior script
             }
             else
@@ -122,7 +128,11 @@ namespace Assets.Scripts.Characters.Enemies
             if (!itemDrops.Any())
                 return;
 
-            Instantiate(RandomHelper.GetRandom(itemDrops), transform.position, Quaternion.identity, transform.parent);
+            for (int i = 0; i < itemDropMultiplier; i++)
+            {
+                var dropZone = new Bounds(transform.position, new Vector3(2, 2));
+                Instantiate(RandomHelper.GetRandom(itemDrops), RandomHelper.GetRandom(dropZone), Quaternion.identity, transform.parent);
+            }
         }
     }
 }

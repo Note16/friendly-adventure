@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using UnityEngine;
 
 namespace Assets.Scripts.Helpers
 {
@@ -35,6 +36,18 @@ namespace Assets.Scripts.Helpers
                 throw new ArgumentOutOfRangeException(nameof(percentage));
 
             return UnityEngine.Random.value <= (float)percentage / 100;
+        }
+
+        /// <summary>
+        /// Get a random position within bounds.
+        /// </summary>
+        public static Vector3 GetRandom(Bounds bounds)
+        {
+            return new Vector3(
+                UnityEngine.Random.Range(bounds.min.x, bounds.max.x),
+                UnityEngine.Random.Range(bounds.min.y, bounds.max.y),
+                UnityEngine.Random.Range(bounds.min.z, bounds.max.z)
+            );
         }
     }
 }

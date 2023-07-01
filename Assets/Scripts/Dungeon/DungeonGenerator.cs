@@ -115,6 +115,8 @@ namespace Assets.Scripts.Dungeon
 
         public void GenerateEnemies(IEnumerable<Room> rooms)
         {
+            enemyGenerator.RandomizeLevelEnemies(2);
+
             foreach (var room in rooms)
             {
                 if (room.GetRoomType() == RoomType.Default)
