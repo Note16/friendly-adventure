@@ -174,6 +174,8 @@ MonoBehaviour:
   itemDrops:
   - {fileID: 7113541824382998823, guid: 04d7d82f3bd452b43b03310ae9fdae72, type: 3}
   - {fileID: 5696012774980241909, guid: c9b70128b14e8ab4fb61eae74f19e7fc, type: 3}
+  - {fileID: 197473032071686387, guid: 1758f68b5d0a2b04eaceec3d685b7289, type: 3}
+  itemDropMultiplier: 1
   Attack1Damage: 2
   Attack2Damage: 3
   meleeAttackRange: 4

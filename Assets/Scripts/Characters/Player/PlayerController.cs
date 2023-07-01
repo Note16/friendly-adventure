@@ -30,19 +30,25 @@ namespace Assets.Scripts.Characters.Player
         private PlayerAttacks playerAttacks;
 
         private Animator animator;
+        private SpriteRenderer spriteRenderer;
         private HealthGlobe healthGlobe;
 
         private void OnEnable()
         {
             var rb = GetComponent<Rigidbody2D>();
             animator = GetComponent<Animator>();
-            var spriteRenderer = GetComponent<SpriteRenderer>();
+            spriteRenderer = GetComponent<SpriteRenderer>();
             playerMovement = new PlayerMovement(animator, spriteRenderer, rb);
             playerMovement.SetMoveSpeed(moveSpeed);
             playerAttacks = new PlayerAttacks(animator);
 
             currentHP = healthPoints;
             healthGlobe = FindObjectOfType<HealthGlobe>();
+        }
+
+        public Vector3 GetSpriteCenter()
+        {
+            return spriteRenderer.bounds.center;
         }
 
         private void FixedUpdate()

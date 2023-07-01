@@ -32,7 +32,7 @@ namespace Assets.Scripts.Dungeon.Areas.Rooms
         public void CreateExit(RoomVisualizer roomVisualizer)
         {
             var exitRect = new RectInt(Top.xMax - 5, Top.yMin, 2, 2);
-            roomVisualizer.RemoveWall(exitRect.allPositionsWithin.ToVector2Int());
+            roomVisualizer.ClearWallCollider(exitRect.allPositionsWithin.ToVector2Int());
         }
     }
 }

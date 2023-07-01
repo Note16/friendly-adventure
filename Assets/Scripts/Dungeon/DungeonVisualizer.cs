@@ -89,6 +89,19 @@ namespace Assets.Scripts.Dungeon
             wallTilemap.SetTile((Vector3Int)position, null);
         }
 
+        public void RemoveWallCollider(Vector2Int position)
+        {
+            wallTilemap.SetColliderType((Vector3Int)position, Tile.ColliderType.None);
+        }
+
+        public void ClearWallCollider(IEnumerable<Vector2Int> wallPositions)
+        {
+            foreach (var position in wallPositions)
+            {
+                RemoveWallCollider(position);
+            }
+        }
+
         public void ClearWallTiles(IEnumerable<Vector2Int> wallPositions)
         {
             foreach (var position in wallPositions)

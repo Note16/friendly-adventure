@@ -304,7 +304,7 @@ MonoBehaviour:
   - {fileID: 6331114095509317402, guid: 2efd486d191edd348942bfbfab7f089e, type: 3}
   - {fileID: 7450140168799887496, guid: 2c2e1452281978b438534469416ec03e, type: 3}
   - {fileID: 5822868078199210968, guid: dd1fbb910640257478629b0f2632a13f, type: 3}
-  bossEnemy: {fileID: 9148402442353990093, guid: 21eecc696a865b442857040b69e68719, type: 3}
+  - {fileID: 9148402442353990093, guid: 21eecc696a865b442857040b69e68719, type: 3}
 --- !u!114 &34912776
 MonoBehaviour:
   m_ObjectHideFlags: 0

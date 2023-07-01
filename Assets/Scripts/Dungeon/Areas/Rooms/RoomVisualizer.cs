@@ -19,9 +19,9 @@ namespace Assets.Scripts.Dungeon.Areas.Rooms
             dungeonVisualizer.SetFloorTiles(tiles);
         }
 
-        public void RemoveWall(IEnumerable<Vector2Int> tiles)
+        public void ClearWallCollider(IEnumerable<Vector2Int> tiles)
         {
-            dungeonVisualizer.ClearWallTiles(tiles);
+            dungeonVisualizer.ClearWallCollider(tiles);
         }
 
         public void SetNorthWall(RectInt wallRect, int pillarDistance)

@@ -65,7 +65,9 @@ namespace Assets.Scripts.Dungeon
         {
             var exitObj = dungeonObjects.FirstOrDefault(obj => obj.Name == "Exits")?.GameObjects.FirstOrDefault();
             var position = new Vector2Int(room.Rect.xMax - 4, room.Walls.Top.yMin + 3);
-            activeObjects.Add(Instantiate(exitObj, (Vector3Int)position, Quaternion.identity, transform));
+            var exit = Instantiate(exitObj, (Vector3Int)position, Quaternion.identity, transform);
+            exit.SetActive(false);
+            activeObjects.Add(exit);
         }
 
         public void DestroyObjects()
