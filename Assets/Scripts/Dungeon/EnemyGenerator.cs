@@ -49,7 +49,6 @@ namespace Assets.Scripts.Dungeon
             }
             if (bossEnemy.TryGetComponent<MeleeEnemy>(out var meleeEnemy))
             {
-                meleeEnemy.meleeAttackRange *= 2;
                 meleeEnemy.Attack1Damage *= 3;
                 meleeEnemy.Attack2Damage *= 3;
             }
