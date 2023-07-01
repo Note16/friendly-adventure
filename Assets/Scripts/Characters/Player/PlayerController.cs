@@ -7,6 +7,7 @@ using UnityEngine.InputSystem;
 
 namespace Assets.Scripts.Characters.Player
 {
+    [RequireComponent(typeof(PlayerMovement))]
     public class PlayerController : MonoBehaviour
     {
         [SerializeField]
@@ -14,9 +15,6 @@ namespace Assets.Scripts.Characters.Player
 
         [SerializeField]
         public GameObject Score;
-
-        [SerializeField]
-        private float moveSpeed = 7f;
 
         [SerializeField]
         private InputActionReference Movement;
@@ -38,8 +36,7 @@ namespace Assets.Scripts.Characters.Player
             var rb = GetComponent<Rigidbody2D>();
             animator = GetComponent<Animator>();
             spriteRenderer = GetComponent<SpriteRenderer>();
-            playerMovement = new PlayerMovement(animator, spriteRenderer, rb);
-            playerMovement.SetMoveSpeed(moveSpeed);
+            playerMovement = GetComponent<PlayerMovement>();
             playerAttacks = new PlayerAttacks(animator);
 
             currentHP = healthPoints;
@@ -55,7 +52,8 @@ namespace Assets.Scripts.Characters.Player
         {
             AggroMobs();
             AggroItems();
-            playerMovement.Move(Movement.action.ReadValue<Vector2>());
+            var value = Movement.action.ReadValue<Vector2>();
+            playerMovement.Move(value);
         }
 
         // Function gets executed by Player Input

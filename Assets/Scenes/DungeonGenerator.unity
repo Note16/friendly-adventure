@@ -299,11 +299,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   possibleEnemies:
-  - {fileID: 2575639233869638719, guid: ee4e3b2f9fce16b4aa564d7000944140, type: 3}
+  - {fileID: 559443928780918718, guid: 5fe3712ebf9ab034ab88f76395efe666, type: 3}
   - {fileID: 4438037666516551898, guid: f748380fa64d66440bfce39b3303bed3, type: 3}
-  - {fileID: 6331114095509317402, guid: 2efd486d191edd348942bfbfab7f089e, type: 3}
-  - {fileID: 7450140168799887496, guid: 2c2e1452281978b438534469416ec03e, type: 3}
-  - {fileID: 5822868078199210968, guid: dd1fbb910640257478629b0f2632a13f, type: 3}
+  - {fileID: 9011340971014957566, guid: f38d7182f65a0c747aa317419965ca46, type: 3}
+  - {fileID: 7511254370271854359, guid: baa0766cd5a7547488e50f6dd73dce80, type: 3}
+  - {fileID: 9011340971014957566, guid: b274ccca59643274b8f6b6db34313f90, type: 3}
   - {fileID: 9148402442353990093, guid: 21eecc696a865b442857040b69e68719, type: 3}
 --- !u!114 &34912776
 MonoBehaviour:

@@ -2,26 +2,25 @@
 using System.Linq;
 using UnityEngine;
 
-namespace Assets.Scripts.Characters.Shared
+namespace Assets.Scripts.Shared
 {
-    public class Movement
+    [RequireComponent(typeof(Rigidbody2D))]
+    public class Movement : MonoBehaviour
     {
-        protected float moveSpeed = 3f;
-        protected bool stop = false;
+        [SerializeField]
+        protected float moveSpeed = 4f;
 
-        private readonly Rigidbody2D rigidbody2D;
-        private ContactFilter2D moveFilter;
-        private List<RaycastHit2D> collisions = new List<RaycastHit2D>();
+        [SerializeField]
         private float collisionOffset = 0.5f;
 
-        public Movement(Rigidbody2D rigidbody2D)
-        {
-            this.rigidbody2D = rigidbody2D;
-        }
+        private List<RaycastHit2D> collisions = new List<RaycastHit2D>();
+        private ContactFilter2D moveFilter;
+        private Rigidbody2D rb;
+        protected bool stop = false;
 
-        public void SetMoveSpeed(float speed)
+        public void Awake()
         {
-            moveSpeed = speed;
+            rb = GetComponent<Rigidbody2D>();
         }
 
         public void Stop(bool stop)
@@ -65,7 +64,7 @@ namespace Assets.Scripts.Characters.Shared
 
         public void MoveIgnoreCollision(Vector2 direction)
         {
-            rigidbody2D.MovePosition(rigidbody2D.position + direction * moveSpeed * Time.fixedDeltaTime);
+            rb.MovePosition(rb.position + direction * moveSpeed * Time.fixedDeltaTime);
         }
 
         private bool TryMove(Vector2 direction)
@@ -73,7 +72,7 @@ namespace Assets.Scripts.Characters.Shared
             if (direction != Vector2.zero)
             {
                 // Check for collision
-                int count = rigidbody2D.Cast(
+                int count = rb.Cast(
                     direction,
                     moveFilter,
                     collisions,
@@ -81,25 +80,26 @@ namespace Assets.Scripts.Characters.Shared
 
                 if (count == 0)
                 {
-                    rigidbody2D.MovePosition(rigidbody2D.position + direction * moveSpeed * Time.fixedDeltaTime);
+                    rb.MovePosition(rb.position + direction * moveSpeed * Time.fixedDeltaTime);
                     return true;
                 }
             }
             return false;
         }
+
         public void Pushed(Vector2 direction)
         {
-            var newPosition = rigidbody2D.position + direction;
+            var newPosition = rb.position + direction;
 
             // Check for collisions
-            rigidbody2D.Cast(
+            rb.Cast(
                 direction,
                 collisions,
-                Vector2.Distance(rigidbody2D.position, newPosition));
+                Vector2.Distance(rb.position, newPosition));
 
             // Check for wall collision
             if (!collisions.Any(rayhit => rayhit.collider.name == "Walls"))
-                rigidbody2D.MovePosition(newPosition);
+                rb.MovePosition(newPosition);
         }
     }
 }

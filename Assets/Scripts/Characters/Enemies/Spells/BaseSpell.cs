@@ -1,9 +1,10 @@
-using Assets.Scripts.Characters.Shared;
+using Assets.Scripts.Shared;
 using System.Collections;
 using UnityEngine;
 
 namespace Assets.Scripts.Characters.Player.Attacks
 {
+    [RequireComponent(typeof(Movement))]
     public class BaseSpell : MonoBehaviour
     {
         [SerializeField]
@@ -17,8 +18,7 @@ namespace Assets.Scripts.Characters.Player.Attacks
         {
             playerController = FindObjectOfType<PlayerController>();
             spriteRenderer = GetComponent<SpriteRenderer>();
-            movement = new Movement(GetComponent<Rigidbody2D>());
-            movement.SetMoveSpeed(6f);
+            movement = GetComponent<Movement>();
         }
 
         protected void Move(Vector2 targetPosition)

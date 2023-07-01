@@ -1,6 +1,6 @@
 ﻿using Assets.Scripts.Characters.Player;
-using Assets.Scripts.Characters.Shared;
 using Assets.Scripts.Helpers;
+using Assets.Scripts.Shared;
 using Assets.Scripts.UI;
 using System;
 using System.Collections.Generic;
@@ -9,6 +9,7 @@ using UnityEngine;
 
 namespace Assets.Scripts.Characters.Enemies
 {
+    [RequireComponent(typeof(Movement))]
     public class BaseEnemy : MonoBehaviour
     {
         [SerializeField]
@@ -36,7 +37,7 @@ namespace Assets.Scripts.Characters.Enemies
         {
             spriteRenderer = GetComponent<SpriteRenderer>();
             animator = GetComponent<Animator>();
-            movement = new Movement(GetComponent<Rigidbody2D>());
+            movement = GetComponent<Movement>();
             playerController = FindObjectOfType<PlayerController>();
         }
 

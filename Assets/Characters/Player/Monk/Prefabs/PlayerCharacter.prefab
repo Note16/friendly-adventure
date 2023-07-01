@@ -304,8 +304,9 @@ GameObject:
   - component: {fileID: 8111309106597192689}
   - component: {fileID: 5369566032274460191}
   - component: {fileID: 3037177983507016267}
-  - component: {fileID: 3993709810264871192}
   - component: {fileID: 511697649317852147}
+  - component: {fileID: 3993709810264871192}
+  - component: {fileID: 7496793136723985154}
   m_Layer: 0
   m_Name: PlayerCharacter
   m_TagString: Player
@@ -452,24 +453,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.25, y: 0.19}
   m_EdgeRadius: 0
---- !u!114 &3993709810264871192
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8111309106597192690}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 79dfe08f7d84c9f4d82d32f62ab521fc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  AoeAttack: {fileID: 3804288888145762448, guid: 1edcbcedf99014440a1cb7c63bcf5f02, type: 3}
-  SwordSwingAttack: {fileID: 1220795059866920382}
-  Score: {fileID: 0}
-  moveSpeed: 7
-  Movement: {fileID: -440124971067648005, guid: 23bf02c5a505b7e469d359c6774e31c6, type: 3}
-  healthPoints: 100
 --- !u!114 &511697649317852147
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -500,6 +483,37 @@ MonoBehaviour:
   m_DefaultActionMap: PlayerInput
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &3993709810264871192
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8111309106597192690}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79dfe08f7d84c9f4d82d32f62ab521fc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AoeAttack: {fileID: 3804288888145762448, guid: 1edcbcedf99014440a1cb7c63bcf5f02, type: 3}
+  SwordSwingAttack: {fileID: 1220795059866920382}
+  Score: {fileID: 0}
+  Movement: {fileID: -440124971067648005, guid: 23bf02c5a505b7e469d359c6774e31c6, type: 3}
+  healthPoints: 100
+--- !u!114 &7496793136723985154
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8111309106597192690}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cc9863cd4c74b0e4ba0a67b1220fb3cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 7
+  collisionOffset: 0.5
 --- !u!1001 &3075538869245722340
 PrefabInstance:
   m_ObjectHideFlags: 0
