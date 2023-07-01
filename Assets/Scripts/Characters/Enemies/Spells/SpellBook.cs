@@ -1,5 +1,6 @@
 ﻿using Assets.Scripts.Characters.Player;
 using Assets.Scripts.Characters.Player.Attacks;
+using Assets.Scripts.Helpers;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -32,8 +33,10 @@ namespace Assets.Scripts.Characters.Enemies
                 Action spellAction = () => CastSpell(() =>
                 {
                     var isTargetSpell = spell.GetComponent<TargetSpell>() != null;
-
-                    var spellObject = Instantiate(spell, isTargetSpell ? playerController.transform.position : spriteRenderer.bounds.center, Quaternion.identity);
+                    var spellObject = Instantiate(spell,
+                        isTargetSpell
+                        ? RandomHelper.GetRandom(new Bounds(playerController.transform.position, new Vector3(6f, 6f)))
+                        : spriteRenderer.bounds.center, Quaternion.identity);
 
                     if (spellObject.TryGetComponent<BaseSpell>(out var baseSpell))
                     {

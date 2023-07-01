@@ -4,6 +4,8 @@ namespace Assets.Scripts.Characters.Player.Attacks
 {
     public class ProjectileSpell : BaseSpell
     {
+        private float hitRange = 1f;
+
         protected override void Awake()
         {
             base.Awake();
@@ -16,7 +18,7 @@ namespace Assets.Scripts.Characters.Player.Attacks
         {
             Move(playerController.GetSpriteCenter());
 
-            if (HitEnemy())
+            if (HitEnemy(hitRange))
                 Destroy(gameObject);
         }
 

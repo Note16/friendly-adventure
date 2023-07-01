@@ -27,16 +27,16 @@ namespace Assets.Scripts.Characters.Player.Attacks
             movement.MoveIgnoreCollision(moveInput);
         }
 
-        protected IEnumerator HitEnemyAfterDelay(float delay)
+        protected IEnumerator HitEnemyAfterDelay(float delay, float range)
         {
             yield return new WaitForSeconds(delay);
 
-            HitEnemy();
+            HitEnemy(range);
         }
 
-        protected bool HitEnemy()
+        protected bool HitEnemy(float range)
         {
-            if (Vector3.Distance(playerController.GetSpriteCenter(), spriteRenderer.bounds.ClosestPoint(playerController.GetSpriteCenter())) < 1f)
+            if (Vector3.Distance(playerController.GetSpriteCenter(), spriteRenderer.bounds.center) < range)
             {
                 playerController.TakeDamage(damage);
                 return true;
