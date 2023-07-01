@@ -10,13 +10,13 @@ namespace Assets.Scripts.Characters.Player.Attacks
         {
             base.Awake();
 
-            playerController = FindObjectOfType<PlayerController>();
+            playerStats = FindObjectOfType<PlayerStats>();
             Destroy(gameObject, 1f);
         }
 
         private void FixedUpdate()
         {
-            Move(playerController.GetSpriteCenter());
+            Move(playerStats.GetSpriteCenter());
 
             if (HitEnemy(hitRange))
                 Destroy(gameObject);
@@ -24,7 +24,7 @@ namespace Assets.Scripts.Characters.Player.Attacks
 
         private void Update()
         {
-            transform.rotation = Quaternion.FromToRotation(transform.position, playerController.transform.position - transform.position - new Vector3(0, -1, 0));
+            transform.rotation = Quaternion.FromToRotation(transform.position, playerStats.transform.position - transform.position - new Vector3(0, -1, 0));
         }
     }
 }

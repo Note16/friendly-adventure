@@ -10,13 +10,13 @@ namespace Assets.Scripts.Characters.Player.Attacks
         [SerializeField]
         public int damage = 4;
 
-        protected PlayerController playerController;
+        protected PlayerStats playerStats;
         protected SpriteRenderer spriteRenderer;
         protected Movement movement;
 
         protected virtual void Awake()
         {
-            playerController = FindObjectOfType<PlayerController>();
+            playerStats = FindObjectOfType<PlayerStats>();
             spriteRenderer = GetComponent<SpriteRenderer>();
             movement = GetComponent<Movement>();
         }
@@ -36,9 +36,9 @@ namespace Assets.Scripts.Characters.Player.Attacks
 
         protected bool HitEnemy(float range)
         {
-            if (Vector3.Distance(playerController.GetSpriteCenter(), spriteRenderer.bounds.center) < range)
+            if (Vector3.Distance(playerStats.GetSpriteCenter(), spriteRenderer.bounds.center) < range)
             {
-                playerController.TakeDamage(damage);
+                playerStats.TakeDamage(damage);
                 return true;
             }
 

@@ -28,7 +28,7 @@ namespace Assets.Scripts.Characters.Enemies
 
         public int itemDropMultiplier = 1;
 
-        protected PlayerController playerController;
+        protected PlayerStats playerStats;
         protected SpriteRenderer spriteRenderer;
         protected Animator animator;
         protected Movement movement;
@@ -40,14 +40,14 @@ namespace Assets.Scripts.Characters.Enemies
             spriteRenderer = GetComponent<SpriteRenderer>();
             animator = GetComponent<Animator>();
             movement = GetComponent<Movement>();
-            playerController = FindObjectOfType<PlayerController>();
+            playerStats = FindObjectOfType<PlayerStats>();
         }
 
         private void FixedUpdate()
         {
             // Update sorting order so enemy shows on top of player
             // When player is positioned above the enemy
-            var relativePos = (Vector2)playerController.transform.position - (Vector2)transform.position;
+            var relativePos = (Vector2)playerStats.transform.position - (Vector2)transform.position;
             var layer = Mathf.CeilToInt(relativePos.y * 2);
             spriteRenderer.sortingOrder = relativePos.y < 0f ? layer : layer + 1;
 

@@ -36,7 +36,7 @@ namespace Assets.Scripts.Characters.Enemies.Versions
 
         public void TryCasting()
         {
-            if (Vector3.Distance(playerController.transform.position, transform.position) > castingAttackRange)
+            if (Vector3.Distance(playerStats.transform.position, transform.position) > castingAttackRange)
                 return;
 
             if (RandomHelper.GetRandom(98))
@@ -53,7 +53,7 @@ namespace Assets.Scripts.Characters.Enemies.Versions
 
         public void TryMeleeAttack()
         {
-            if (Vector3.Distance(playerController.transform.position, transform.position) > meleeAttackRange)
+            if (Vector3.Distance(playerStats.transform.position, transform.position) > meleeAttackRange)
                 return;
 
             var attack = RandomHelper.GetRandom(40) ? "Attack2" : "Attack1";
@@ -67,17 +67,17 @@ namespace Assets.Scripts.Characters.Enemies.Versions
             if (command == "Attack1")
             {
                 // Check if still in melee range
-                if (Vector3.Distance(playerController.transform.position, transform.position) < meleeAttackRange)
+                if (Vector3.Distance(playerStats.transform.position, transform.position) < meleeAttackRange)
                 {
-                    playerController.TakeDamage(Attack1Damage);
+                    playerStats.TakeDamage(Attack1Damage);
                 }
             }
             if (command == "Attack2")
             {
                 // Check if still in melee range
-                if (Vector3.Distance(playerController.transform.position, transform.position) < meleeAttackRange)
+                if (Vector3.Distance(playerStats.transform.position, transform.position) < meleeAttackRange)
                 {
-                    playerController.TakeDamage(Attack2Damage);
+                    playerStats.TakeDamage(Attack2Damage);
                 }
             }
         }

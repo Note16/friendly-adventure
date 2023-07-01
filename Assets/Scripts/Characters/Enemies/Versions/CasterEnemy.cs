@@ -21,7 +21,7 @@ namespace Assets.Scripts.Characters.Enemies.Versions
             if (AnimationIsPlaying(new string[] { "TakeHit", "Death", "Cast" }))
                 return;
 
-            if (Vector3.Distance(playerController.transform.position, transform.position) > castingAttackRange)
+            if (Vector3.Distance(playerStats.transform.position, transform.position) > castingAttackRange)
                 return;
 
             if (RandomHelper.GetRandom(98))

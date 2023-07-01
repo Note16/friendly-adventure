@@ -14,7 +14,7 @@ namespace Assets.Scripts.Characters.Player.Attacks
 
         private void FixedUpdate()
         {
-            Move(playerController.transform.position);
+            Move(playerStats.transform.position);
         }
     }
 }
