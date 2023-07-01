@@ -7,13 +7,13 @@ namespace Assets.Scripts.Characters.Enemies
     public class WarCasterEnemy : BaseEnemy
     {
         [SerializeField]
-        private int Attack1Damage = 2;
+        public int Attack1Damage = 2;
 
         [SerializeField]
-        private int Attack2Damage = 4;
+        public int Attack2Damage = 4;
 
         [SerializeField]
-        private float meleeAttackRange = 4f;
+        public float meleeAttackRange = 4f;
 
         [SerializeField]
         private float castingAttackRange = 8f;

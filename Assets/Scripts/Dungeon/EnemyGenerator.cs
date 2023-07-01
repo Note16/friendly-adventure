@@ -61,6 +61,9 @@ namespace Assets.Scripts.Dungeon
             }
             if (bossEnemy.TryGetComponent<WarCasterEnemy>(out var warCasterEnemy))
             {
+                warCasterEnemy.Attack1Damage *= 3;
+                warCasterEnemy.Attack2Damage *= 3;
+
                 var spellbook = warCasterEnemy.GetComponent<SpellBook>();
                 spellbook.spellSizeMultiplier *= 2;
                 spellbook.spellDamageMultiplier *= 3;
