@@ -1,6 +1,5 @@
-using Assets.Scripts.Dungeon.Areas;
-using Assets.Scripts.Dungeon.Areas.Corridors;
-using Assets.Scripts.Dungeon.Areas.Rooms;
+using Assets.Scripts.Dungeon.Corridors;
+using Assets.Scripts.Dungeon.Rooms;
 using Assets.Scripts.Helpers;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,36 +7,29 @@ using UnityEngine;
 
 namespace Assets.Scripts.Dungeon
 {
+    [RequireComponent(typeof(DungeonVisualizer))]
+    [RequireComponent(typeof(EnemyGenerator))]
     public class DungeonGenerator : MonoBehaviour
     {
-        protected DungeonVisualizer dungeonVisualizer;
-        protected EnemyGenerator enemyGenerator;
-        protected ObjectsGenerator objectsGenerator;
+        [SerializeField]
+        GameObject playerCharacter;
 
         [SerializeField]
-        private GameObject playerCharacter;
+        Vector2Int roomCount;
 
         [SerializeField]
-        private int minRoomCount = 8, maxRoomCount = 15;
+        public int minRoomCount = 6;
 
         [SerializeField]
-        [Range(18, 25)]
-        private int roomWidth = 18, roomHeight = 18;
+        public int maxRoomCount = 8;
 
         [SerializeField]
-        [Range(4, 6)]
-        private int wallHeight = 4;
+        bool disableGenerateOnStart = false;
 
-        [SerializeField]
-        [Range(0, 10)]
-        private int offset = 4;
-
-        [SerializeField]
-        [Range(6, 10)]
-        private int corridorSize = 4;
-
-        [SerializeField]
-        private bool disableGenerateOnStart = false;
+        private DungeonVisualizer dungeonVisualizer;
+        private RoomManager roomManager;
+        private CorridorManager corridorManager;
+        private EnemyGenerator enemyGenerator;
 
         private void Start()
         {
@@ -48,16 +40,14 @@ namespace Assets.Scripts.Dungeon
         private void InitComponents()
         {
             if (dungeonVisualizer == null) dungeonVisualizer = GetComponent<DungeonVisualizer>();
+            if (roomManager == null) roomManager = GetComponent<RoomManager>();
+            if (corridorManager == null) corridorManager = GetComponent<CorridorManager>();
             if (enemyGenerator == null) enemyGenerator = GetComponent<EnemyGenerator>();
-            if (objectsGenerator == null) objectsGenerator = GetComponent<ObjectsGenerator>();
         }
 
         public void ClearDungeon()
         {
             InitComponents();
-
-            // cleanup any active objects
-            objectsGenerator?.DestroyObjects();
 
             // Cleanup objects
             enemyGenerator?.DestroyEnemies();
@@ -83,29 +73,20 @@ namespace Assets.Scripts.Dungeon
 
         private void CreateDungeon()
         {
-            var roomVisualiser = new RoomVisualizer(dungeonVisualizer);
-            var roomManager = new RoomManager(roomVisualiser);
-            roomManager.SetWallHeight(wallHeight);
-            roomManager.SetOffset(offset);
-            roomManager.GenerateRooms(
-                new RectInt(Vector2Int.zero, new Vector2Int(roomWidth, roomHeight)),
-                minRoomCount,
-                maxRoomCount
-            );
-            var corridorVisualiser = new CorridorVisualizer(dungeonVisualizer);
-            var corridorManger = new CorridorManager(roomManager, corridorVisualiser);
-            corridorManger.SetWallHeight(wallHeight);
-            corridorManger.GenerateCorridors(corridorSize);
+            if (!Application.isPlaying)
+            {
+                roomManager.Awake();
+                corridorManager.Awake();
+            }
 
+            roomManager.GenerateRooms(minRoomCount, maxRoomCount);
+            corridorManager.GenerateCorridors();
             dungeonVisualizer.SetAllFloorTiles();
-
 
             var rooms = roomManager.GetRooms();
             PositionPlayerCharacter(rooms.First().Floor.Center);
 
-            GenerateObjects(rooms);
             GenerateEnemies(rooms);
-
         }
 
         private void PositionPlayerCharacter(Vector2Int position)
@@ -119,32 +100,15 @@ namespace Assets.Scripts.Dungeon
 
             foreach (var room in rooms)
             {
-                if (room.GetRoomType() == RoomType.Default)
+                if (room.RoomType == RoomType.Default)
                 {
                     enemyGenerator.GenerateEnemies(room, 4);
                 }
-                if (room.GetRoomType() == RoomType.BossRoom)
+                if (room.RoomType == RoomType.BossRoom)
                 {
                     enemyGenerator.GenerateBossEnemy(room);
                 }
             }
         }
-
-        public void GenerateObjects(IEnumerable<Room> rooms)
-        {
-            foreach (var room in rooms)
-            {
-                if (room.GetRoomType() == RoomType.BossRoom)
-                {
-                    objectsGenerator.GenerateExit(room);
-                }
-                else
-                {
-                    objectsGenerator.GenerateWallObjects(room);
-                    objectsGenerator.GenerateFloorObjects(room);
-                }
-            }
-        }
-
     }
 }

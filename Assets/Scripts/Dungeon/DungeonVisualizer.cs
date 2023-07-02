@@ -20,19 +20,10 @@ namespace Assets.Scripts.Dungeon
         private HashSet<Vector2Int> allTiles = new();
 
         [SerializeField]
-        private TileBase darkTile;
-
-        [SerializeField]
-        private TileBase floorTile;
+        public DungeonVisualiserSettings dungeonVisualiserSettings;
 
         [SerializeField]
         private Tilemap floorTilemap, wallTilemap;
-
-        [SerializeField]
-        private List<NamedTileBase> wallTiles;
-
-        [SerializeField]
-        private List<NamedTileBase> ledgeTiles;
 
         public void SetAllFloorTiles()
         {
@@ -49,7 +40,7 @@ namespace Assets.Scripts.Dungeon
             {
                 if (!allTiles.Contains(position))
                 {
-                    SetSingleTile(wallTilemap, darkTile, position);
+                    SetSingleTile(wallTilemap, dungeonVisualiserSettings.darkTile, position);
                 }
             }
         }
@@ -63,7 +54,7 @@ namespace Assets.Scripts.Dungeon
 
         public void SetFloorTile(Vector2Int position)
         {
-            SetSingleTile(floorTilemap, floorTile, position);
+            SetSingleTile(floorTilemap, dungeonVisualiserSettings.floorTile, position);
         }
 
         public void SetFloorTiles(IEnumerable<Vector2Int> floorPositions)
@@ -76,12 +67,12 @@ namespace Assets.Scripts.Dungeon
 
         public void SetRandomWallTile(string tileName, Vector2Int position)
         {
-            SetRandomTile(wallTilemap, wallTiles, tileName, position);
+            SetRandomTile(wallTilemap, dungeonVisualiserSettings.wallTiles, tileName, position);
         }
 
         public void SetRandomWallLedgeTile(string tileName, Vector2Int position)
         {
-            SetRandomTile(wallTilemap, ledgeTiles, tileName, position);
+            SetRandomTile(wallTilemap, dungeonVisualiserSettings.ledgeTiles, tileName, position);
         }
 
         public void ClearWallTile(Vector2Int position)

@@ -133,8 +133,9 @@ GameObject:
   m_Component:
   - component: {fileID: 34912772}
   - component: {fileID: 34912774}
+  - component: {fileID: 34912777}
+  - component: {fileID: 34912779}
   - component: {fileID: 34912775}
-  - component: {fileID: 34912776}
   - component: {fileID: 34912771}
   m_Layer: 0
   m_Name: DungeonGenerator
@@ -156,13 +157,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerCharacter: {fileID: 1820970075}
+  roomCount: {x: 0, y: 0}
   minRoomCount: 6
   maxRoomCount: 8
-  roomWidth: 20
-  roomHeight: 18
-  wallHeight: 5
-  offset: 2
-  corridorSize: 7
   disableGenerateOnStart: 0
 --- !u!4 &34912772
 Transform:
@@ -191,101 +188,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf331a27a6ac4ee4c81a8f50fb538e50, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  darkTile: {fileID: 11400000, guid: 6a05f44cc166a124bb633816dfdcf7aa, type: 2}
-  floorTile: {fileID: 11400000, guid: 66aec17914fcb344598d0fe2088e455e, type: 2}
+  dungeonVisualiserSettings: {fileID: 11400000, guid: 9efcd7a17a04b6a4dbc096cb70083722, type: 2}
   floorTilemap: {fileID: 1010219477}
   wallTilemap: {fileID: 1255642080}
-  wallTiles:
-  - Name: 1_wall_north_pillar_top
-    Tiles:
-    - {fileID: 11400000, guid: fbacf1a5671d9b54ab8449f985b4360a, type: 2}
-  - Name: 1_wall_north_pillar_middle
-    Tiles:
-    - {fileID: 11400000, guid: 9df2e9f98c3b1434cbb93a949a784d55, type: 2}
-    - {fileID: 11400000, guid: 4360519f8fa4bc347bcee62ddfa4f57c, type: 2}
-    - {fileID: 11400000, guid: 4ac86bce2e10db147a09f4657d6cab0a, type: 2}
-  - Name: 1_wall_north_top
-    Tiles:
-    - {fileID: 11400000, guid: e9a459a973432484a80f37815d7fe00e, type: 2}
-  - Name: 1_wall_north_middle_shade
-    Tiles:
-    - {fileID: 11400000, guid: 392baa73c4751604187f57bba1154484, type: 2}
-    - {fileID: 11400000, guid: 396b0bab154c9f44bacb13f1e02aa1b2, type: 2}
-  - Name: 1_wall_north_middle
-    Tiles:
-    - {fileID: 11400000, guid: 7e5c1fb3b4c46f746b695d4543562a65, type: 2}
-    - {fileID: 11400000, guid: e144e27b11853524a9b86d3e8c9f893f, type: 2}
-    - {fileID: 11400000, guid: a7027e4f572311549915d3410a0f8a49, type: 2}
-    - {fileID: 11400000, guid: 77a23a4aa34df74478f8519a5f3562f2, type: 2}
-  - Name: 1_wall_north_left_top_corner
-    Tiles:
-    - {fileID: 11400000, guid: 5cbc04d73d61f1345b69fd038dea5d58, type: 2}
-  - Name: 1_wall_north_left_middle_corner
-    Tiles:
-    - {fileID: 11400000, guid: d483e7e2b5979534084790a14cf8705c, type: 2}
-    - {fileID: 11400000, guid: ddc1f703d6f1c884c98795d33225d1e2, type: 2}
-    - {fileID: 11400000, guid: 84691903e1ee2f54bb8a42568ff7836e, type: 2}
-  - Name: 1_wall_north_right_top_corner
-    Tiles:
-    - {fileID: 11400000, guid: 3b7da02066b76e8478d870fbbdce61fa, type: 2}
-  - Name: 1_wall_north_right_middle_corner
-    Tiles:
-    - {fileID: 11400000, guid: cfac826fccd408c489be5c0a0bc82fe9, type: 2}
-  - Name: 1_wall_south_middle
-    Tiles:
-    - {fileID: 11400000, guid: 30280ca6afbb8fb43a98c1f6192669a0, type: 2}
-  - Name: 1_wall_south_left_corner
-    Tiles:
-    - {fileID: 11400000, guid: eff9331e7d2c6924faa913ef5eca73fa, type: 2}
-  - Name: 1_wall_south_right_corner
-    Tiles:
-    - {fileID: 11400000, guid: 3ee823132d58d8243b2f570f56a0de83, type: 2}
-  - Name: 1_wall_west_top
-    Tiles:
-    - {fileID: 11400000, guid: 3a0a7050dede8af49ab002260c12e172, type: 2}
-  - Name: 1_wall_west_middle
-    Tiles:
-    - {fileID: 11400000, guid: a2d2e2b79727dbe4f9fcd482ca7f1af9, type: 2}
-  - Name: 1_wall_west_bottom
-    Tiles:
-    - {fileID: 11400000, guid: 852cfc6406914bd478796e4d81f88baf, type: 2}
-  - Name: 1_wall_east_top
-    Tiles:
-    - {fileID: 11400000, guid: 32f5c34017bf0724699cac4946c9e4a3, type: 2}
-  - Name: 1_wall_east_middle
-    Tiles:
-    - {fileID: 11400000, guid: a515391326bd6b74bbaeea21cd34491b, type: 2}
-  - Name: 1_wall_east_bottom
-    Tiles:
-    - {fileID: 11400000, guid: 3e85f11c8eddfe945a5eb5949c791060, type: 2}
-  ledgeTiles:
-  - Name: 1_ledge_north_left
-    Tiles:
-    - {fileID: 11400000, guid: 10a10602467b0d24c82bf6667ad024ea, type: 2}
-  - Name: 1_ledge_north_middle
-    Tiles:
-    - {fileID: 11400000, guid: 50a7dbebf9c1a7d41994fa61c2e08d4c, type: 2}
-  - Name: 1_ledge_north_left_corner
-    Tiles:
-    - {fileID: 11400000, guid: cf931f667199959438638799d77b8181, type: 2}
-  - Name: 1_ledge_north_right_corner
-    Tiles:
-    - {fileID: 11400000, guid: 55d79c9c005b0da44b9984f7d79e4246, type: 2}
-  - Name: 1_ledge_north_right
-    Tiles:
-    - {fileID: 11400000, guid: cbb6ac76586094f449b7c63435a1d09c, type: 2}
-  - Name: 1_ledge_west_middle
-    Tiles:
-    - {fileID: 11400000, guid: 62a1c5a89415d9b48a2c8ed0af16e992, type: 2}
-  - Name: 1_ledge_east_middle
-    Tiles:
-    - {fileID: 11400000, guid: 7442dc4760a170c448a895afd47be3b2, type: 2}
-  - Name: 1_ledge_south_left_corner
-    Tiles:
-    - {fileID: 11400000, guid: be97a8f5ae2ef004a9a9912414bf4cdf, type: 2}
-  - Name: 1_ledge_south_right_corner
-    Tiles:
-    - {fileID: 11400000, guid: a0ce072c642f75d41b58eded5181fc6f, type: 2}
 --- !u!114 &34912775
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -305,7 +210,7 @@ MonoBehaviour:
   - {fileID: 7511254370271854359, guid: baa0766cd5a7547488e50f6dd73dce80, type: 3}
   - {fileID: 9011340971014957566, guid: b274ccca59643274b8f6b6db34313f90, type: 3}
   - {fileID: 9148402442353990093, guid: 21eecc696a865b442857040b69e68719, type: 3}
---- !u!114 &34912776
+--- !u!114 &34912777
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -314,30 +219,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 34912770}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a06623ebde5d2c54eb451349bbca8891, type: 3}
+  m_Script: {fileID: 11500000, guid: 4ef1afae82186c142a523733765e1160, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dungeonObjects:
-  - Name: Exits
-    GameObjects:
-    - {fileID: 8886554027916545755, guid: 9b6a95fccabc00e43a7c1cd9da89bca9, type: 3}
-  - Name: Wall
-    GameObjects:
-    - {fileID: 197473032071686387, guid: 5ec43a80b7328f14db9cdce07997d0be, type: 3}
-    - {fileID: 197473032071686387, guid: 92835740e3d1c69469d95929193ef940, type: 3}
-    - {fileID: 197473032071686387, guid: 2a94386650fad3542ba1d92cdfe6bdf5, type: 3}
-    - {fileID: 197473032071686387, guid: 74d8e5629f095f74885dd941acbc958c, type: 3}
-    - {fileID: 197473032071686387, guid: c0dcafa1085acb04cb1c7b22727c1d07, type: 3}
-  - Name: Floor
-    GameObjects:
-    - {fileID: 197473032071686387, guid: 71c1ac6c58970604e9d48ad189f2852f, type: 3}
-    - {fileID: 197473032071686387, guid: b0818d277e6aed04ba80a155c77bf28c, type: 3}
-    - {fileID: 197473032071686387, guid: bf89c4aa9a8cb5c4f8b52b2e5a22791a, type: 3}
-    - {fileID: 197473032071686387, guid: 574f1b19637de0e4a8829eb88fcd8a2f, type: 3}
-    - {fileID: 197473032071686387, guid: 1ec9b4d2205659746a6c6db697636c06, type: 3}
-    - {fileID: 197473032071686387, guid: 138676b05e702be45ad5ecedd895c610, type: 3}
-    - {fileID: 197473032071686387, guid: 1758f68b5d0a2b04eaceec3d685b7289, type: 3}
-    - {fileID: 197473032071686387, guid: 2c52a6e76a8f23048b58d36966a45075, type: 3}
+  defaultRoom: {fileID: 3942057110451614254, guid: 4690c2a070408dc4992b772f9078fcc5, type: 3}
+--- !u!114 &34912779
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 34912770}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9cd36a661cd1d1a4ebe17fbf8dadb89d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &121548231
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -391,7 +288,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8111309106597192695, guid: 102af8aa83f700d4f8b0e5d21612bb34, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 10
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 8111309106597192695, guid: 102af8aa83f700d4f8b0e5d21612bb34, type: 3}
       propertyPath: m_LocalPosition.y

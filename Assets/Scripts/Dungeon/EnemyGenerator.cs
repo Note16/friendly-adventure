@@ -1,7 +1,7 @@
 ﻿using Assets.Scripts.Characters.Enemies;
 using Assets.Scripts.Characters.Enemies.Versions;
-using Assets.Scripts.Dungeon.Areas.Rooms;
 using Assets.Scripts.Dungeon.Objects;
+using Assets.Scripts.Dungeon.Rooms;
 using Assets.Scripts.Extensions;
 using Assets.Scripts.Helpers;
 using System.Collections.Generic;
@@ -35,7 +35,7 @@ namespace Assets.Scripts.Dungeon
 
         public void GenerateBossEnemy(Room room)
         {
-            var bossEnemy = Instantiate(RandomHelper.GetRandom(possibleLevelEnemies), (Vector3Int)room.Floor.Center, Quaternion.identity, gameObject.transform);
+            var bossEnemy = Instantiate(RandomHelper.GetRandom(possibleLevelEnemies), (Vector3Int)room.Floor.Center, Quaternion.identity, room.transform);
             bossEnemy.transform.localScale = new Vector3(10, 10, 0);
             bossEnemy.GetComponent<SpriteRenderer>().color = new Color(1f, 0.5f, 0.5f);
             if (bossEnemy.TryGetComponent<BaseEnemy>(out var baseEnemy))
@@ -80,7 +80,7 @@ namespace Assets.Scripts.Dungeon
             {
                 var randomPosition = (Vector3Int)RandomHelper.GetRandom(roomFloor);
 
-                var enemy = Instantiate(RandomHelper.GetRandom(possibleLevelEnemies), randomPosition, Quaternion.identity, transform);
+                var enemy = Instantiate(RandomHelper.GetRandom(possibleLevelEnemies), randomPosition, Quaternion.identity, room.transform);
                 var spriteRenderer = enemy.GetComponent<SpriteRenderer>();
                 spriteRenderer.flipX = RandomHelper.GetRandom(50);
 
