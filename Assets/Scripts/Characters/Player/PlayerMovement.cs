@@ -1,17 +1,21 @@
-﻿using Assets.Scripts.Characters.Shared;
+﻿using Assets.Scripts.Shared;
 using UnityEngine;
 
 namespace Assets.Scripts.Characters.Player
 {
+    [RequireComponent(typeof(Animator))]
+    [RequireComponent(typeof(SpriteRenderer))]
     public class PlayerMovement : Movement
     {
-        private readonly Animator animator;
-        private readonly SpriteRenderer spriteRenderer;
+        private Animator animator;
+        private SpriteRenderer spriteRenderer;
 
-        public PlayerMovement(Animator animator, SpriteRenderer spriteRenderer, Rigidbody2D rigidbody2D) : base(rigidbody2D)
+        new private void Awake()
         {
-            this.animator = animator;
-            this.spriteRenderer = spriteRenderer;
+            base.Awake();
+
+            animator = GetComponent<Animator>();
+            spriteRenderer = GetComponent<SpriteRenderer>();
         }
 
         public void Animate(Vector2 direction)

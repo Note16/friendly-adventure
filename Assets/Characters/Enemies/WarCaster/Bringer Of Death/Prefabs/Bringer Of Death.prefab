@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 7955565140460621189}
   - component: {fileID: 2619647137466080763}
   - component: {fileID: 7880171812227996376}
+  - component: {fileID: 7163862470304053810}
   m_Layer: 0
   m_Name: Bringer Of Death
   m_TagString: Untagged
@@ -196,3 +197,17 @@ MonoBehaviour:
   - {fileID: 8405352401042620441, guid: 684ebdd3e8887e944a013becd1d0f4b6, type: 3}
   spellSizeMultiplier: 1
   spellDamageMultiplier: 1
+--- !u!114 &7163862470304053810
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9148402442353990093}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ce4037087da99a4e81f1533e7f6d6d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 4
+  collisionOffset: 0.5

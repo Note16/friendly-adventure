@@ -1,0 +1,407 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!181963792 &2655988077585873504
+Preset:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: DungeonVisualizer
+  m_TargetType:
+    m_NativeTypeID: 114
+    m_ManagedTypePPtr: {fileID: 11500000, guid: cf331a27a6ac4ee4c81a8f50fb538e50, type: 3}
+    m_ManagedTypeFallback: 
+  m_Properties:
+  - target: {fileID: 0}
+    propertyPath: m_Enabled
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_EditorHideFlags
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_EditorClassIdentifier
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: darkTile
+    value: 
+    objectReference: {fileID: 11400000, guid: 6a05f44cc166a124bb633816dfdcf7aa, type: 2}
+  - target: {fileID: 0}
+    propertyPath: floorTile
+    value: 
+    objectReference: {fileID: 11400000, guid: 66aec17914fcb344598d0fe2088e455e, type: 2}
+  - target: {fileID: 0}
+    propertyPath: floorTilemap
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: wallTilemap
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: wallTiles.Array.size
+    value: 18
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: wallTiles.Array.data[0].Name
+    value: 1_wall_north_pillar_top
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: wallTiles.Array.data[0].Tiles.Array.size
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: wallTiles.Array.data[0].Tiles.Array.data[0]
+    value: 
+    objectReference: {fileID: 11400000, guid: fbacf1a5671d9b54ab8449f985b4360a, type: 2}
+  - target: {fileID: 0}
+    propertyPath: wallTiles.Array.data[1].Name
+    value: 1_wall_north_pillar_middle
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: wallTiles.Array.data[1].Tiles.Array.size
+    value: 3
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: wallTiles.Array.data[1].Tiles.Array.data[0]
+    value: 
+    objectReference: {fileID: 11400000, guid: 9df2e9f98c3b1434cbb93a949a784d55, type: 2}
+  - target: {fileID: 0}
+    propertyPath: wallTiles.Array.data[1].Tiles.Array.data[1]
+    value: 
+    objectReference: {fileID: 11400000, guid: 4360519f8fa4bc347bcee62ddfa4f57c, type: 2}
+  - target: {fileID: 0}
+    propertyPath: wallTiles.Array.data[1].Tiles.Array.data[2]
+    value: 
+    objectReference: {fileID: 11400000, guid: 4ac86bce2e10db147a09f4657d6cab0a, type: 2}
+  - target: {fileID: 0}
+    propertyPath: wallTiles.Array.data[2].Name
+    value: 1_wall_north_top
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: wallTiles.Array.data[2].Tiles.Array.size
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: wallTiles.Array.data[2].Tiles.Array.data[0]
+    value: 
+    objectReference: {fileID: 11400000, guid: e9a459a973432484a80f37815d7fe00e, type: 2}
+  - target: {fileID: 0}
+    propertyPath: wallTiles.Array.data[3].Name
+    value: 1_wall_north_middle_shade
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: wallTiles.Array.data[3].Tiles.Array.size
+    value: 2
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: wallTiles.Array.data[3].Tiles.Array.data[0]
+    value: 
+    objectReference: {fileID: 11400000, guid: 392baa73c4751604187f57bba1154484, type: 2}
+  - target: {fileID: 0}
+    propertyPath: wallTiles.Array.data[3].Tiles.Array.data[1]
+    value: 
+    objectReference: {fileID: 11400000, guid: 396b0bab154c9f44bacb13f1e02aa1b2, type: 2}
+  - target: {fileID: 0}
+    propertyPath: wallTiles.Array.data[4].Name
+    value: 1_wall_north_middle
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: wallTiles.Array.data[4].Tiles.Array.size
+    value: 4
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: wallTiles.Array.data[4].Tiles.Array.data[0]
+    value: 
+    objectReference: {fileID: 11400000, guid: 7e5c1fb3b4c46f746b695d4543562a65, type: 2}
+  - target: {fileID: 0}
+    propertyPath: wallTiles.Array.data[4].Tiles.Array.data[1]
+    value: 
+    objectReference: {fileID: 11400000, guid: e144e27b11853524a9b86d3e8c9f893f, type: 2}
+  - target: {fileID: 0}
+    propertyPath: wallTiles.Array.data[4].Tiles.Array.data[2]
+    value: 
+    objectReference: {fileID: 11400000, guid: a7027e4f572311549915d3410a0f8a49, type: 2}
+  - target: {fileID: 0}
+    propertyPath: wallTiles.Array.data[4].Tiles.Array.data[3]
+    value: 
+    objectReference: {fileID: 11400000, guid: 77a23a4aa34df74478f8519a5f3562f2, type: 2}
+  - target: {fileID: 0}
+    propertyPath: wallTiles.Array.data[5].Name
+    value: 1_wall_north_left_top_corner
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: wallTiles.Array.data[5].Tiles.Array.size
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: wallTiles.Array.data[5].Tiles.Array.data[0]
+    value: 
+    objectReference: {fileID: 11400000, guid: 5cbc04d73d61f1345b69fd038dea5d58, type: 2}
+  - target: {fileID: 0}
+    propertyPath: wallTiles.Array.data[6].Name
+    value: 1_wall_north_left_middle_corner
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: wallTiles.Array.data[6].Tiles.Array.size
+    value: 3
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: wallTiles.Array.data[6].Tiles.Array.data[0]
+    value: 
+    objectReference: {fileID: 11400000, guid: d483e7e2b5979534084790a14cf8705c, type: 2}
+  - target: {fileID: 0}
+    propertyPath: wallTiles.Array.data[6].Tiles.Array.data[1]
+    value: 
+    objectReference: {fileID: 11400000, guid: ddc1f703d6f1c884c98795d33225d1e2, type: 2}
+  - target: {fileID: 0}
+    propertyPath: wallTiles.Array.data[6].Tiles.Array.data[2]
+    value: 
+    objectReference: {fileID: 11400000, guid: 84691903e1ee2f54bb8a42568ff7836e, type: 2}
+  - target: {fileID: 0}
+    propertyPath: wallTiles.Array.data[7].Name
+    value: 1_wall_north_right_top_corner
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: wallTiles.Array.data[7].Tiles.Array.size
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: wallTiles.Array.data[7].Tiles.Array.data[0]
+    value: 
+    objectReference: {fileID: 11400000, guid: 3b7da02066b76e8478d870fbbdce61fa, type: 2}
+  - target: {fileID: 0}
+    propertyPath: wallTiles.Array.data[8].Name
+    value: 1_wall_north_right_middle_corner
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: wallTiles.Array.data[8].Tiles.Array.size
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: wallTiles.Array.data[8].Tiles.Array.data[0]
+    value: 
+    objectReference: {fileID: 11400000, guid: cfac826fccd408c489be5c0a0bc82fe9, type: 2}
+  - target: {fileID: 0}
+    propertyPath: wallTiles.Array.data[9].Name
+    value: 1_wall_south_middle
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: wallTiles.Array.data[9].Tiles.Array.size
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: wallTiles.Array.data[9].Tiles.Array.data[0]
+    value: 
+    objectReference: {fileID: 11400000, guid: 30280ca6afbb8fb43a98c1f6192669a0, type: 2}
+  - target: {fileID: 0}
+    propertyPath: wallTiles.Array.data[10].Name
+    value: 1_wall_south_left_corner
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: wallTiles.Array.data[10].Tiles.Array.size
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: wallTiles.Array.data[10].Tiles.Array.data[0]
+    value: 
+    objectReference: {fileID: 11400000, guid: eff9331e7d2c6924faa913ef5eca73fa, type: 2}
+  - target: {fileID: 0}
+    propertyPath: wallTiles.Array.data[11].Name
+    value: 1_wall_south_right_corner
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: wallTiles.Array.data[11].Tiles.Array.size
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: wallTiles.Array.data[11].Tiles.Array.data[0]
+    value: 
+    objectReference: {fileID: 11400000, guid: 3ee823132d58d8243b2f570f56a0de83, type: 2}
+  - target: {fileID: 0}
+    propertyPath: wallTiles.Array.data[12].Name
+    value: 1_wall_west_top
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: wallTiles.Array.data[12].Tiles.Array.size
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: wallTiles.Array.data[12].Tiles.Array.data[0]
+    value: 
+    objectReference: {fileID: 11400000, guid: 3a0a7050dede8af49ab002260c12e172, type: 2}
+  - target: {fileID: 0}
+    propertyPath: wallTiles.Array.data[13].Name
+    value: 1_wall_west_middle
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: wallTiles.Array.data[13].Tiles.Array.size
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: wallTiles.Array.data[13].Tiles.Array.data[0]
+    value: 
+    objectReference: {fileID: 11400000, guid: a2d2e2b79727dbe4f9fcd482ca7f1af9, type: 2}
+  - target: {fileID: 0}
+    propertyPath: wallTiles.Array.data[14].Name
+    value: 1_wall_west_bottom
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: wallTiles.Array.data[14].Tiles.Array.size
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: wallTiles.Array.data[14].Tiles.Array.data[0]
+    value: 
+    objectReference: {fileID: 11400000, guid: 852cfc6406914bd478796e4d81f88baf, type: 2}
+  - target: {fileID: 0}
+    propertyPath: wallTiles.Array.data[15].Name
+    value: 1_wall_east_top
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: wallTiles.Array.data[15].Tiles.Array.size
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: wallTiles.Array.data[15].Tiles.Array.data[0]
+    value: 
+    objectReference: {fileID: 11400000, guid: 32f5c34017bf0724699cac4946c9e4a3, type: 2}
+  - target: {fileID: 0}
+    propertyPath: wallTiles.Array.data[16].Name
+    value: 1_wall_east_middle
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: wallTiles.Array.data[16].Tiles.Array.size
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: wallTiles.Array.data[16].Tiles.Array.data[0]
+    value: 
+    objectReference: {fileID: 11400000, guid: a515391326bd6b74bbaeea21cd34491b, type: 2}
+  - target: {fileID: 0}
+    propertyPath: wallTiles.Array.data[17].Name
+    value: 1_wall_east_bottom
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: wallTiles.Array.data[17].Tiles.Array.size
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: wallTiles.Array.data[17].Tiles.Array.data[0]
+    value: 
+    objectReference: {fileID: 11400000, guid: 3e85f11c8eddfe945a5eb5949c791060, type: 2}
+  - target: {fileID: 0}
+    propertyPath: ledgeTiles.Array.size
+    value: 9
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: ledgeTiles.Array.data[0].Name
+    value: 1_ledge_north_left
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: ledgeTiles.Array.data[0].Tiles.Array.size
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: ledgeTiles.Array.data[0].Tiles.Array.data[0]
+    value: 
+    objectReference: {fileID: 11400000, guid: 10a10602467b0d24c82bf6667ad024ea, type: 2}
+  - target: {fileID: 0}
+    propertyPath: ledgeTiles.Array.data[1].Name
+    value: 1_ledge_north_middle
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: ledgeTiles.Array.data[1].Tiles.Array.size
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: ledgeTiles.Array.data[1].Tiles.Array.data[0]
+    value: 
+    objectReference: {fileID: 11400000, guid: 50a7dbebf9c1a7d41994fa61c2e08d4c, type: 2}
+  - target: {fileID: 0}
+    propertyPath: ledgeTiles.Array.data[2].Name
+    value: 1_ledge_north_left_corner
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: ledgeTiles.Array.data[2].Tiles.Array.size
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: ledgeTiles.Array.data[2].Tiles.Array.data[0]
+    value: 
+    objectReference: {fileID: 11400000, guid: cf931f667199959438638799d77b8181, type: 2}
+  - target: {fileID: 0}
+    propertyPath: ledgeTiles.Array.data[3].Name
+    value: 1_ledge_north_right_corner
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: ledgeTiles.Array.data[3].Tiles.Array.size
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: ledgeTiles.Array.data[3].Tiles.Array.data[0]
+    value: 
+    objectReference: {fileID: 11400000, guid: 55d79c9c005b0da44b9984f7d79e4246, type: 2}
+  - target: {fileID: 0}
+    propertyPath: ledgeTiles.Array.data[4].Name
+    value: 1_ledge_north_right
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: ledgeTiles.Array.data[4].Tiles.Array.size
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: ledgeTiles.Array.data[4].Tiles.Array.data[0]
+    value: 
+    objectReference: {fileID: 11400000, guid: cbb6ac76586094f449b7c63435a1d09c, type: 2}
+  - target: {fileID: 0}
+    propertyPath: ledgeTiles.Array.data[5].Name
+    value: 1_ledge_west_middle
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: ledgeTiles.Array.data[5].Tiles.Array.size
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: ledgeTiles.Array.data[5].Tiles.Array.data[0]
+    value: 
+    objectReference: {fileID: 11400000, guid: 62a1c5a89415d9b48a2c8ed0af16e992, type: 2}
+  - target: {fileID: 0}
+    propertyPath: ledgeTiles.Array.data[6].Name
+    value: 1_ledge_east_middle
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: ledgeTiles.Array.data[6].Tiles.Array.size
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: ledgeTiles.Array.data[6].Tiles.Array.data[0]
+    value: 
+    objectReference: {fileID: 11400000, guid: 7442dc4760a170c448a895afd47be3b2, type: 2}
+  - target: {fileID: 0}
+    propertyPath: ledgeTiles.Array.data[7].Name
+    value: 1_ledge_south_left_corner
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: ledgeTiles.Array.data[7].Tiles.Array.size
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: ledgeTiles.Array.data[7].Tiles.Array.data[0]
+    value: 
+    objectReference: {fileID: 11400000, guid: be97a8f5ae2ef004a9a9912414bf4cdf, type: 2}
+  - target: {fileID: 0}
+    propertyPath: ledgeTiles.Array.data[8].Name
+    value: 1_ledge_south_right_corner
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: ledgeTiles.Array.data[8].Tiles.Array.size
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: ledgeTiles.Array.data[8].Tiles.Array.data[0]
+    value: 
+    objectReference: {fileID: 11400000, guid: a0ce072c642f75d41b58eded5181fc6f, type: 2}
+  m_ExcludedProperties: []

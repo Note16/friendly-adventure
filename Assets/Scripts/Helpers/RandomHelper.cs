@@ -1,14 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 namespace Assets.Scripts.Helpers
 {
     public static class RandomHelper
     {
-        /// <summary>
-        /// Get a Random value from given <c>List&lt;T&gt;</c>
-        /// </summary>
         public static T GetRandom<T>(List<T> list)
         {
             if (list == null || list.Count == 0)
@@ -18,13 +16,16 @@ namespace Assets.Scripts.Helpers
             return list[index];
         }
 
-        /// <summary>
-        /// Get a random value from given Enum
-        /// </summary>
-        public static T GetRandom<T>() where T : Enum
+        public static T GetRandomEnum<T>(ICollection<T> exlusions) where T : Enum
         {
-            var values = Enum.GetValues(typeof(T));
-            return (T)values.GetValue(UnityEngine.Random.Range(0, values.Length));
+            var values = Enum.GetValues(typeof(T)).Cast<T>();
+            var possibleEnums = values.Where(i => !exlusions.Contains(i));
+            return GetRandom(possibleEnums.ToList());
+        }
+
+        public static T GetRandomEnum<T>() where T : Enum
+        {
+            return GetRandomEnum(new List<T>());
         }
 
         /// <summary>

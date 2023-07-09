@@ -1,8 +1,9 @@
-﻿using Assets.Scripts.Characters.Shared;
+﻿using Assets.Scripts.Shared;
 using UnityEngine;
 
 namespace Assets.Scripts.Items
 {
+    [RequireComponent(typeof(Movement))]
     public class HealthPotion : MonoBehaviour
     {
         [SerializeField]
@@ -14,8 +15,7 @@ namespace Assets.Scripts.Items
         void Start()
         {
             rb = GetComponent<Rigidbody2D>();
-            movement = new Movement(rb);
-            movement.SetMoveSpeed(10f);
+            movement = GetComponent<Movement>();
         }
 
         public void Move(Vector3 targetPosition)

@@ -1,14 +1,17 @@
 ﻿using Assets.Scripts.Characters.Player;
-using Assets.Scripts.Characters.Shared;
+using Assets.Scripts.Dungeon.Rooms;
 using Assets.Scripts.Helpers;
+using Assets.Scripts.Shared;
 using Assets.Scripts.UI;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
 namespace Assets.Scripts.Characters.Enemies
 {
+    [RequireComponent(typeof(SpriteRenderer))]
+    [RequireComponent(typeof(Animator))]
+    [RequireComponent(typeof(Movement))]
     public class BaseEnemy : MonoBehaviour
     {
         [SerializeField]
@@ -25,26 +28,26 @@ namespace Assets.Scripts.Characters.Enemies
 
         public int itemDropMultiplier = 1;
 
-        protected PlayerController playerController;
+        protected PlayerStats playerStats;
         protected SpriteRenderer spriteRenderer;
         protected Animator animator;
         protected Movement movement;
-
-        public Action OnDeathAction;
+        protected RoomEnemyGenerator room;
 
         private void OnEnable()
         {
             spriteRenderer = GetComponent<SpriteRenderer>();
             animator = GetComponent<Animator>();
-            movement = new Movement(GetComponent<Rigidbody2D>());
-            playerController = FindObjectOfType<PlayerController>();
+            movement = GetComponent<Movement>();
+            playerStats = FindObjectOfType<PlayerStats>();
+            room = GetComponentInParent<RoomEnemyGenerator>();
         }
 
         private void FixedUpdate()
         {
             // Update sorting order so enemy shows on top of player
             // When player is positioned above the enemy
-            var relativePos = (Vector2)playerController.transform.position - (Vector2)transform.position;
+            var relativePos = (Vector2)playerStats.transform.position - (Vector2)transform.position;
             var layer = Mathf.CeilToInt(relativePos.y * 2);
             spriteRenderer.sortingOrder = relativePos.y < 0f ? layer : layer + 1;
 
@@ -69,7 +72,7 @@ namespace Assets.Scripts.Characters.Enemies
             if (healthPoints <= 0)
             {
                 DropItems();
-                OnDeathAction?.Invoke();
+                room.EnemiesDefeatedEvent();
                 animator.Play("Death"); // Will call DestroyOnExit behavior script
             }
             else

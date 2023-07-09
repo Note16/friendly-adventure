@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 731333368757340377}
   - component: {fileID: 5196019588819910521}
   - component: {fileID: 5023231100888747826}
+  - component: {fileID: 3245598327504372179}
   m_Layer: 0
   m_Name: Ghost
   m_TagString: Untagged
@@ -193,3 +194,17 @@ MonoBehaviour:
   - {fileID: 8302880608021199803, guid: d7c14e1c758819c468fbea07a78862ba, type: 3}
   spellSizeMultiplier: 1
   spellDamageMultiplier: 1
+--- !u!114 &3245598327504372179
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4438037666516551898}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ce4037087da99a4e81f1533e7f6d6d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 4
+  collisionOffset: 0.5

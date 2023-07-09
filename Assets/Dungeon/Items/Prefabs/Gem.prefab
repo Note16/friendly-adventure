@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2233252052985508573}
   - component: {fileID: -4683160763589523801}
   - component: {fileID: -7374138874663566968}
+  - component: {fileID: 7642888152977593096}
   m_Layer: 0
   m_Name: Gem
   m_TagString: Untagged
@@ -120,3 +121,17 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!114 &7642888152977593096
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 703400917167542029}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ce4037087da99a4e81f1533e7f6d6d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveSpeed: 8
+  collisionOffset: 0.5
