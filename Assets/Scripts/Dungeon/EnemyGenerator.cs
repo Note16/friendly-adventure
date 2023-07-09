@@ -1,8 +1,6 @@
 ﻿using Assets.Scripts.Characters.Enemies;
 using Assets.Scripts.Characters.Enemies.Versions;
 using Assets.Scripts.Dungeon.Objects;
-using Assets.Scripts.Dungeon.Rooms;
-using Assets.Scripts.Extensions;
 using Assets.Scripts.Helpers;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,13 +16,13 @@ namespace Assets.Scripts.Dungeon
 
         private List<GameObject> enemies;
 
-        public EnemyGenerator()
+        private void Awake()
         {
             enemies = new List<GameObject>();
             possibleLevelEnemies = possibleEnemies;
         }
 
-        public void RandomizeLevelEnemies(int maxTypesCount)
+        public void RandomizePossibleLevelEnemies(int maxTypesCount)
         {
             possibleLevelEnemies = new List<GameObject>();
             for (int i = 0; i < maxTypesCount; i++)
@@ -33,9 +31,9 @@ namespace Assets.Scripts.Dungeon
             }
         }
 
-        public void GenerateBossEnemy(Room room)
+        public void GenerateBossEnemy(Vector3Int position, Transform parent)
         {
-            var bossEnemy = Instantiate(RandomHelper.GetRandom(possibleLevelEnemies), (Vector3Int)room.Floor.Center, Quaternion.identity, room.transform);
+            var bossEnemy = Instantiate(RandomHelper.GetRandom(possibleLevelEnemies), position, Quaternion.identity, parent);
             bossEnemy.transform.localScale = new Vector3(10, 10, 0);
             bossEnemy.GetComponent<SpriteRenderer>().color = new Color(1f, 0.5f, 0.5f);
             if (bossEnemy.TryGetComponent<BaseEnemy>(out var baseEnemy))
@@ -72,20 +70,12 @@ namespace Assets.Scripts.Dungeon
             enemies.Add(bossEnemy);
         }
 
-        public void GenerateEnemies(Room room, int count)
+        public void GenerateEnemy(Vector3Int position, Transform parent)
         {
-            var roomFloor = room.Floor.Inner.allPositionsWithin.ToVector2Int();
-
-            for (int i = 0; i < count; i++)
-            {
-                var randomPosition = (Vector3Int)RandomHelper.GetRandom(roomFloor);
-
-                var enemy = Instantiate(RandomHelper.GetRandom(possibleLevelEnemies), randomPosition, Quaternion.identity, room.transform);
-                var spriteRenderer = enemy.GetComponent<SpriteRenderer>();
-                spriteRenderer.flipX = RandomHelper.GetRandom(50);
-
-                enemies.Add(enemy);
-            }
+            var enemy = Instantiate(RandomHelper.GetRandom(possibleLevelEnemies), position, Quaternion.identity, parent);
+            var spriteRenderer = enemy.GetComponent<SpriteRenderer>();
+            spriteRenderer.flipX = RandomHelper.GetRandom(50);
+            enemies.Add(enemy);
         }
 
         public void DestroyEnemies()

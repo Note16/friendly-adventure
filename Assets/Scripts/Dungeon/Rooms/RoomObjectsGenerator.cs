@@ -54,7 +54,7 @@ namespace Assets.Scripts.Dungeon
                 {
                     var randomPosition = (Vector3Int)RandomHelper.GetRandom(roomFloor);
 
-                    // Do not generate object if on already exists in < 1f distance
+                    // Do not generate object if one already exists in < 1f distance
                     if (!activeObjects.Any(obj => Vector3.Distance(obj.transform.position, randomPosition) < 1f))
                         activeObjects.Add(Instantiate(RandomHelper.GetRandom(floorObjects), randomPosition, Quaternion.identity, room.transform));
                 }

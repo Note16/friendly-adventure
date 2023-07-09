@@ -3,12 +3,14 @@
 namespace Assets.Scripts.Dungeon.Rooms
 {
     [RequireComponent(typeof(RoomObjectsGenerator))]
+    [RequireComponent(typeof(RoomEnemyGenerator))]
     public class Room : MonoBehaviour
     {
         [SerializeField]
         public RectInt Rect;
 
         private RoomObjectsGenerator objectsGenerator;
+        private RoomEnemyGenerator enemiesGenerator;
         public RoomVisualizer RoomVisualizer { get; private set; }
         public RoomWalls Walls { get; private set; }
         public RoomFloor Floor { get; private set; }
@@ -21,24 +23,19 @@ namespace Assets.Scripts.Dungeon.Rooms
         public void Awake()
         {
             objectsGenerator = GetComponent<RoomObjectsGenerator>();
+            enemiesGenerator = GetComponent<RoomEnemyGenerator>();
+            RoomVisualizer = new RoomVisualizer(GetComponentInParent<DungeonVisualizer>());
 
             if (!Application.isPlaying)
+            {
                 objectsGenerator.Awake();
-        }
-
-        public void SetRoomVisualizer(RoomVisualizer roomVisualizer)
-        {
-            RoomVisualizer = roomVisualizer;
+                enemiesGenerator.Awake();
+            }
         }
 
         public void SetRoomType(RoomType type)
         {
             RoomType = type;
-
-            if (RoomType == RoomType.BossRoom)
-            {
-                Walls.CreateExit(RoomVisualizer);
-            }
         }
 
         public void Create()
@@ -49,16 +46,20 @@ namespace Assets.Scripts.Dungeon.Rooms
 
             Floor.Render(RoomVisualizer);
             Walls.Render(RoomVisualizer);
-        }
 
-
-        public void GenerateObjects()
-        {
             if (RoomType == RoomType.BossRoom)
             {
+                enemiesGenerator.GenerateBossEnemy();
                 objectsGenerator.GenerateExit();
+                Walls.CreateExit(RoomVisualizer);
             }
-            else if (RoomType == RoomType.Default)
+            if (RoomType == RoomType.Default)
+            {
+                enemiesGenerator.GenerateEnemies();
+                objectsGenerator.GenerateWallObjects();
+                objectsGenerator.GenerateFloorObjects();
+            }
+            if (RoomType == RoomType.Shop || RoomType == RoomType.Entrance)
             {
                 objectsGenerator.GenerateWallObjects();
                 objectsGenerator.GenerateFloorObjects();

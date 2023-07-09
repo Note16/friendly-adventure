@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6240284091675043753}
   - component: {fileID: 6235239261724899649}
   - component: {fileID: 8879812951525496992}
+  - component: {fileID: -4844485248643455215}
   m_Layer: 0
   m_Name: DefaultRoom
   m_TagString: Untagged
@@ -62,6 +63,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e34e7bbb2901a6f439864c6af2958c51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  itemCount: 8
   exitObject: {fileID: 8886554027916545755, guid: 9b6a95fccabc00e43a7c1cd9da89bca9, type: 3}
   wallObjects:
   - {fileID: 197473032071686387, guid: 5ec43a80b7328f14db9cdce07997d0be, type: 3}
@@ -78,3 +80,16 @@ MonoBehaviour:
   - {fileID: 197473032071686387, guid: 2c52a6e76a8f23048b58d36966a45075, type: 3}
   - {fileID: 197473032071686387, guid: 138676b05e702be45ad5ecedd895c610, type: 3}
   - {fileID: 197473032071686387, guid: 1758f68b5d0a2b04eaceec3d685b7289, type: 3}
+--- !u!114 &-4844485248643455215
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3942057110451614254}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f1e81756037419418e8faeacd303c1a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyCount: 4

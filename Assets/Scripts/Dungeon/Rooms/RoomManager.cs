@@ -22,24 +22,16 @@ namespace Assets.Scripts.Dungeon.Rooms
         [SerializeField]
         private GameObject bossRoom;
 
-        private RoomVisualizer roomVisualizer;
         private List<Room> rooms;
 
         private readonly int roomHeight = 18;
         private readonly int roomWidth = 18;
         public readonly int corridorSize = 4;
 
-        public void Awake()
-        {
-            roomVisualizer = new RoomVisualizer(GetComponent<DungeonVisualizer>());
-        }
-
         public void GenerateRooms(int minRoomCount, int maxRoomCount)
         {
             var roomRects = GenerateRoomLayout(minRoomCount, maxRoomCount);
-            var rooms = AssignRoomTypes(roomRects).ToList();
-            rooms.ForEach(r => r.GenerateObjects());
-            this.rooms = rooms;
+            this.rooms = AssignRoomTypes(roomRects).ToList();
         }
 
         public IEnumerable<Room> GetRooms()
@@ -94,33 +86,33 @@ namespace Assets.Scripts.Dungeon.Rooms
                 bool isFirstRoom = i == 0;
                 if (isFirstRoom)
                 {
-                    yield return GenerateRoom(roomLayout[i], entranceRoom);
+                    yield return GenerateRoom(roomLayout[i], entranceRoom, RoomType.Entrance);
                     continue;
                 }
 
                 bool isSecondLastRoom = i == roomLayout.Count - 2;
                 if (isSecondLastRoom)
                 {
-                    yield return GenerateRoom(roomLayout[i], shopRoom);
+                    yield return GenerateRoom(roomLayout[i], shopRoom, RoomType.Shop);
                     continue;
                 }
 
                 bool isLastRoom = i == roomLayout.Count - 1;
                 if (isLastRoom)
                 {
-                    yield return GenerateRoom(roomLayout[i], bossRoom);
+                    yield return GenerateRoom(roomLayout[i], bossRoom, RoomType.BossRoom);
                     continue;
                 }
 
-                yield return GenerateRoom(roomLayout[i], defaultRoom);
+                yield return GenerateRoom(roomLayout[i], defaultRoom, RoomType.Default);
             }
         }
 
-        private Room GenerateRoom(RectInt roomRect, GameObject roomObject)
+        private Room GenerateRoom(RectInt roomRect, GameObject roomObject, RoomType roomType)
         {
             var room = Instantiate(roomObject, new Vector3(roomRect.position.x, roomRect.position.y, 0), Quaternion.identity, gameObject.transform).GetComponent<Room>();
             room.Awake();
-            room.SetRoomVisualizer(roomVisualizer);
+            room.SetRoomType(roomType);
             room.Rect = new RectInt(roomRect.position, roomRect.size);
             room.Create();
             return room;

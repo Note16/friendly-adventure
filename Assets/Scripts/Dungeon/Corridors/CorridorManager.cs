@@ -16,9 +16,6 @@ namespace Assets.Scripts.Dungeon.Corridors
             roomManager = GetComponent<RoomManager>();
             corridorVisualizer = new CorridorVisualizer(GetComponent<DungeonVisualizer>());
             corridorSize = 6;
-
-            if (!Application.isPlaying)
-                roomManager.Awake();
         }
 
         internal void GenerateCorridors()

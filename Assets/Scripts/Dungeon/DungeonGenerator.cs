@@ -1,7 +1,6 @@
 using Assets.Scripts.Dungeon.Corridors;
 using Assets.Scripts.Dungeon.Rooms;
 using Assets.Scripts.Helpers;
-using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
@@ -75,40 +74,21 @@ namespace Assets.Scripts.Dungeon
         {
             if (!Application.isPlaying)
             {
-                roomManager.Awake();
                 corridorManager.Awake();
             }
 
+            enemyGenerator.RandomizePossibleLevelEnemies(2);
             roomManager.GenerateRooms(minRoomCount, maxRoomCount);
             corridorManager.GenerateCorridors();
             dungeonVisualizer.SetAllFloorTiles();
 
             var rooms = roomManager.GetRooms();
             PositionPlayerCharacter(rooms.First().Floor.Center);
-
-            GenerateEnemies(rooms);
         }
 
         private void PositionPlayerCharacter(Vector2Int position)
         {
             playerCharacter.transform.position = (Vector3Int)position;
-        }
-
-        public void GenerateEnemies(IEnumerable<Room> rooms)
-        {
-            enemyGenerator.RandomizeLevelEnemies(2);
-
-            foreach (var room in rooms)
-            {
-                if (room.RoomType == RoomType.Default)
-                {
-                    enemyGenerator.GenerateEnemies(room, 4);
-                }
-                if (room.RoomType == RoomType.BossRoom)
-                {
-                    enemyGenerator.GenerateBossEnemy(room);
-                }
-            }
         }
     }
 }

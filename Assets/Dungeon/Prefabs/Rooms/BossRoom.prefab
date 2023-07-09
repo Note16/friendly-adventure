@@ -7,6 +7,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -4844485248643455215, guid: 4690c2a070408dc4992b772f9078fcc5, type: 3}
+      propertyPath: enemyCount
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3942057110451614254, guid: 4690c2a070408dc4992b772f9078fcc5, type: 3}
       propertyPath: m_Name
       value: BossRoom
