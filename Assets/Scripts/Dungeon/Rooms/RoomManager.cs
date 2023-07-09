@@ -11,12 +11,21 @@ namespace Assets.Scripts.Dungeon.Rooms
     public class RoomManager : MonoBehaviour
     {
         [SerializeField]
+        private GameObject entranceRoom;
+
+        [SerializeField]
         private GameObject defaultRoom;
+
+        [SerializeField]
+        private GameObject shopRoom;
+
+        [SerializeField]
+        private GameObject bossRoom;
 
         private RoomVisualizer roomVisualizer;
         private List<Room> rooms;
 
-        private readonly int roomSize = 18;
+        private readonly int roomHeight = 18;
         private readonly int roomWidth = 18;
         public readonly int corridorSize = 4;
 
@@ -27,35 +36,10 @@ namespace Assets.Scripts.Dungeon.Rooms
 
         public void GenerateRooms(int minRoomCount, int maxRoomCount)
         {
-            var room = GenerateRoom(new RectInt(Vector2Int.zero, new Vector2Int(roomSize, roomWidth)));
-            var roomsList = new List<Room>
-            {
-                room
-            };
-            while ((RandomHelper.GetRandom(95) || roomsList.Count < minRoomCount) && roomsList.Count != maxRoomCount)
-            {
-                var attemptedDirection = new List<Direction>();
-
-                Vector2Int? targetPosition = null;
-                while (roomsList.Any(room => targetPosition == null || room.Rect.position == targetPosition))
-                {
-                    if (attemptedDirection.Count >= Enum.GetNames(typeof(Direction)).Length)
-                        break;
-
-                    var randomDirection = RandomHelper.GetRandomEnum(attemptedDirection);
-                    attemptedDirection.Add(randomDirection);
-                    targetPosition = GetRoomPosition(room.Rect, randomDirection);
-                }
-
-                if (targetPosition == null)
-                    break;
-
-                room = GenerateRoom(new RectInt(targetPosition.Value, room.Rect.size));
-                roomsList.Add(room);
-            }
-            rooms = roomsList;
-            AssignRoomTypes();
+            var roomRects = GenerateRoomLayout(minRoomCount, maxRoomCount);
+            var rooms = AssignRoomTypes(roomRects).ToList();
             rooms.ForEach(r => r.GenerateObjects());
+            this.rooms = rooms;
         }
 
         public IEnumerable<Room> GetRooms()
@@ -71,19 +55,70 @@ namespace Assets.Scripts.Dungeon.Rooms
             });
         }
 
-        private void AssignRoomTypes()
+        private List<RectInt> GenerateRoomLayout(int minRoomCount, int maxRoomCount)
         {
-            rooms.First().SetRoomType(RoomType.Entrance);
-            rooms.Last().SetRoomType(RoomType.BossRoom);
+            var room = new RectInt(Vector2Int.zero, new Vector2Int(roomWidth, roomHeight));
+            var roomRects = new List<RectInt>
+            {
+                room
+            };
 
-            var defaultRooms = rooms.Where(rooms => rooms.RoomType == RoomType.Default).ToList();
-            var randomRoom = RandomHelper.GetRandom(defaultRooms);
-            randomRoom.SetRoomType(RoomType.Shop);
+            while ((RandomHelper.GetRandom(95) || roomRects.Count < minRoomCount) && roomRects.Count != maxRoomCount)
+            {
+                var attemptedDirection = new List<Direction>();
+
+                Vector2Int? targetPosition = roomRects.Last().position;
+                while (roomRects.Any(roomRect => roomRect.position == targetPosition))
+                {
+                    if (attemptedDirection.Count >= Enum.GetNames(typeof(Direction)).Length)
+                        break;
+
+                    var randomDirection = RandomHelper.GetRandomEnum(attemptedDirection);
+                    attemptedDirection.Add(randomDirection);
+                    targetPosition = GetRoomPosition(roomRects.Last(), randomDirection);
+                }
+
+                if (targetPosition == null)
+                    break;
+
+                roomRects.Add(new RectInt(targetPosition.Value, room.size));
+            }
+
+            return roomRects;
         }
 
-        private Room GenerateRoom(RectInt roomRect)
+        private IEnumerable<Room> AssignRoomTypes(List<RectInt> roomLayout)
         {
-            var room = Instantiate(defaultRoom, new Vector3(roomRect.position.x, roomRect.position.y, 0), Quaternion.identity, gameObject.transform).GetComponent<Room>();
+            for (int i = 0; i < roomLayout.Count; i++)
+            {
+                bool isFirstRoom = i == 0;
+                if (isFirstRoom)
+                {
+                    yield return GenerateRoom(roomLayout[i], entranceRoom);
+                    continue;
+                }
+
+                bool isSecondLastRoom = i == roomLayout.Count - 2;
+                if (isSecondLastRoom)
+                {
+                    yield return GenerateRoom(roomLayout[i], shopRoom);
+                    continue;
+                }
+
+                bool isLastRoom = i == roomLayout.Count - 1;
+                if (isLastRoom)
+                {
+                    yield return GenerateRoom(roomLayout[i], bossRoom);
+                    continue;
+                }
+
+                yield return GenerateRoom(roomLayout[i], defaultRoom);
+            }
+        }
+
+        private Room GenerateRoom(RectInt roomRect, GameObject roomObject)
+        {
+            var room = Instantiate(roomObject, new Vector3(roomRect.position.x, roomRect.position.y, 0), Quaternion.identity, gameObject.transform).GetComponent<Room>();
             room.Awake();
             room.SetRoomVisualizer(roomVisualizer);
             room.Rect = new RectInt(roomRect.position, roomRect.size);

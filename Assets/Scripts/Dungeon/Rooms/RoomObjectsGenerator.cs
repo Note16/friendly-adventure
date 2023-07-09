@@ -11,6 +11,9 @@ namespace Assets.Scripts.Dungeon
     public class RoomObjectsGenerator : MonoBehaviour
     {
         [SerializeField]
+        private int itemCount = 8;
+
+        [SerializeField]
         private GameObject exitObject;
 
         [SerializeField]
@@ -46,8 +49,6 @@ namespace Assets.Scripts.Dungeon
             if (floorObjects?.Any() == true)
             {
                 var roomFloor = room.Floor.Inner.allPositionsWithin.ToVector2Int();
-
-                var itemCount = 8;
 
                 for (int i = 0; i < itemCount; i++)
                 {

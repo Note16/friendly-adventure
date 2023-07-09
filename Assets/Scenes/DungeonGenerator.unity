@@ -222,7 +222,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4ef1afae82186c142a523733765e1160, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  entranceRoom: {fileID: 1945054934514025680, guid: a72d3ef520646744699c2d4daf6b63d1, type: 3}
   defaultRoom: {fileID: 3942057110451614254, guid: 4690c2a070408dc4992b772f9078fcc5, type: 3}
+  shopRoom: {fileID: 5332497777016923410, guid: 3216abfb1462ad44a81785c1032d840e, type: 3}
+  bossRoom: {fileID: 4870010133308170372, guid: fd6946de334ea9b4fb42d8454cf37eb0, type: 3}
 --- !u!114 &34912779
 MonoBehaviour:
   m_ObjectHideFlags: 0
