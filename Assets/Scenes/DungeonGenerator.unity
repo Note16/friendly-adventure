@@ -157,7 +157,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerCharacter: {fileID: 1820970075}
-  roomCount: {x: 0, y: 0}
   minRoomCount: 6
   maxRoomCount: 8
   disableGenerateOnStart: 0
@@ -291,11 +290,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8111309106597192695, guid: 102af8aa83f700d4f8b0e5d21612bb34, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 9
+      value: -55.2
       objectReference: {fileID: 0}
     - target: {fileID: 8111309106597192695, guid: 102af8aa83f700d4f8b0e5d21612bb34, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 7
+      value: 9.6
       objectReference: {fileID: 0}
     - target: {fileID: 8111309106597192695, guid: 102af8aa83f700d4f8b0e5d21612bb34, type: 3}
       propertyPath: m_LocalPosition.z

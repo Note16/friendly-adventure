@@ -1,4 +1,6 @@
-﻿using Assets.Scripts.Extensions;
+﻿using Assets.Scripts.Characters.Enemies;
+using Assets.Scripts.Dungeon.Objects;
+using Assets.Scripts.Extensions;
 using Assets.Scripts.Helpers;
 using UnityEngine;
 
@@ -40,6 +42,18 @@ namespace Assets.Scripts.Dungeon.Rooms
                 {
                     var randomPosition = (Vector3Int)RandomHelper.GetRandom(roomFloor);
                     enemyGenerator.GenerateBossEnemy(randomPosition, transform);
+                }
+            }
+        }
+
+        public void EnemiesDefeatedEvent()
+        {
+            if (room.RoomType == RoomType.BossRoom)
+            {
+                if (GetComponentsInChildren<BaseEnemy>().Length == 1)
+                {
+                    var exit = GetComponentInChildren<Exit>(true);
+                    exit.gameObject.SetActive(true);
                 }
             }
         }

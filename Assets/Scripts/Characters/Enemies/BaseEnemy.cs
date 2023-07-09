@@ -1,8 +1,8 @@
 ﻿using Assets.Scripts.Characters.Player;
+using Assets.Scripts.Dungeon.Rooms;
 using Assets.Scripts.Helpers;
 using Assets.Scripts.Shared;
 using Assets.Scripts.UI;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -32,8 +32,7 @@ namespace Assets.Scripts.Characters.Enemies
         protected SpriteRenderer spriteRenderer;
         protected Animator animator;
         protected Movement movement;
-
-        public Action OnDeathAction;
+        protected RoomEnemyGenerator room;
 
         private void OnEnable()
         {
@@ -41,6 +40,7 @@ namespace Assets.Scripts.Characters.Enemies
             animator = GetComponent<Animator>();
             movement = GetComponent<Movement>();
             playerStats = FindObjectOfType<PlayerStats>();
+            room = GetComponentInParent<RoomEnemyGenerator>();
         }
 
         private void FixedUpdate()
@@ -72,7 +72,7 @@ namespace Assets.Scripts.Characters.Enemies
             if (healthPoints <= 0)
             {
                 DropItems();
-                OnDeathAction?.Invoke();
+                room.EnemiesDefeatedEvent();
                 animator.Play("Death"); // Will call DestroyOnExit behavior script
             }
             else

@@ -6,15 +6,15 @@ namespace Assets.Scripts.Dungeon.Rooms
     [RequireComponent(typeof(RoomEnemyGenerator))]
     public class Room : MonoBehaviour
     {
-        [SerializeField]
+        [HideInInspector]
         public RectInt Rect;
-
         private RoomObjectsGenerator objectsGenerator;
         private RoomEnemyGenerator enemiesGenerator;
         public RoomVisualizer RoomVisualizer { get; private set; }
         public RoomWalls Walls { get; private set; }
         public RoomFloor Floor { get; private set; }
-        public RoomType RoomType { get; private set; }
+        [SerializeField]
+        public RoomType RoomType;
         public Vector2Int RectCenter { get; private set; }
 
         private int wallHeight = 5;
@@ -31,11 +31,6 @@ namespace Assets.Scripts.Dungeon.Rooms
                 objectsGenerator.Awake();
                 enemiesGenerator.Awake();
             }
-        }
-
-        public void SetRoomType(RoomType type)
-        {
-            RoomType = type;
         }
 
         public void Create()

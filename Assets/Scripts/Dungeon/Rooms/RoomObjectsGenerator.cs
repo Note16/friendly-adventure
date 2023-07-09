@@ -68,14 +68,5 @@ namespace Assets.Scripts.Dungeon
             exit.SetActive(false);
             activeObjects.Add(exit);
         }
-
-        public void DestroyObjects()
-        {
-            if (activeObjects.Any())
-            {
-                GameObjectHelper.Destroy(activeObjects);
-                activeObjects.Clear();
-            }
-        }
     }
 }

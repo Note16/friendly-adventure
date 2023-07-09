@@ -14,9 +14,6 @@ namespace Assets.Scripts.Dungeon
         GameObject playerCharacter;
 
         [SerializeField]
-        Vector2Int roomCount;
-
-        [SerializeField]
         public int minRoomCount = 6;
 
         [SerializeField]
@@ -47,9 +44,6 @@ namespace Assets.Scripts.Dungeon
         public void ClearDungeon()
         {
             InitComponents();
-
-            // Cleanup objects
-            enemyGenerator?.DestroyEnemies();
 
             // Cleanup tilemap
             dungeonVisualizer?.Clear();

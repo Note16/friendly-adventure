@@ -24,9 +24,8 @@ namespace Assets.Scripts.Dungeon.Rooms
 
         private List<Room> rooms;
 
-        private readonly int roomHeight = 18;
-        private readonly int roomWidth = 18;
-        public readonly int corridorSize = 4;
+        private readonly int roomHeight = 18, roomWidth = 18;
+        public readonly int corridorLength = 4;
 
         public void GenerateRooms(int minRoomCount, int maxRoomCount)
         {
@@ -112,7 +111,7 @@ namespace Assets.Scripts.Dungeon.Rooms
         {
             var room = Instantiate(roomObject, new Vector3(roomRect.position.x, roomRect.position.y, 0), Quaternion.identity, gameObject.transform).GetComponent<Room>();
             room.Awake();
-            room.SetRoomType(roomType);
+            room.RoomType = roomType;
             room.Rect = new RectInt(roomRect.position, roomRect.size);
             room.Create();
             return room;
@@ -122,13 +121,13 @@ namespace Assets.Scripts.Dungeon.Rooms
         {
             var targetPosition = roomRect.position;
             if (direction == Direction.Up)
-                targetPosition += new Vector2Int(0, roomRect.height + corridorSize);
+                targetPosition += new Vector2Int(0, roomRect.height + corridorLength);
             if (direction == Direction.Down)
-                targetPosition += new Vector2Int(0, -(roomRect.height + corridorSize));
+                targetPosition += new Vector2Int(0, -(roomRect.height + corridorLength));
             if (direction == Direction.Left)
-                targetPosition += new Vector2Int(-(roomRect.width + corridorSize), 0);
+                targetPosition += new Vector2Int(-(roomRect.width + corridorLength), 0);
             if (direction == Direction.Right)
-                targetPosition += new Vector2Int(roomRect.width + corridorSize, 0);
+                targetPosition += new Vector2Int(roomRect.width + corridorLength, 0);
 
             return targetPosition;
         }
