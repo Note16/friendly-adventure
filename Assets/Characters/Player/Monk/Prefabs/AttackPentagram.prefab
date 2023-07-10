@@ -122,6 +122,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 4
+  AttackSounds:
+  - {fileID: 8300000, guid: 5a5a69ee5bea03047ba4ea8b6545630d, type: 3}
 --- !u!50 &-3064464636463484093
 Rigidbody2D:
   serializedVersion: 4
