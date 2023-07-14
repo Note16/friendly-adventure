@@ -57,22 +57,19 @@ namespace Assets.Scripts.Characters.Player
         }
 
         // Function get executed by Player Input
-        void OnPointerPosition(InputValue value)
+        void OnAimStick(InputValue value)
         {
             var pointerInput = value.Get<Vector2>();
-            var pointerPosition = Camera.main.ScreenToWorldPoint(pointerInput);
+            var rotation = GetRotation(pointerInput);
+            AimLogic(rotation);
+        }
 
-            var mouseRotation = GetMouseRotation(pointerPosition);
-
-            var hitMarker = transform.Find("Hit Marker");
-            if (hitMarker != null)
-                hitMarker.rotation = mouseRotation;
-
-            if (SwordSwingAttack != null)
-            {
-                SwordSwingAttack.transform.rotation = mouseRotation;
-                SwordSwingAttack.GetComponent<SpriteRenderer>().sortingOrder = (mouseRotation.z < 0) ? 3 : 0;
-            }
+        // Function get executed by Player Input
+        void OnAimMouse(InputValue value)
+        {
+            var pointerInput = value.Get<Vector2>();
+            var rotation = GetMouseRotation(pointerInput);
+            AimLogic(rotation);
         }
 
         // Function gets executed by Animations
@@ -84,11 +81,30 @@ namespace Assets.Scripts.Characters.Player
                 playerMovement.Stop(false);
         }
 
+        private void AimLogic(Quaternion rotation)
+        {
+            var hitMarker = transform.Find("Hit Marker");
+            if (hitMarker != null)
+                hitMarker.rotation = rotation;
+
+            if (SwordSwingAttack != null)
+            {
+                SwordSwingAttack.transform.rotation = rotation;
+                SwordSwingAttack.GetComponent<SpriteRenderer>().sortingOrder = (rotation.z < 0) ? 3 : 0;
+            }
+        }
+
+        private Quaternion GetRotation(Vector2 position)
+        {
+            var angle = Mathf.Atan2(position.y, position.x) * Mathf.Rad2Deg;
+            return Quaternion.AngleAxis(angle, Vector3.forward);
+        }
+
         private Quaternion GetMouseRotation(Vector2 position)
         {
-            var relativePos = position - (Vector2)transform.position;
-            var angle = Mathf.Atan2(relativePos.y, relativePos.x) * Mathf.Rad2Deg;
-            return Quaternion.AngleAxis(angle, Vector3.forward);
+            var pointerPosition = Camera.main.ScreenToWorldPoint(position);
+            var relativePos = (Vector2)pointerPosition - (Vector2)transform.position;
+            return GetRotation(relativePos);
         }
     }
 }

@@ -15,6 +15,9 @@ namespace Assets.Scripts.Characters.Player.Attacks
         [SerializeField]
         public List<AudioClip> AttackSounds;
 
+        [SerializeField]
+        public List<AudioClip> AttackSoundsHit;
+
         void Awake()
         {
             rb = GetComponent<Rigidbody2D>();
@@ -23,44 +26,49 @@ namespace Assets.Scripts.Characters.Player.Attacks
         private void OnEnable()
         {
             StartCoroutine(HitEnemyAfterDelay(0.3f));
-            StartCoroutine(SoundEffectAfterDelay(0.3f));
             StartCoroutine(HitEnemyAfterDelay(0.5f));
             StartCoroutine(DisableAfterDelay(0.8f));
         }
 
-        IEnumerator SoundEffectAfterDelay(float delay)
+        IEnumerator HitEnemyAfterDelay(float delay)
         {
             yield return new WaitForSeconds(delay);
             if (AttackSounds.Count > 0)
             {
                 SoundManager.instance.RandomizeSfx(AttackSounds.ToArray());
             }
-        }
-
-        IEnumerator HitEnemyAfterDelay(float delay)
-        {
-            yield return new WaitForSeconds(delay);
-
-            var hits = new List<RaycastHit2D>();
-            rb.Cast(Vector2.zero, hits);
-
-            foreach (var hit in hits)
-            {
-                if (hit.collider.gameObject.TryGetComponent<BaseEnemy>(out var enemy))
-                {
-                    enemy.TakeDamage(damage);
-
-
-                    var direction = (enemy.transform.position - transform.position) / 2;
-                    enemy.Push((Vector2)direction);
-                }
-            }
+            HitEnemy();
         }
 
         IEnumerator DisableAfterDelay(float delay)
         {
             yield return new WaitForSeconds(delay);
             gameObject.SetActive(false);
+        }
+
+        private bool HitEnemy()
+        {
+            var hits = new List<RaycastHit2D>();
+            rb.Cast(Vector2.zero, hits);
+
+            var enemyHit = false;
+            foreach (var hit in hits)
+            {
+                if (hit.collider.gameObject.TryGetComponent<BaseEnemy>(out var enemy))
+                {
+                    enemy.TakeDamage(damage);
+
+                    var direction = (enemy.transform.position - transform.position) / 2;
+                    enemy.Push((Vector2)direction);
+
+                    if (AttackSoundsHit.Count > 0)
+                    {
+                        SoundManager.instance.RandomizeSfx(AttackSoundsHit.ToArray());
+                    }
+                }
+            }
+
+            return enemyHit;
         }
     }
 }

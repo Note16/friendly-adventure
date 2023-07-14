@@ -25,6 +25,11 @@ namespace Assets.Scripts.Sounds
             DontDestroyOnLoad(gameObject);
         }
 
+        public void StopMusic()
+        {
+            musicSource.Stop();
+        }
+
         public void PlaySingle(AudioClip clip)
         {
             efxSource.clip = clip;
