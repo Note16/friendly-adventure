@@ -25,17 +25,9 @@ namespace Assets.Scripts.Characters.Player.Attacks
 
         private void OnEnable()
         {
-            StartCoroutine(HitEnemyAfterDelayWithSound(0.3f));
+            StartCoroutine(HitEnemyAfterDelay(0.3f));
             StartCoroutine(HitEnemyAfterDelay(0.5f));
             StartCoroutine(DisableAfterDelay(0.8f));
-        }
-
-        IEnumerator HitEnemyAfterDelayWithSound(float delay)
-        {
-            yield return new WaitForSeconds(delay);
-
-            HitEnemy();
-
         }
 
         IEnumerator HitEnemyAfterDelay(float delay)
