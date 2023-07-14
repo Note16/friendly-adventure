@@ -2,6 +2,7 @@
 using Assets.Scripts.Dungeon.Objects;
 using Assets.Scripts.Extensions;
 using Assets.Scripts.Helpers;
+using System.Linq;
 using UnityEngine;
 
 namespace Assets.Scripts.Dungeon.Rooms
@@ -50,7 +51,7 @@ namespace Assets.Scripts.Dungeon.Rooms
         {
             if (room.RoomType == RoomType.BossRoom)
             {
-                if (GetComponentsInChildren<BaseEnemy>().Length == 1)
+                if (!GetComponentsInChildren<BaseEnemy>().Any(enemy => enemy.healthPoints > 0))
                 {
                     var exit = GetComponentInChildren<Exit>(true);
                     exit.gameObject.SetActive(true);
