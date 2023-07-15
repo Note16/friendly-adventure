@@ -11,6 +11,9 @@ namespace Assets.Scripts.Shared
         protected float moveSpeed = 4f;
 
         [SerializeField]
+        public bool canMove = true;
+
+        [SerializeField]
         private float collisionOffset = 0.5f;
 
         private List<RaycastHit2D> collisions = new List<RaycastHit2D>();
@@ -30,7 +33,7 @@ namespace Assets.Scripts.Shared
 
         public bool Move(Vector2 direction)
         {
-            if (stop)
+            if (stop || !canMove)
                 return false;
 
             // Lets try moving
@@ -55,7 +58,7 @@ namespace Assets.Scripts.Shared
 
         public bool SimpleMove(Vector2 direction)
         {
-            if (stop)
+            if (stop || !canMove)
                 return false;
 
             // Lets try moving

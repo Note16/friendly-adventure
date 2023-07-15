@@ -51,8 +51,7 @@ namespace Assets.Scripts.Characters.Enemies
             var layer = Mathf.CeilToInt(relativePos.y * 2);
             spriteRenderer.sortingOrder = relativePos.y < 0f ? layer : layer + 1;
 
-            if (!playerStats.godMode)
-                TryAttack();
+            TryAttack();
         }
 
         public virtual void TryAttack()
