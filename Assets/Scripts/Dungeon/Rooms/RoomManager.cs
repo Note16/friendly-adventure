@@ -24,7 +24,7 @@ namespace Assets.Scripts.Dungeon.Rooms
 
         private List<Room> rooms;
 
-        private readonly int roomHeight = 18, roomWidth = 18;
+        private readonly int roomHeight = 18, roomWidth = 22;
         public readonly int corridorLength = 4;
 
         public void GenerateRooms(int minRoomCount, int maxRoomCount)

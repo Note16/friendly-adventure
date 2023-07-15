@@ -210,4 +210,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 4
+  canMove: 1
   collisionOffset: 0.5

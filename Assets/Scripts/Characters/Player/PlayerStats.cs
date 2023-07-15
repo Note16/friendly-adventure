@@ -8,10 +8,12 @@ namespace Assets.Scripts.Characters.Player
 {
     [RequireComponent(typeof(Animator))]
     [RequireComponent(typeof(SpriteRenderer))]
+    [RequireComponent(typeof(PlayerMovement))]
+    [RequireComponent(typeof(PlayerController))]
     public class PlayerStats : MonoBehaviour
     {
         [SerializeField]
-        public bool godMode;
+        public bool invincible = false;
 
         [SerializeField]
         private HealthGlobe HealthGlobe;
@@ -21,12 +23,16 @@ namespace Assets.Scripts.Characters.Player
 
         private Animator animator;
         private SpriteRenderer spriteRenderer;
+        private PlayerMovement playerMovement;
+        private PlayerController playerController;
         private int currentHP;
 
         void Awake()
         {
             spriteRenderer = GetComponent<SpriteRenderer>();
             animator = GetComponent<Animator>();
+            playerMovement = GetComponent<PlayerMovement>();
+            playerController = GetComponent<PlayerController>();
             currentHP = healthPoints;
         }
 
@@ -34,6 +40,9 @@ namespace Assets.Scripts.Characters.Player
         {
             animator.Play("Idle");
             currentHP = healthPoints;
+            invincible = false;
+            playerMovement.canMove = true;
+            playerController.canAttack = true;
             HealthGlobe.UpdateHealthGlobe((float)currentHP / healthPoints);
         }
 
@@ -50,6 +59,9 @@ namespace Assets.Scripts.Characters.Player
 
         public void TakeDamage(int damage)
         {
+            if (invincible)
+                return;
+
             var isCrit = RandomHelper.GetRandom(50);
             if (isCrit)
                 damage *= 2;
@@ -75,7 +87,9 @@ namespace Assets.Scripts.Characters.Player
             yield return new WaitForSeconds(delay);
             FindAnyObjectByType<Canvas>().GetComponentInChildren<DeathPopup>(true).gameObject.SetActive(true);
             SoundManager.instance.musicSource.Stop();
-            godMode = true;
+            invincible = true;
+            playerMovement.canMove = false;
+            playerController.canAttack = false;
             spriteRenderer.enabled = false;
         }
     }

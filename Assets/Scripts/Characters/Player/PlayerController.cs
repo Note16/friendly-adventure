@@ -8,6 +8,9 @@ namespace Assets.Scripts.Characters.Player
     public class PlayerController : MonoBehaviour
     {
         [SerializeField]
+        public bool canAttack = true;
+
+        [SerializeField]
         public GameObject AoeAttack, SwordSwingAttack;
 
         [SerializeField]
@@ -40,7 +43,7 @@ namespace Assets.Scripts.Characters.Player
         // Function gets executed by Player Input
         void OnMainAttack()
         {
-            if (SwordSwingAttack != null)
+            if (SwordSwingAttack != null && canAttack)
             {
                 SwordSwingAttack.SetActive(true);
             }
@@ -49,7 +52,7 @@ namespace Assets.Scripts.Characters.Player
         // Function gets executed by Player Input
         void OnSecondaryAttack()
         {
-            if (activeAoeAttack == null)
+            if (activeAoeAttack == null && canAttack)
             {
                 animator.Play("Cast");
                 activeAoeAttack = Object.Instantiate(AoeAttack, transform.position, Quaternion.identity);
